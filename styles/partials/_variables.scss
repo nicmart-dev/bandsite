@@ -1,0 +1,14 @@
+@use "typography" as *;
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+// you can add colors, font families and other variables here
+
+//declare font families
+$font: "AvenirNext LT Pro";
+
+// Set your font weights as variables
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;

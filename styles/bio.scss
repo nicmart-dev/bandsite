@@ -1,0 +1,77 @@
+@use "partials/variables" as *;
+@use "partials/mixins" as *;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  //Set font defaults per style guide
+  font-family: $font;
+  font-weight: $regular;
+  font-size: 13px;
+  line-height: 18px;
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+h1,
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $bold;
+}
+//using as page header per style guide
+h1 {
+  @include tablet {
+    font-size: 60px;
+    line-height: 68px;
+  }
+}
+
+//using as section header per styleguide
+h2 {
+  @include tablet {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+//using as subheader per styleguide
+h3 {
+  font-weight: $semi-bold;
+  font-size: 14px;
+  line-height: 22px;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+p {
+}
+
+.footer {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: $regular;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.label,
+.button {
+  font-size: 10px;
+  line-height: 20px;
+  font-weight: $bold;
+
+  @include tablet {
+    font-size: 12px;
+  }
+}
