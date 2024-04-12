@@ -12,6 +12,7 @@ following this guide https://sterlingcobb.medium.com/using-css-variables-with-ma
   --md: calc(3 * var(--spacing-unit));
   --lg: calc((4 * var(--spacing-unit)) + 4px);
   --xl: calc(6 * var(--spacing-unit));
+  --xxl: calc(12 * var(--spacing-unit));
 }
 
 * {

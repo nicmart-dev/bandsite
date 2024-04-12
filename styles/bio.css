@@ -20,7 +20,7 @@ Using font weight per style guide
   font-style: normal;
 }
 /* Mixin to add margin or padding, on which side, and how big
-Credit: https://codepen.io/ezos86/pen/QwQmZb */
+Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 /* Set standard padding per styleguide,
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
 */
@@ -31,6 +31,7 @@ following this guide https://sterlingcobb.medium.com/using-css-variables-with-ma
   --md: calc(3 * var(--spacing-unit));
   --lg: calc((4 * var(--spacing-unit)) + 4px);
   --xl: calc(6 * var(--spacing-unit));
+  --xxl: calc(12 * var(--spacing-unit));
 }
 
 * {
@@ -154,6 +155,8 @@ li {
 }
 @media screen and (min-width: 768px) {
   .header__logo {
+    width: -moz-fit-content;
+    width: fit-content;
     padding-top: var(--md);
     padding-bottom: var(--md);
     margin-left: var(--md);
@@ -175,7 +178,8 @@ li {
 }
 @media screen and (min-width: 1280px) {
   .header__logo {
-    margin-left: var(--xl);
+    margin-left: var(--xxl);
+    margin-right: var(--lg);
   }
 }
 .header__link-container {
@@ -199,6 +203,8 @@ li {
 }
 @media screen and (min-width: 768px) {
   .header__link {
+    width: -moz-fit-content;
+    width: fit-content;
     padding-top: var(--md);
     padding-bottom: var(--md);
     margin-left: var(--md);

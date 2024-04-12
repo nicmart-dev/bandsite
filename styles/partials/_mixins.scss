@@ -27,6 +27,7 @@
   width: 100%;
 
   @include tablet {
+    width: fit-content;
     @include spacing(padding, topbottom, var(--md));
     @include spacing(margin, sides, var(--md));
   }
@@ -43,12 +44,13 @@
     width: 120px;
   }
   @include desktop {
-    @include spacing(margin, left, var(--xl));
+    @include spacing(margin, left, var(--xxl));
+    @include spacing(margin, right, var(--lg));
   }
 }
 
 /* Mixin to add margin or padding, on which side, and how big
-Credit: https://codepen.io/ezos86/pen/QwQmZb */
+Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 
 @mixin spacing($type: margin, $direction: all, $amount: var(--md)) {
   @if $type == padding {
