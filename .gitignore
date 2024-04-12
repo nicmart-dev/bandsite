@@ -7,3 +7,4 @@ Thumbs.db
 _config.yml
 .*md
 .github\
+.vscode\
