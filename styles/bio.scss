@@ -1,3 +1,25 @@
 @use "./partials/global" as *;
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
+
+.about {
+  &__title {
+  }
+  &__photo {
+  }
+  &__quote {
+  }
+  &__quotefrom {
+  }
+  &__article {
+  }
+  &__title {
+  }
+  &__title > p {
+  }
+}
+
+.gallery {
+  &__photo {
+  }
+}

@@ -111,12 +111,12 @@ li {
   list-style: none;
 }
 
-.headlines {
+main section {
   padding-top: var(--md);
   padding-bottom: var(--sm);
 }
 @media screen and (min-width: 768px) {
-  .headlines {
+  main section {
     padding-top: var(--xl);
     padding-bottom: var(--lg);
   }
@@ -253,7 +253,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     line-height: 20px;
   }
 }
-
 .label,
 .button {
   font-size: 10px;
