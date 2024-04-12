@@ -12,3 +12,19 @@ $font: "AvenirNext LT Pro";
 $regular: 400;
 $semi-bold: 600;
 $bold: 700;
+
+// Colours following Mike Street and Marcus Ortense naming conventions
+// per https://css-tricks.com/what-do-you-name-color-variables/
+$color-primary-bandsite-black: #323232; //Primary text color for dark on light background. Dark background color
+
+$color-primary-silver: #afafaf; //Seconday text color. Inactive CTA text color.
+$color-primary-white: #fff; //Primary text color for light on dark background. Light background color. Active CTA text color.
+$color-secondary-bandsite-black: #000; // CTA hover state.
+$color-secondary-mercury: #e1e1e1; //Divider line. Form field outline.
+$color-secondary-alabaster: #fafafa; //Alternative light background color
+
+// $color-neutral-dark: rgba($color-neutral-darkest, 0.2);
+
+// cards borders and shadow
+// $border-radius: 0.313rem;
+// $box-shadow: 0 0.25rem 0.25rem $color-neutral-dark;

@@ -1,0 +1,126 @@
+/* Set standard padding per styleguide,
+following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
+*/
+:root {
+  --spacing-unit: 8px;
+  --padding: var(--spacing-unit);
+  --padding-sm: calc(2 * var(--padding));
+  --padding-md: calc(3 * var(--padding));
+  --padding-lg: calc((4 * var(--padding)) + 4);
+  --padding-xl: calc(6 * var(--padding));
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  //Set font defaults per style guide
+  font-family: $font;
+  font-weight: $regular;
+  font-size: 13px;
+  line-height: 18px;
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+// padding between components, per style guide
+section {
+  padding-bottom: var(--padding-sm);
+  @include tablet {
+    padding-bottom: var(--padding-lg);
+  }
+}
+
+h1,
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $bold;
+}
+//using as page header per style guide
+h1 {
+  @include tablet {
+    font-size: 60px;
+    line-height: 68px;
+  }
+}
+
+//using as section header per styleguide
+h2 {
+  @include tablet {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+//using as subheader per styleguide
+h3 {
+  font-weight: $semi-bold;
+  font-size: 14px;
+  line-height: 22px;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $color-primary-silver;
+  &:hover {
+    color: $color-secondary-bandsite-black;
+  }
+  &:active {
+    color: $color-primary-white;
+  }
+}
+
+// Divider line
+hr {
+  color: $color-secondary-mercury;
+}
+
+// styling headlines per styleguide
+.headlines {
+  padding-top: var(--padding-md);
+  padding-bottom: var(--padding-sm);
+  @include tablet {
+    padding-top: var(--padding-xl);
+    padding-bottom: var(--padding-lg);
+  }
+}
+
+.main-header {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: $regular;
+  background-color: $color-primary-bandsite-black;
+  color: $color-primary-white;
+}
+
+.main-footer {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: $regular;
+  background-color: $color-primary-bandsite-black;
+  color: $color-primary-white;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.label,
+.button {
+  font-size: 10px;
+  line-height: 20px;
+  font-weight: $bold;
+
+  @include tablet {
+    font-size: 12px;
+  }
+}

@@ -69,16 +69,8 @@ h3 {
   }
 }
 
-.footer {
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 400;
-}
-@media screen and (min-width: 768px) {
-  .footer {
-    font-size: 14px;
-    line-height: 20px;
-  }
+hr {
+  color: #e1e1e1;
 }
 
 .label,
@@ -91,5 +83,17 @@ h3 {
   .label,
   .button {
     font-size: 12px;
+  }
+}
+
+.footer {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    font-size: 14px;
+    line-height: 20px;
   }
 }/*# sourceMappingURL=bio.css.map */
