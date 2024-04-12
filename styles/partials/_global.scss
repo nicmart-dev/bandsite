@@ -1,19 +1,26 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 /* Set standard padding per styleguide,
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
 */
 :root {
   --spacing-unit: 8px;
-  --padding: var(--spacing-unit);
-  --padding-sm: calc(2 * var(--padding));
-  --padding-md: calc(3 * var(--padding));
-  --padding-lg: calc((4 * var(--padding)) + 4);
-  --padding-xl: calc(6 * var(--padding));
+
+  --xs: calc(var(--spacing-unit));
+  --sm: calc(2 * var(--spacing-unit));
+  --md: calc(3 * var(--spacing-unit));
+  --lg: calc((4 * var(--spacing-unit)) + 4px);
+  --xl: calc(6 * var(--spacing-unit));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-
   //Set font defaults per style guide
   font-family: $font;
   font-weight: $regular;
@@ -27,10 +34,7 @@ body {
 
 // padding between components, per style guide
 section {
-  padding-bottom: var(--padding-sm);
-  @include tablet {
-    padding-bottom: var(--padding-lg);
-  }
+  @include spacing-sections;
 }
 
 h1,
@@ -68,7 +72,88 @@ h3 {
 }
 
 a {
+  display: inline-block;
   text-decoration: none;
+  font-weight: $bold;
+}
+
+// Divider line
+hr {
+  color: $color-secondary-mercury;
+}
+
+li {
+  list-style: none;
+}
+
+// styling headlines per styleguide. eg. "About the Musicians"
+.headlines {
+  @include spacing-sections;
+}
+
+.header {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: $regular;
+  background-color: $color-primary-bandsite-black;
+  color: $color-primary-white;
+
+  //The Navigation Bar must be fixed to the top of the page
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  @include tablet {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 100%;
+    @include spacing-logo; // add top/bottom padding, and side margins
+    height: 20px;
+
+    background-image: url("../../assets/logos/Logo-bandsite.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120px 20px;
+    background-color: $color-primary-bandsite-black;
+  }
+
+  &__link-container {
+    display: flex;
+    flex-wrap: nowrap;
+    @include tablet {
+      justify-content: flex-start;
+    }
+  }
+  &__nav-li {
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: center;
+  }
+
+  &__link {
+    color: $color-secondary-mercury;
+    @include spacing-nav-bar; // add top/bottom padding, and side margins
+
+    &--active {
+      color: $color-primary-white;
+      border-bottom: 4px solid $color-primary-white;
+    }
+    &:hover {
+      border-bottom: 4px solid $color-primary-white;
+    }
+    // hide active link underline if hover another link.
+    ul:has(&:not(&--active):hover) &--active {
+      border-color: $color-primary-bandsite-black;
+    }
+  }
+}
+
+.cta {
   color: $color-primary-silver;
   &:hover {
     color: $color-secondary-bandsite-black;
@@ -78,30 +163,7 @@ a {
   }
 }
 
-// Divider line
-hr {
-  color: $color-secondary-mercury;
-}
-
-// styling headlines per styleguide
-.headlines {
-  padding-top: var(--padding-md);
-  padding-bottom: var(--padding-sm);
-  @include tablet {
-    padding-top: var(--padding-xl);
-    padding-bottom: var(--padding-lg);
-  }
-}
-
-.main-header {
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: $regular;
-  background-color: $color-primary-bandsite-black;
-  color: $color-primary-white;
-}
-
-.main-footer {
+.footer {
   font-size: 13px;
   line-height: 18px;
   font-weight: $regular;
@@ -124,3 +186,7 @@ hr {
     font-size: 12px;
   }
 }
+
+// .card {
+//   border-radius: $border-radius;
+// }

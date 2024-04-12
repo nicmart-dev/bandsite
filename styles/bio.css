@@ -3,36 +3,63 @@ Using font weight per style guide
  */
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("AvenirNextLTPro-Bold.woff2") format("woff2"), url("AvenirNextLTPro-Bold.woff") format("woff");
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.woff2") format("woff2"), url("../../assets/fonts/AvenirNextLTPro-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("AvenirNextLTPro-Demi.woff2") format("woff2"), url("AvenirNextLTPro-Demi.woff") format("woff");
+  src: url("../../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("AvenirNextLTPro-Regular.woff2") format("woff2"), url("AvenirNextLTPro-Regular.woff") format("woff");
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"), url("../../assets/fonts/AvenirNextLTPro-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
-html,
-body {
+/* Mixin to add margin or padding, on which side, and how big
+Credit: https://codepen.io/ezos86/pen/QwQmZb */
+/* Set standard padding per styleguide,
+following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
+*/
+:root {
+  --spacing-unit: 8px;
+  --xs: calc(var(--spacing-unit));
+  --sm: calc(2 * var(--spacing-unit));
+  --md: calc(3 * var(--spacing-unit));
+  --lg: calc((4 * var(--spacing-unit)) + 4px);
+  --xl: calc(6 * var(--spacing-unit));
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: "AvenirNext LT Pro";
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
 }
 @media screen and (min-width: 768px) {
-  html,
   body {
     font-size: 14px;
     line-height: 22px;
+  }
+}
+
+section {
+  padding-top: var(--md);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  section {
+    padding-top: var(--xl);
+    padding-bottom: var(--lg);
   }
 }
 
@@ -69,8 +96,156 @@ h3 {
   }
 }
 
+a {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+}
+
 hr {
   color: #e1e1e1;
+}
+
+li {
+  list-style: none;
+}
+
+.headlines {
+  padding-top: var(--md);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  .headlines {
+    padding-top: var(--xl);
+    padding-bottom: var(--lg);
+  }
+}
+
+.header {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  background-color: #323232;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+.header__logo {
+  width: 100%;
+  padding-bottom: var(--xs);
+  width: 100%;
+  margin-top: var(--xs);
+  margin-bottom: var(--xs);
+  height: 20px;
+  background-image: url("../../assets/logos/Logo-bandsite.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 120px 20px;
+  background-color: #323232;
+}
+@media screen and (min-width: 768px) {
+  .header__logo {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+    margin-left: var(--md);
+    margin-right: var(--md);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header__logo {
+    padding-top: var(--lg);
+    padding-bottom: var(--lg);
+    margin-left: var(--sm);
+    margin-right: var(--sm);
+  }
+}
+@media screen and (min-width: 768px) {
+  .header__logo {
+    width: 120px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header__logo {
+    margin-left: var(--xl);
+  }
+}
+.header__link-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+@media screen and (min-width: 768px) {
+  .header__link-container {
+    justify-content: flex-start;
+  }
+}
+.header__nav-li {
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+}
+.header__link {
+  color: #e1e1e1;
+  padding-bottom: var(--xs);
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .header__link {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+    margin-left: var(--md);
+    margin-right: var(--md);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header__link {
+    padding-top: var(--lg);
+    padding-bottom: var(--lg);
+    margin-left: var(--sm);
+    margin-right: var(--sm);
+  }
+}
+.header__link--active {
+  color: #fff;
+  border-bottom: 4px solid #fff;
+}
+.header__link:hover {
+  border-bottom: 4px solid #fff;
+}
+ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
+  border-color: #323232;
+}
+
+.cta {
+  color: #afafaf;
+}
+.cta:hover {
+  color: #000;
+}
+.cta:active {
+  color: #fff;
+}
+
+.footer {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  background-color: #323232;
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 .label,
@@ -83,17 +258,5 @@ hr {
   .label,
   .button {
     font-size: 12px;
-  }
-}
-
-.footer {
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 400;
-}
-@media screen and (min-width: 768px) {
-  .footer {
-    font-size: 14px;
-    line-height: 20px;
   }
 }/*# sourceMappingURL=bio.css.map */
