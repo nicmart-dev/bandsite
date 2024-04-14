@@ -25,11 +25,11 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
 */
 :root {
-  --spacing-unit: 8px;
+  --spacing-unit: 0.5rem;
   --xs: calc(var(--spacing-unit));
   --sm: calc(2 * var(--spacing-unit));
   --md: calc(3 * var(--spacing-unit));
-  --lg: calc((4 * var(--spacing-unit)) + 4px);
+  --lg: calc((4 * var(--spacing-unit)) + 0.25rem);
   --xl: calc(6 * var(--spacing-unit));
   --xxl: calc(12 * var(--spacing-unit));
   --xxxl: calc(18 * var(--spacing-unit));
@@ -45,34 +45,34 @@ following this guide https://sterlingcobb.medium.com/using-css-variables-with-ma
 body {
   font-family: "AvenirNext LT Pro";
   font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
 }
 @media screen and (min-width: 768px) {
   body {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
   }
 }
 
 h1,
 h2 {
-  font-size: 37px;
-  line-height: 32px;
+  font-size: 2.3125rem;
+  line-height: 2rem;
   font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: 90px;
-    line-height: 68px;
+    font-size: 5.625rem;
+    line-height: 4.25rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   h2 {
-    font-size: 55px;
-    line-height: 44px;
+    font-size: 3.4375rem;
+    line-height: 2.75rem;
   }
 }
 
@@ -89,13 +89,13 @@ h2 {
 
 h3 {
   font-weight: 600;
-  font-size: 21px;
-  line-height: 22px;
+  font-size: 1.3125rem;
+  line-height: 1.375rem;
 }
 @media screen and (min-width: 768px) {
   h3 {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
@@ -157,8 +157,8 @@ li {
 }
 
 .header {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
   font-weight: 400;
   background-color: #323232;
   background-origin: content-box;
@@ -230,7 +230,7 @@ li {
 }
 .header__link {
   color: #e1e1e1;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   border-bottom: 4px solid #323232;
   padding-bottom: var(--sm);
@@ -254,7 +254,7 @@ li {
 }
 @media screen and (min-width: 768px) {
   .header__link {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 }
 .header__link--active {
@@ -279,8 +279,8 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 
 .footer {
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 1.25rem;
+  line-height: 1.625rem;
   font-weight: 400;
   background-color: #323232;
   background-origin: content-box;
@@ -288,8 +288,8 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .footer {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 .footer__social {
@@ -298,10 +298,10 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   width: 11rem;
 }
 .footer__social-icon {
-  width: 35px;
-  height: 35px;
+  width: 2.1875rem;
+  height: 2.1875rem;
 }
-.footer__logo {
+.footer__logo > div > div {
   background-image: url("../../assets/logos/Logo-bandsite.svg");
   background-repeat: no-repeat;
   background-position: left;
@@ -314,36 +314,36 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   margin-right: var(--xl);
 }
 @media screen and (min-width: 768px) {
-  .footer__logo {
+  .footer__logo > div > div {
     width: 180px;
     height: 60px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .footer__logo {
+  .footer__logo > div > div {
     height: 82px;
     margin-right: var(--xl);
   }
 }
 .footer__copyright {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .label,
 .button {
-  font-size: 10px;
-  line-height: 20px;
+  font-size: 0.625rem;
+  line-height: 1.25rem;
   font-weight: 700;
 }
 @media screen and (min-width: 768px) {
   .label,
   .button {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 
 .hero {
-  margin-top: 108px; /* Add a top margin to avoid content overlay */
+  margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
   background-image: url("../assets/images/hero-bio.jpg");
   background-position: center;
   background-size: cover;
@@ -411,12 +411,12 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 
 @media screen and (min-width: 768px) {
   .about {
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
   }
 }
 .about__image {
   width: 100%;
-  height: 240px;
+  height: 30vh;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: left bottom;
@@ -424,7 +424,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .about__image {
-    height: 468px;
+    height: 50vh;
     -o-object-position: left 70%;
        object-position: left 70%;
   }
@@ -433,8 +433,8 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   padding-top: var(--sm);
   padding-bottom: var(--sm);
   font-weight: 600;
-  font-size: 22px;
-  line-height: 37px;
+  font-size: 1.375rem;
+  line-height: 2.3125rem;
 }
 @media screen and (min-width: 768px) {
   .about__quote {
@@ -444,8 +444,8 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .about__quote {
-    font-size: 35px;
-    line-height: 43px;
+    font-size: 2.1875rem;
+    line-height: 2.6875rem;
   }
 }
 .about__quotefrom {
@@ -461,7 +461,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .about__quotefrom {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
 }
 @media screen and (min-width: 768px) {
@@ -472,12 +472,12 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .about__article-title {
-    font-size: 38px;
+    font-size: 2.375rem;
   }
 }
 .about__para {
-  font-size: 20px;
-  line-height: 29px;
+  font-size: 1.25rem;
+  line-height: 1.8125rem;
   color: #000;
 }
 @media screen and (min-width: 768px) {
@@ -488,29 +488,29 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .about__para > p {
-    font-size: 22px;
+    font-size: 1.375rem;
     width: 47%;
   }
 }
 
 .gallery {
   background-color: #fafafa;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 }
 @media screen and (min-width: 768px) {
   .gallery {
-    padding-bottom: 50px;
+    padding-bottom: 3.125rem;
   }
 }
 .gallery__container {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.125rem;
 }
 @media screen and (min-width: 768px) {
   .gallery__container {
     flex-direction: row;
-    gap: 25px;
+    gap: 1.5625rem;
     flex-wrap: wrap;
     justify-content: space-between;
   }
