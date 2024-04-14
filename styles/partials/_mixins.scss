@@ -17,26 +17,33 @@
   width: 100%;
   height: 30px;
   @include spacing(margin, topbottom, var(--md));
+  @include spacing(margin, right, var(--xl));
 
   @include tablet {
-    width: 160px;
-    @include spacing(margin, topbottom, var(--lg));
+    width: 180px;
+    height: 60px;
+  }
+  @include desktop {
+    height: 82px;
+    @include spacing(margin, right, var(--xl));
+    // @include spacing(margin, sides, var(--xxl));
   }
 }
 
-//use to insert padding for navigation bar, per style guide
+//use to insert spacing for navigation bar, per style guide
 @mixin spacing-nav-bar {
   @include spacing(padding, bottom, var(--sm));
   width: 100%;
 
   @include tablet {
     width: fit-content;
-    @include spacing(padding, topbottom, var(--lg));
-    @include spacing(margin, sides, var(--md));
+    @include spacing(padding, bottom, var(--lg));
+    @include spacing(margin, sides, var(--xl));
   }
   @include desktop {
-    @include spacing(padding, topbottom, var(--lg));
-    @include spacing(margin, sides, var(--sm));
+    @include spacing(padding, bottom, var(--xl));
+    @include spacing(margin, left, var(--lg));
+    @include spacing(margin, right, var(--md));
   }
 }
 
@@ -49,19 +56,28 @@
     @include spacing(padding, bottom, var(--lg));
   }
 }
-
-//use to insert padding
-@mixin spacing-body-sides {
-  @include spacing(margin, left, var(--sm));
-  @include spacing(margin, right, var(--sm));
-
+//use to insert padding for header
+@mixin spacing-header-sides {
   @include tablet {
-    @include spacing(margin, left, var(--lg));
-    @include spacing(margin, right, var(--lg));
+    @include spacing(padding, left, var(--xl));
   }
   @include desktop {
-    @include spacing(margin, left, var(--xxl));
-    @include spacing(margin, right, var(--xxl));
+    @include spacing(padding, left, var(--xxxxl));
+  }
+}
+
+//use to insert padding for main and footer
+@mixin spacing-main-footer-sides {
+  @include spacing(padding, left, var(--sm));
+  @include spacing(padding, right, var(--sm));
+
+  @include spacing-header-sides; // left align padding like in header
+
+  @include tablet {
+    @include spacing(padding, right, var(--xl));
+  }
+  @include desktop {
+    @include spacing(padding, right, var(--xxxl));
   }
 }
 

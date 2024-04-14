@@ -13,6 +13,8 @@ following this guide https://sterlingcobb.medium.com/using-css-variables-with-ma
   --lg: calc((4 * var(--spacing-unit)) + 4px);
   --xl: calc(6 * var(--spacing-unit));
   --xxl: calc(12 * var(--spacing-unit));
+  --xxxl: calc(18 * var(--spacing-unit));
+  --xxxxl: calc(25 * var(--spacing-unit));
 }
 
 * {
@@ -92,18 +94,18 @@ li {
 }
 
 /* align all text using same padding */
-.header__logo,
 main,
 .footer {
-  @include spacing-body-sides;
+  @include spacing-main-footer-sides;
 }
 
 .header {
+  @include spacing-header-sides;
   font-size: 13px;
   line-height: 18px;
   font-weight: $regular;
   background-color: $color-primary-bandsite-black;
-  // background-origin: content-box; //  make background image respect the padding of the box in mobile view
+  background-origin: content-box; //  make background image respect the padding of the box in mobile view
   color: $color-primary-white;
   // display: flex;
 
@@ -111,14 +113,12 @@ main,
   position: fixed;
   top: 0;
   width: 100%;
-  // height: 113px;
   z-index: 1;
 
   @include tablet {
-    // height: 107px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
   }
   &__logo {
     @include spacing-logo; // add top/bottom padding, and side margins
@@ -135,25 +135,34 @@ main,
   }
 
   &__link-container {
-    // height: 100%;
+    height: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    // flex-wrap: nowrap;
     @include tablet {
       justify-content: flex-start;
+      align-items: stretch;
     }
   }
   &__nav-li {
+    flex: 1;
     flex-grow: 1;
     flex-basis: 0;
     text-align: center;
+    display: flex;
+    align-items: flex-end;
   }
 
   &__link {
     color: $color-secondary-mercury;
     font-size: 18px;
     font-weight: $semi-bold;
-    // height: 100%;
+
+    border-bottom: 4px solid $color-primary-bandsite-black; // so text does not move on hover due to parent container flex-end
+
     @include spacing-nav-bar; // add top/bottom padding, and side margins
+    @include tablet {
+      font-size: 22px;
+    }
 
     &--active {
       color: $color-primary-white;

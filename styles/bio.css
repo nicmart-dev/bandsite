@@ -32,6 +32,8 @@ following this guide https://sterlingcobb.medium.com/using-css-variables-with-ma
   --lg: calc((4 * var(--spacing-unit)) + 4px);
   --xl: calc(6 * var(--spacing-unit));
   --xxl: calc(12 * var(--spacing-unit));
+  --xxxl: calc(18 * var(--spacing-unit));
+  --xxxxl: calc(25 * var(--spacing-unit));
 }
 
 * {
@@ -124,26 +126,33 @@ li {
 }
 
 /* align all text using same padding */
-.header__logo,
 main,
 .footer {
-  margin-left: var(--sm);
-  margin-right: var(--sm);
+  padding-left: var(--sm);
+  padding-right: var(--sm);
 }
 @media screen and (min-width: 768px) {
-  .header__logo,
   main,
   .footer {
-    margin-left: var(--lg);
-    margin-right: var(--lg);
+    padding-left: var(--xl);
   }
 }
 @media screen and (min-width: 1280px) {
-  .header__logo,
   main,
   .footer {
-    margin-left: var(--xxl);
-    margin-right: var(--xxl);
+    padding-left: var(--xxxxl);
+  }
+}
+@media screen and (min-width: 768px) {
+  main,
+  .footer {
+    padding-right: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  main,
+  .footer {
+    padding-right: var(--xxxl);
   }
 }
 
@@ -152,6 +161,7 @@ main,
   line-height: 18px;
   font-weight: 400;
   background-color: #323232;
+  background-origin: content-box;
   color: #fff;
   position: fixed;
   top: 0;
@@ -160,9 +170,19 @@ main,
 }
 @media screen and (min-width: 768px) {
   .header {
+    padding-left: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    padding-left: var(--xxxxl);
+  }
+}
+@media screen and (min-width: 768px) {
+  .header {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
   }
 }
 .header__logo {
@@ -170,6 +190,7 @@ main,
   height: 30px;
   margin-top: var(--md);
   margin-bottom: var(--md);
+  margin-right: var(--xl);
   background-image: url("../../assets/logos/Logo-bandsite.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -178,29 +199,39 @@ main,
 }
 @media screen and (min-width: 768px) {
   .header__logo {
-    width: 160px;
-    margin-top: var(--lg);
-    margin-bottom: var(--lg);
+    width: 180px;
+    height: 60px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header__logo {
+    height: 82px;
+    margin-right: var(--xl);
   }
 }
 .header__link-container {
+  height: 100%;
   display: flex;
-  flex-wrap: nowrap;
 }
 @media screen and (min-width: 768px) {
   .header__link-container {
     justify-content: flex-start;
+    align-items: stretch;
   }
 }
 .header__nav-li {
+  flex: 1;
   flex-grow: 1;
   flex-basis: 0;
   text-align: center;
+  display: flex;
+  align-items: flex-end;
 }
 .header__link {
   color: #e1e1e1;
   font-size: 18px;
   font-weight: 600;
+  border-bottom: 4px solid #323232;
   padding-bottom: var(--sm);
   width: 100%;
 }
@@ -208,18 +239,21 @@ main,
   .header__link {
     width: -moz-fit-content;
     width: fit-content;
-    padding-top: var(--lg);
     padding-bottom: var(--lg);
-    margin-left: var(--md);
-    margin-right: var(--md);
+    margin-left: var(--xl);
+    margin-right: var(--xl);
   }
 }
 @media screen and (min-width: 1280px) {
   .header__link {
-    padding-top: var(--lg);
-    padding-bottom: var(--lg);
-    margin-left: var(--sm);
-    margin-right: var(--sm);
+    padding-bottom: var(--xl);
+    margin-left: var(--lg);
+    margin-right: var(--md);
+  }
+}
+@media screen and (min-width: 768px) {
+  .header__link {
+    font-size: 22px;
   }
 }
 .header__link--active {
@@ -268,6 +302,10 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   .button {
     font-size: 12px;
   }
+}
+
+.hero {
+  margin-top: 200px; /* Add a top margin to avoid content overlay */
 }
 
 .about__quote {

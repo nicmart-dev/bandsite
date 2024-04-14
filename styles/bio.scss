@@ -2,6 +2,9 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
+.hero {
+  margin-top: 200px; /* Add a top margin to avoid content overlay */
+}
 .about {
   &__title {
   }
