@@ -12,23 +12,26 @@
   }
 }
 
-//padding for header and components spacing, per style guide
-@mixin spacing-sections {
-  @include spacing(padding, top, var(--md));
-  @include spacing(padding, bottom, var(--sm));
+//use to insert padding for header logo
+@mixin spacing-logo {
+  width: 100%;
+  height: 30px;
+  @include spacing(margin, topbottom, var(--md));
+
   @include tablet {
-    @include spacing(padding, top, var(--xl));
-    @include spacing(padding, bottom, var(--lg));
+    width: 160px;
+    @include spacing(margin, topbottom, var(--lg));
   }
 }
 
+//use to insert padding for navigation bar, per style guide
 @mixin spacing-nav-bar {
-  @include spacing(padding, bottom, var(--xs));
+  @include spacing(padding, bottom, var(--sm));
   width: 100%;
 
   @include tablet {
     width: fit-content;
-    @include spacing(padding, topbottom, var(--md));
+    @include spacing(padding, topbottom, var(--lg));
     @include spacing(margin, sides, var(--md));
   }
   @include desktop {
@@ -37,19 +40,41 @@
   }
 }
 
-@mixin spacing-logo {
-  @include spacing-nav-bar;
-  @include spacing(margin, topbottom, var(--xs));
+//use to insert padding for section header, per style guide
+@mixin spacing-section-header {
+  @include spacing(padding, top, var(--md));
+  @include spacing(padding, bottom, var(--sm));
   @include tablet {
-    width: 120px;
-  }
-  @include desktop {
-    @include spacing(margin, left, var(--xxl));
-    @include spacing(margin, right, var(--lg));
+    @include spacing(padding, top, var(--xl));
+    @include spacing(padding, bottom, var(--lg));
   }
 }
 
-/* Mixin to add margin or padding, on which side, and how big
+//use to insert padding
+@mixin spacing-body-sides {
+  @include spacing(margin, left, var(--sm));
+  @include spacing(margin, right, var(--sm));
+
+  @include tablet {
+    @include spacing(margin, left, var(--lg));
+    @include spacing(margin, right, var(--lg));
+  }
+  @include desktop {
+    @include spacing(margin, left, var(--xxl));
+    @include spacing(margin, right, var(--xxl));
+  }
+}
+
+//use to insert padding between components, per style guide
+@mixin spacing-between-components {
+  @include spacing(padding, topbottom, var(--sm));
+
+  @include tablet {
+    @include spacing(padding, topbottom, var(--lg));
+  }
+}
+
+/* Generic mixin to to add margin or padding, on which side, and how big
 Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 
 @mixin spacing($type: margin, $direction: all, $amount: var(--md)) {

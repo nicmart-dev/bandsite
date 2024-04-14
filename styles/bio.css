@@ -19,7 +19,7 @@ Using font weight per style guide
   font-weight: 400;
   font-style: normal;
 }
-/* Mixin to add margin or padding, on which side, and how big
+/* Generic mixin to to add margin or padding, on which side, and how big
 Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 /* Set standard padding per styleguide,
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
@@ -53,17 +53,6 @@ body {
   }
 }
 
-section {
-  padding-top: var(--md);
-  padding-bottom: var(--sm);
-}
-@media screen and (min-width: 768px) {
-  section {
-    padding-top: var(--xl);
-    padding-bottom: var(--lg);
-  }
-}
-
 h1,
 h2 {
   font-size: 24px;
@@ -85,6 +74,17 @@ h2 {
   }
 }
 
+*:is(main, footer) > section > h2 {
+  padding-top: var(--md);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  *:is(main, footer) > section > h2 {
+    padding-top: var(--xl);
+    padding-bottom: var(--lg);
+  }
+}
+
 h3 {
   font-weight: 600;
   font-size: 14px;
@@ -97,10 +97,22 @@ h3 {
   }
 }
 
+*:is(main, footer) > section h3 {
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  *:is(main, footer) > section h3 {
+    padding-top: var(--lg);
+    padding-bottom: var(--lg);
+  }
+}
+
 a {
   display: inline-block;
   text-decoration: none;
   font-weight: 700;
+  color: #fff;
 }
 
 hr {
@@ -111,14 +123,27 @@ li {
   list-style: none;
 }
 
-main section {
-  padding-top: var(--md);
-  padding-bottom: var(--sm);
+/* align all text using same padding */
+.header__logo,
+main,
+.footer {
+  margin-left: var(--sm);
+  margin-right: var(--sm);
 }
 @media screen and (min-width: 768px) {
-  main section {
-    padding-top: var(--xl);
-    padding-bottom: var(--lg);
+  .header__logo,
+  main,
+  .footer {
+    margin-left: var(--lg);
+    margin-right: var(--lg);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header__logo,
+  main,
+  .footer {
+    margin-left: var(--xxl);
+    margin-right: var(--xxl);
   }
 }
 
@@ -142,44 +167,20 @@ main section {
 }
 .header__logo {
   width: 100%;
-  padding-bottom: var(--xs);
-  width: 100%;
-  margin-top: var(--xs);
-  margin-bottom: var(--xs);
-  height: 20px;
+  height: 30px;
+  margin-top: var(--md);
+  margin-bottom: var(--md);
   background-image: url("../../assets/logos/Logo-bandsite.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 120px 20px;
+  background-size: contain;
   background-color: #323232;
 }
 @media screen and (min-width: 768px) {
   .header__logo {
-    width: -moz-fit-content;
-    width: fit-content;
-    padding-top: var(--md);
-    padding-bottom: var(--md);
-    margin-left: var(--md);
-    margin-right: var(--md);
-  }
-}
-@media screen and (min-width: 1280px) {
-  .header__logo {
-    padding-top: var(--lg);
-    padding-bottom: var(--lg);
-    margin-left: var(--sm);
-    margin-right: var(--sm);
-  }
-}
-@media screen and (min-width: 768px) {
-  .header__logo {
-    width: 120px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .header__logo {
-    margin-left: var(--xxl);
-    margin-right: var(--lg);
+    width: 160px;
+    margin-top: var(--lg);
+    margin-bottom: var(--lg);
   }
 }
 .header__link-container {
@@ -198,15 +199,17 @@ main section {
 }
 .header__link {
   color: #e1e1e1;
-  padding-bottom: var(--xs);
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: var(--sm);
   width: 100%;
 }
 @media screen and (min-width: 768px) {
   .header__link {
     width: -moz-fit-content;
     width: fit-content;
-    padding-top: var(--md);
-    padding-bottom: var(--md);
+    padding-top: var(--lg);
+    padding-bottom: var(--lg);
     margin-left: var(--md);
     margin-right: var(--md);
   }
@@ -245,6 +248,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   line-height: 18px;
   font-weight: 400;
   background-color: #323232;
+  background-origin: content-box;
   color: #fff;
 }
 @media screen and (min-width: 768px) {
@@ -264,4 +268,27 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   .button {
     font-size: 12px;
   }
+}
+
+.about__quote {
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+}
+@media screen and (min-width: 768px) {
+  .about__quote {
+    padding-top: var(--lg);
+    padding-bottom: var(--lg);
+  }
+}
+@media screen and (min-width: 768px) {
+  .about__quote {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+.about__quotefrom {
+  display: block;
 }/*# sourceMappingURL=bio.css.map */
