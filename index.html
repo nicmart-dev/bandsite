@@ -20,8 +20,8 @@
         </ul>
       </nav>
     </header>
-    <section class="hero">
-      <div>
+    <section class="hero" aria-label="bee on flowers">
+      <div class="hero__overlay">
         <h1 class="hero__title">The Bees Knees</h1>
       </div>
     </section>
@@ -30,8 +30,8 @@
         <h2 class="about__title">About the Musicians</h2>
         <img
           src="./assets/images/band.jpg"
-          alt="photo of the band playing in concert"
-          class="about__photo"
+          alt="image-item of the band playing in concert"
+          class="about__image-item"
         />
         <p class="about__quote">
           “We push each other to be the best. It’s not uncommon for one of us to
@@ -42,7 +42,7 @@
         </p>
         <article class="about__article">
           <h3 class="about__article-title">The Bees Knees</h3>
-          <p>
+          <p class="about__para">
             The Bees Knees is a pop rock band originating from San Francisco,
             California. The band consists a dynamic lineup featuring two lead
             vocalists, two guitarists, a bassist, a keyboardist and a drummer.
@@ -52,7 +52,7 @@
             confident the band could succeed even further with more support,
             pushing The Bees Knees to sign with a well known record label.
           </p>
-          <p>
+          <p class="about__para">
             From there, the band has soared, gaining international recognition
             and ranking in the top 10 on the Poster Charts. New fans immediately
             fell in love with the band’s original and organic attitude,
@@ -66,24 +66,86 @@
       </section>
       <section class="gallery">
         <h2 class="gallery__title">Photo Gallery</h2>
-        <div class="gallery__container">
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-          <div class="gallery__photo"></div>
-        </div>
+        <ul class="gallery__container">
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-1.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-2.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-3.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-4.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-5.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-6.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-7.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-8.jpg"
+              alt="gallery image"
+            />
+          </li>
+          <li class="gallery__image-item">
+            <img
+              src="./assets/images/Photo-gallery-9.jpg"
+              alt="gallery image"
+            />
+          </li>
+        </ul>
       </section>
     </main>
     <footer class="footer">
-      <section class="footer__cta cta">
-        <h2><a href="">Get In Touch</a></h2>
+      <section class="footer__title">
+        <h2>Get in Touch</h2>
       </section>
-      <section class="footer__social"></section>
+      <section class="footer__social">
+        <a href="https://www.instagram.com/" target="_blank"
+          ><img
+            class="footer__social-icon"
+            src="./assets/icons/Icon-instagram.svg"
+            alt="instagram" /></a
+        ><a href="https://www.facebook.com/" target="_blank"
+          ><img
+            class="footer__social-icon"
+            src="./assets/icons/Icon-facebook.svg"
+            alt="facebook" /></a
+        ><a href="https://www.x.com/" target="_blank"
+          ><img
+            class="footer__social-icon"
+            src="./assets/icons/icon-x.svg"
+            alt="x"
+        /></a>
+      </section>
       <section class="footer__agents">
         <div class="footer__agent">
           <h3>The Bees Knees Management</h3>
@@ -115,7 +177,7 @@
       </section>
       <section class="footer__logo"></section>
       <section class="footer__copyright">
-        <p>Copyright The Bees Knees © 2023 All Rights Reserved</p>
+        <p>Copyright The Bees Knees © 2024 All Rights Reserved</p>
       </section>
     </footer>
   </body>

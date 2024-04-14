@@ -3,19 +3,56 @@
 @use "./partials/mixins" as *;
 
 .hero {
-  margin-top: 200px; /* Add a top margin to avoid content overlay */
+  margin-top: 108px; /* Add a top margin to avoid content overlay */
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  height: 35vh;
+  position: relative;
+
+  @include tablet {
+    height: 57vh;
+    background-position: bottom;
+  }
+  @include desktop {
+    height: 84vh;
+    background-position: top;
+  }
+
+  &__overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba($color-primary-bandsite-black, 0.5);
+    color: $color-primary-white;
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    @include spacing-main-footer-sides; // left align text to main section on mobile
+    @include spacing-header-left; // left align text to header logo on tablet/desktop
+  }
 }
 .about {
   &__title {
   }
-  &__photo {
+  &__image-item {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: left bottom;
   }
   &__quote {
     @include spacing-between-components;
 
     font-weight: $semi-bold;
-    font-size: 16px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 37px;
 
     @include tablet {
       font-size: 24px;
@@ -32,13 +69,42 @@
   }
   &__article-title {
   }
-  &__title {
-  }
-  &__title > p {
+  &__para {
+    font-size: 20px; // 13px in styleguide for mobile but adjusted to match mockup
+    line-height: 29px; // 18px in styleguide for mobile but adjusted to match mockup
+    color: $color-secondary-bandsite-black;
   }
 }
 
 .gallery {
-  &__photo {
+  background-color: $color-secondary-alabaster;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    @include tablet {
+      flex-direction: row;
+    }
+    padding-bottom: 20px;
+  }
+
+  // reordered images to match mockup so image 9 and 6 are swapped.
+  &__image-item:nth-child(6) {
+    order: 4;
+  }
+  &__image-item:nth-child(7) {
+    order: 2;
+  }
+  &__image-item:nth-child(8) {
+    order: 3;
+  }
+  &__image-item:nth-child(9) {
+    order: 1;
+  }
+  &__image-item img {
+    width: 100%;
+    border-radius: 5px;
+    height: 100%;
+    object-fit: cover;
   }
 }

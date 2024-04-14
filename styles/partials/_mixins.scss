@@ -12,6 +12,15 @@
   }
 }
 
+//use to insert logo - used in header/footer
+@mixin insert-logo($direction: center) {
+  background-image: url("../../assets/logos/Logo-bandsite.svg");
+  background-repeat: no-repeat;
+  background-position: $direction;
+  background-size: contain;
+  background-color: $color-primary-bandsite-black;
+}
+
 //use to insert padding for header logo
 @mixin spacing-logo {
   width: 100%;
@@ -49,7 +58,7 @@
 
 //use to insert padding for section header, per style guide
 @mixin spacing-section-header {
-  @include spacing(padding, top, var(--md));
+  @include spacing(padding, top, var(--lg));
   @include spacing(padding, bottom, var(--sm));
   @include tablet {
     @include spacing(padding, top, var(--xl));
@@ -57,7 +66,7 @@
   }
 }
 //use to insert padding for header
-@mixin spacing-header-sides {
+@mixin spacing-header-left {
   @include tablet {
     @include spacing(padding, left, var(--xl));
   }
@@ -71,7 +80,7 @@
   @include spacing(padding, left, var(--sm));
   @include spacing(padding, right, var(--sm));
 
-  @include spacing-header-sides; // left align padding like in header
+  @include spacing-header-left; // left align padding like in header
 
   @include tablet {
     @include spacing(padding, right, var(--xl));

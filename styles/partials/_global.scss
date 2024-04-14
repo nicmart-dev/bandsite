@@ -37,9 +37,9 @@ body {
 
 h1,
 h2 {
-  font-size: 24px;
+  font-size: 37px; // 24px in styleguide for mobile but adjusted to match mockup
   line-height: 32px;
-  font-weight: $bold;
+  font-weight: $semi-bold; // changed to match mockup even though should be $bold
 }
 //using as page header per style guide
 h1 {
@@ -57,14 +57,14 @@ h2 {
   }
 }
 // styling section headers per styleguide. eg. "About the Musicians", "Photo Gallery", "Get In Touch"
-*:is(main, footer) > section > h2 {
+*:is(main, footer) > section h2 {
   @include spacing-section-header;
 }
 
-//using as subheader per styleguide
+//using as subheader per styleguide eg. article title and footer agents.
 h3 {
   font-weight: $semi-bold;
-  font-size: 14px;
+  font-size: 21px; // 14px in styleguide for mobile but adjusted to match mockup
   line-height: 22px;
 
   @include tablet {
@@ -72,15 +72,15 @@ h3 {
     line-height: 32px;
   }
 }
-// styling section headers per styleguide. eg. "About the Musicians", "Photo Gallery", "Get In Touch"
-*:is(main, footer) > section h3 {
+/* adding spacing between subheader and paragraph components per styleguide. 
+eg. article title, paragraphs and footer agents, agent details including emails. */
+*:is(main, footer) > section *:is(h3, p, a) {
   @include spacing-between-components;
 }
 
 a {
   display: inline-block;
   text-decoration: none;
-  font-weight: $bold;
   color: $color-primary-white;
 }
 
@@ -94,26 +94,30 @@ li {
 }
 
 /* align all text using same padding */
-main,
-.footer {
+*:is(main, footer) > section > * {
   @include spacing-main-footer-sides;
 }
 
+//set font color per style guide for dark on light background
+.main {
+  color: $color-primary-bandsite-black;
+}
+
 .header {
-  @include spacing-header-sides;
+  @include spacing-header-left;
   font-size: 13px;
   line-height: 18px;
   font-weight: $regular;
   background-color: $color-primary-bandsite-black;
   background-origin: content-box; //  make background image respect the padding of the box in mobile view
   color: $color-primary-white;
-  // display: flex;
 
   //The Navigation Bar must be fixed to the top of the page
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
+  text-align: center;
 
   @include tablet {
     display: flex;
@@ -121,14 +125,8 @@ main,
     align-items: stretch;
   }
   &__logo {
+    @include insert-logo(center);
     @include spacing-logo; // add top/bottom padding, and side margins
-
-    background-image: url("../../assets/logos/Logo-bandsite.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-color: $color-primary-bandsite-black;
-    // background-origin: border-box;
   }
 
   &__nav {
@@ -137,7 +135,6 @@ main,
   &__link-container {
     height: 100%;
     display: flex;
-    // flex-wrap: nowrap;
     @include tablet {
       justify-content: flex-start;
       align-items: stretch;
@@ -189,8 +186,8 @@ main,
 }
 
 .footer {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 20px; // 13px in styleguide for mobile but adjusted to match mockup
+  line-height: 26px; // 18px in styleguide for mobile but adjusted to match mockup
   font-weight: $regular;
   background-color: $color-primary-bandsite-black;
   background-origin: content-box; //  make background image respect the padding of the box
@@ -201,17 +198,27 @@ main,
     line-height: 20px;
   }
 
-  &__cta {
+  &__title {
   }
   &__social {
+    display: flex;
+    justify-content: space-between;
+    width: 11rem;
+  }
+  &__social-icon {
+    width: 35px;
+    height: 35px;
   }
   &__agents {
   }
   &__agent {
   }
   &__logo {
+    @include insert-logo(left);
+    @include spacing-logo; // add top/bottom padding, and side margins
   }
   &__copyright {
+    font-size: 16px; //reducing font to match mockup
   }
 }
 
@@ -225,7 +232,3 @@ main,
     font-size: 12px;
   }
 }
-
-// .card {
-//   border-radius: $border-radius;
-// }
