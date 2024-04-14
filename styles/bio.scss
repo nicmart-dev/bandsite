@@ -43,6 +43,10 @@
     padding-bottom: 1.25rem;
   }
   &__title {
+    @include tablet {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
   }
   &__image {
     width: 100%;
