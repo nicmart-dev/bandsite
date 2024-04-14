@@ -61,7 +61,7 @@
   @include spacing(padding, top, var(--lg));
   @include spacing(padding, bottom, var(--sm));
   @include tablet {
-    @include spacing(padding, top, var(--xl));
+    @include spacing(padding, top, var(--xxl));
     @include spacing(padding, bottom, var(--lg));
   }
 }
@@ -90,12 +90,21 @@
   }
 }
 
+// use to insert padding for main article
+@mixin spacing-article {
+  @include tablet {
+    @include spacing(padding, sides, 10%);
+  }
+  @include desktop {
+  }
+}
+
 //use to insert padding between components, per style guide
 @mixin spacing-between-components {
   @include spacing(padding, topbottom, var(--sm));
 
   @include tablet {
-    @include spacing(padding, topbottom, var(--lg));
+    @include spacing(padding, topbottom, var(--md));
   }
 }
 

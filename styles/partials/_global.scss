@@ -44,7 +44,7 @@ h2 {
 //using as page header per style guide
 h1 {
   @include tablet {
-    font-size: 60px;
+    font-size: 90px; // 60px in styleguide for mobile but adjusted to match mockup
     line-height: 68px;
   }
 }
@@ -52,7 +52,7 @@ h1 {
 //using as section header per styleguide
 h2 {
   @include tablet {
-    font-size: 36px;
+    font-size: 55px; // 36px in styleguide for mobile but adjusted to match mockup
     line-height: 44px;
   }
 }

@@ -64,14 +64,14 @@ h2 {
 
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: 60px;
+    font-size: 90px;
     line-height: 68px;
   }
 }
 
 @media screen and (min-width: 768px) {
   h2 {
-    font-size: 36px;
+    font-size: 55px;
     line-height: 44px;
   }
 }
@@ -82,7 +82,7 @@ h2 {
 }
 @media screen and (min-width: 768px) {
   *:is(main, footer) > section h2 {
-    padding-top: var(--xl);
+    padding-top: var(--xxl);
     padding-bottom: var(--lg);
   }
 }
@@ -107,8 +107,8 @@ eg. article title, paragraphs and footer agents, agent details including emails.
 }
 @media screen and (min-width: 768px) {
   *:is(main, footer) > section *:is(h3, p, a) {
-    padding-top: var(--lg);
-    padding-bottom: var(--lg);
+    padding-top: var(--md);
+    padding-bottom: var(--md);
   }
 }
 
@@ -353,7 +353,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .hero {
-    height: 57vh;
+    height: 78vh;
     background-position: bottom;
   }
 }
@@ -409,13 +409,25 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 
-.about__image-item {
+@media screen and (min-width: 768px) {
+  .about {
+    padding-bottom: 20px;
+  }
+}
+.about__image {
   width: 100%;
   height: 240px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: left bottom;
      object-position: left bottom;
+}
+@media screen and (min-width: 768px) {
+  .about__image {
+    height: 468px;
+    -o-object-position: left 70%;
+       object-position: left 70%;
+  }
 }
 .about__quote {
   padding-top: var(--sm);
@@ -426,38 +438,85 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .about__quote {
-    padding-top: var(--lg);
-    padding-bottom: var(--lg);
+    padding-top: var(--md);
+    padding-bottom: var(--md);
   }
 }
 @media screen and (min-width: 768px) {
   .about__quote {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 35px;
+    line-height: 43px;
   }
 }
 .about__quotefrom {
   display: block;
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  .about__quotefrom {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+  }
+}
+@media screen and (min-width: 768px) {
+  .about__quotefrom {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .about__article {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .about__article-title {
+    font-size: 38px;
+  }
 }
 .about__para {
   font-size: 20px;
   line-height: 29px;
   color: #000;
 }
+@media screen and (min-width: 768px) {
+  .about__para {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 768px) {
+  .about__para > p {
+    font-size: 22px;
+    width: 47%;
+  }
+}
 
 .gallery {
   background-color: #fafafa;
+  padding-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .gallery {
+    padding-bottom: 50px;
+  }
 }
 .gallery__container {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
   .gallery__container {
     flex-direction: row;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+}
+.gallery__image-item {
+  flex-basis: 31%;
 }
 .gallery__image-item:nth-child(6) {
   order: 4;
