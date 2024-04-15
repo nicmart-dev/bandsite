@@ -6,5 +6,5 @@ Thumbs.db
 *.map
 _config.yml
 .*md
-.github\
-.vscode\
+.github/
+.vscode/
