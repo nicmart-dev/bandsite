@@ -42,12 +42,7 @@
   @include tablet {
     padding-bottom: 1.25rem;
   }
-  &__title {
-    @include tablet {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
-  }
+
   &__image {
     width: 100%;
     height: 30vh;
@@ -56,6 +51,10 @@
 
     @include tablet {
       height: 50vh;
+      object-position: left 70%;
+    }
+    @include desktop {
+      height: 65vh;
       object-position: left 70%;
     }
   }
@@ -123,6 +122,9 @@
       flex-wrap: wrap;
       justify-content: space-between;
     }
+    @include desktop {
+      gap: 2rem;
+    }
   }
 
   &__image-item {
@@ -144,7 +146,5 @@
   &__image-item img {
     width: 100%;
     border-radius: $border-radius;
-    height: 100%;
-    object-fit: cover;
   }
 }

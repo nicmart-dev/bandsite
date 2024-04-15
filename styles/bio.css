@@ -121,27 +121,27 @@ li {
 }
 
 /* add left and right padding to main and footer  */
-*:is(main, footer) {
+*:is(main > section, footer) {
   padding-left: var(--sm);
   padding-right: var(--sm);
 }
 @media screen and (min-width: 768px) {
-  *:is(main, footer) {
+  *:is(main > section, footer) {
     padding-left: var(--xl);
   }
 }
 @media screen and (min-width: 1280px) {
-  *:is(main, footer) {
+  *:is(main > section, footer) {
     padding-left: var(--xxxxl);
   }
 }
 @media screen and (min-width: 768px) {
-  *:is(main, footer) {
+  *:is(main > section, footer) {
     padding-right: var(--xl);
   }
 }
 @media screen and (min-width: 1280px) {
-  *:is(main, footer) {
+  *:is(main > section, footer) {
     padding-right: var(--xxxl);
   }
 }
@@ -472,12 +472,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     padding-bottom: 1.25rem;
   }
 }
-@media screen and (min-width: 768px) {
-  .about__title {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-}
 .about__image {
   width: 100%;
   height: 30vh;
@@ -489,6 +483,13 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 @media screen and (min-width: 768px) {
   .about__image {
     height: 50vh;
+    -o-object-position: left 70%;
+       object-position: left 70%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .about__image {
+    height: 65vh;
     -o-object-position: left 70%;
        object-position: left 70%;
   }
@@ -579,6 +580,11 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     justify-content: space-between;
   }
 }
+@media screen and (min-width: 1280px) {
+  .gallery__container {
+    gap: 2rem;
+  }
+}
 .gallery__image-item {
   flex-basis: 31%;
 }
@@ -597,7 +603,4 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 .gallery__image-item img {
   width: 100%;
   border-radius: 5px;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }/*# sourceMappingURL=bio.css.map */

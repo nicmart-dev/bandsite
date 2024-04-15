@@ -89,7 +89,7 @@ li {
 }
 
 /* add left and right padding to main and footer  */
-*:is(main, footer) {
+*:is(main > section, footer) {
   @include spacing-main-footer-sides;
 }
 
