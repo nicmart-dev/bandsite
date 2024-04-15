@@ -3,3 +3,8 @@ mockups/
 Thumbs.db
 .DS_Store
 *.zip
+*.map
+_config.yml
+.*md
+.github/
+.vscode/

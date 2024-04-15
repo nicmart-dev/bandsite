@@ -1,0 +1,29 @@
+@use "typography" as *;
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+// you can add colors, font families and other variables here
+
+//declare font families
+$font: "AvenirNext LT Pro";
+
+// Set your font weights as variables
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;
+
+// Colours following Mike Street and Marcus Ortense naming conventions
+// per https://css-tricks.com/what-do-you-name-color-variables/
+$color-primary-bandsite-black: #323232; //Primary text color for dark on light background. Dark background color
+
+$color-primary-silver: #afafaf; //Seconday text color. Inactive CTA text color.
+$color-primary-white: #fff; //Primary text color for light on dark background. Light background color. Active CTA text color.
+$color-secondary-bandsite-black: #000; // CTA hover state.
+$color-secondary-mercury: #e1e1e1; //Divider line. Form field outline.
+$color-secondary-alabaster: #fafafa; //Alternative light background color
+
+// $color-neutral-dark: rgba($color-neutral-darkest, 0.2);
+
+// cards borders
+$border-radius: 5px;

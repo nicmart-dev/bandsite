@@ -1,0 +1,155 @@
+@use "./partials/global" as *;
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+
+.hero {
+  margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  height: 35vh;
+  position: relative;
+
+  @include tablet {
+    height: 78vh;
+    background-position: bottom;
+  }
+  @include desktop {
+    height: 84vh;
+    background-position: top;
+  }
+
+  &__overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba($color-primary-bandsite-black, 0.5);
+    color: $color-primary-white;
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    @include spacing-main-footer-sides; // left align text to main section on mobile
+    @include spacing-header-left; // left align text to header logo on tablet/desktop
+  }
+}
+.about {
+  @include tablet {
+    padding-bottom: 1.25rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    object-position: left bottom;
+
+    @include tablet {
+      height: 50vh;
+      object-position: left 70%;
+    }
+    @include desktop {
+      height: 65vh;
+      object-position: left 70%;
+    }
+  }
+  &__quote {
+    @include spacing-between-components;
+
+    font-weight: $semi-bold;
+    font-size: 1.375rem;
+    line-height: 2.3125rem;
+
+    @include tablet {
+      font-size: 2.1875rem;
+      line-height: 2.6875rem;
+    }
+  }
+
+  &__quotefrom {
+    display: block;
+    @include spacing-between-components;
+    @include tablet {
+      font-size: 1.5625rem;
+    }
+  }
+  &__article {
+    @include spacing-article;
+  }
+  &__article-title {
+    @include tablet {
+      font-size: 2.375rem;
+    }
+  }
+  &__para {
+    font-size: 1.25rem; // 13px in styleguide for mobile but adjusted to match mockup
+    line-height: 1.8125rem; // 18px in styleguide for mobile but adjusted to match mockup
+    color: $color-secondary-bandsite-black;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__para > p {
+    @include tablet {
+      font-size: 1.375rem;
+      width: 47%;
+    }
+  }
+}
+
+.gallery {
+  background-color: $color-secondary-alabaster;
+  padding-bottom: 1.25rem;
+
+  @include tablet {
+    padding-bottom: 3.125rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    @include tablet {
+      flex-direction: row;
+      gap: 1.5625rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    @include desktop {
+      gap: 2rem;
+    }
+  }
+
+  &__image-item {
+    flex-basis: 31%;
+  }
+  // reordered images to match mockup so image 9 and 6 are swapped.
+  &__image-item:nth-child(6) {
+    order: 4;
+  }
+  &__image-item:nth-child(7) {
+    order: 2;
+  }
+  &__image-item:nth-child(8) {
+    order: 3;
+  }
+  &__image-item:nth-child(9) {
+    order: 1;
+  }
+  &__image-item img {
+    width: 100%;
+    border-radius: $border-radius;
+    filter: grayscale(100%); // make image grayscale by default
+    transition: 0.5s;
+    &:hover {
+      filter: grayscale(0%); // display in color on image hover
+    }
+  }
+}

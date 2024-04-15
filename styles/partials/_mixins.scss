@@ -1,0 +1,151 @@
+@use "variables" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+//use to insert logo - used in header/footer
+@mixin insert-logo($direction: center) {
+  background-image: url("../assets/logos/Logo-bandsite.svg");
+  background-repeat: no-repeat;
+  background-position: $direction;
+  background-size: contain;
+  background-color: $color-primary-bandsite-black;
+}
+
+//use to insert padding for header logo
+@mixin spacing-logo {
+  width: 100%;
+  height: 1.875rem;
+  @include spacing(margin, topbottom, var(--md));
+  @include spacing(padding, right, var(--xl));
+
+  @include tablet {
+    width: 11.25rem;
+    height: 3.75rem;
+  }
+  @include desktop {
+    height: 5.125rem;
+    @include spacing(margin, right, var(--xl));
+  }
+}
+
+//use to insert spacing for navigation bar, per style guide
+@mixin spacing-nav-bar {
+  @include spacing(padding, bottom, var(--sm));
+  width: 100%;
+
+  @include tablet {
+    width: fit-content;
+    @include spacing(padding, bottom, var(--lg));
+    @include spacing(margin, sides, var(--xl));
+  }
+  @include desktop {
+    @include spacing(padding, bottom, var(--xl));
+    @include spacing(margin, left, var(--lg));
+    @include spacing(margin, right, var(--md));
+  }
+}
+
+//use to insert padding for section header, per style guide
+@mixin spacing-section-header {
+  @include spacing(padding, top, var(--lg));
+  @include spacing(padding, bottom, var(--sm));
+  @include tablet {
+    @include spacing(padding, top, var(--xxl));
+    @include spacing(padding, bottom, var(--lg));
+  }
+}
+//use to insert padding for header
+@mixin spacing-header-left {
+  @include tablet {
+    @include spacing(padding, left, var(--xl));
+  }
+  @include desktop {
+    @include spacing(padding, left, var(--xxxxl));
+  }
+}
+
+//use to insert padding for main and footer
+@mixin spacing-main-footer-sides {
+  @include spacing(padding, left, var(--sm));
+  @include spacing(padding, right, var(--sm));
+
+  @include spacing-header-left; // left align padding like in header
+
+  @include tablet {
+    @include spacing(padding, right, var(--xl));
+  }
+  @include desktop {
+    @include spacing(padding, right, var(--xxxl));
+  }
+}
+
+// use to insert padding for main article
+@mixin spacing-article {
+  @include tablet {
+    @include spacing(padding, sides, 10%);
+  }
+  @include desktop {
+  }
+}
+
+//use to insert padding between components, per style guide
+@mixin spacing-between-components {
+  @include spacing(padding, topbottom, var(--sm));
+
+  @include tablet {
+    @include spacing(padding, topbottom, var(--md));
+  }
+}
+
+/* Generic mixin to to add margin or padding, on which side, and how big
+Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
+
+@mixin spacing($type: margin, $direction: all, $amount: var(--md)) {
+  @if $type == padding {
+    @if $direction == all {
+      padding: $amount;
+    } @else if $direction == top {
+      padding-top: $amount;
+    } @else if $direction == topbottom {
+      padding-top: $amount;
+      padding-bottom: $amount;
+    } @else if $direction == sides {
+      padding-left: $amount;
+      padding-right: $amount;
+    } @else if $direction == left {
+      padding-left: $amount;
+    } @else if $direction == right {
+      padding-right: $amount;
+    } @else {
+      padding-bottom: $amount;
+    }
+  } @else {
+    @if $direction == all {
+      margin: $amount;
+    } @else if $direction == top {
+      margin-top: $amount;
+    } @else if $direction == topbottom {
+      margin-top: $amount;
+      margin-bottom: $amount;
+    } @else if $direction == sides {
+      margin-left: $amount;
+      margin-right: $amount;
+    } @else if $direction == left {
+      margin-left: $amount;
+    } @else if $direction == right {
+      margin-right: $amount;
+    } @else {
+      margin-bottom: $amount;
+    }
+  }
+}
