@@ -5,12 +5,12 @@
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
 */
 :root {
-  --spacing-unit: 0.5rem;
+  --spacing-unit: 8px;
 
   --xs: calc(var(--spacing-unit));
   --sm: calc(2 * var(--spacing-unit));
   --md: calc(3 * var(--spacing-unit));
-  --lg: calc((4 * var(--spacing-unit)) + 0.25rem);
+  --lg: calc((4 * var(--spacing-unit)) + 4px);
   --xl: calc(6 * var(--spacing-unit));
   --xxl: calc(12 * var(--spacing-unit));
   --xxxl: calc(18 * var(--spacing-unit));
@@ -27,33 +27,33 @@ body {
   //Set font defaults per style guide
   font-family: $font;
   font-weight: $regular;
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
+  font-size: 13px;
+  line-height: 18px;
   @include tablet {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
+    font-size: 14px;
+    line-height: 22px;
   }
 }
 
 h1,
 h2 {
-  font-size: 2.3125rem; // 24px in styleguide for mobile but adjusted to match mockup
-  line-height: 2rem;
+  font-size: 37px; // 1.5rem in styleguide for mobile but adjusted to match mockup
+  line-height: 32px;
   font-weight: $semi-bold; // changed to match mockup even though should be $bold
 }
 //using as page header per style guide
 h1 {
   @include tablet {
-    font-size: 5.625rem; // 60px in styleguide for mobile but adjusted to match mockup
-    line-height: 4.25rem;
+    font-size: 90px; // 3.75rem in styleguide for mobile but adjusted to match mockup
+    line-height: 68px;
   }
 }
 
 //using as section header per styleguide
 h2 {
   @include tablet {
-    font-size: 3.4375rem; // 36px in styleguide for mobile but adjusted to match mockup
-    line-height: 2.75rem;
+    font-size: 55px; // 2.25rem in styleguide for mobile but adjusted to match mockup
+    line-height: 44px;
   }
 }
 // styling section headers per styleguide. eg. "About the Musicians", "Photo Gallery", "Get In Touch"
@@ -64,8 +64,8 @@ h2 {
 //using as subheader per styleguide eg. article title and footer agents.
 h3 {
   font-weight: $semi-bold;
-  font-size: 1.3125rem; // 14px in styleguide for mobile but adjusted to match mockup
-  line-height: 1.375rem;
+  font-size: 21px; // .875rem in styleguide for mobile but adjusted to match mockup
+  line-height: 22px;
 }
 /* adding spacing between subheader and paragraph components per styleguide. 
 eg. article title, paragraphs and footer agents, agent details including emails. */
@@ -88,8 +88,8 @@ li {
   list-style: none;
 }
 
-/* align all text using same padding */
-*:is(main, footer) > section > * {
+/* add left and right padding to main and footer  */
+*:is(main, footer) {
   @include spacing-main-footer-sides;
 }
 
@@ -100,8 +100,8 @@ li {
 
 .header {
   @include spacing-header-left;
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
+  font-size: 13px;
+  line-height: 18px;
   font-weight: $regular;
   background-color: $color-primary-bandsite-black;
   background-origin: content-box; //  make background image respect the padding of the box in mobile view
@@ -146,22 +146,22 @@ li {
 
   &__link {
     color: $color-secondary-mercury;
-    font-size: 1.125rem;
+    font-size: 18px;
     font-weight: $semi-bold;
 
-    border-bottom: 4px solid $color-primary-bandsite-black; // so text does not move on hover due to parent container flex-end
+    border-bottom: 0.25rem solid $color-primary-bandsite-black; // so text does not move on hover due to parent container flex-end
 
     @include spacing-nav-bar; // add top/bottom padding, and side margins
     @include tablet {
-      font-size: 1.375rem;
+      font-size: 22px;
     }
 
     &--active {
       color: $color-primary-white;
-      border-bottom: 4px solid $color-primary-white;
+      border-bottom: 0.25rem solid $color-primary-white;
     }
     &:hover {
-      border-bottom: 4px solid $color-primary-white;
+      border-bottom: 0.25rem solid $color-primary-white;
     }
     // hide active link underline if hover another link.
     ul:has(&:not(&--active):hover) &--active {
@@ -181,54 +181,90 @@ li {
 }
 
 .footer {
-  font-size: 1.25rem; // 13px in styleguide for mobile but adjusted to match mockup
-  line-height: 1.625rem; // 18px in styleguide for mobile but adjusted to match mockup
+  font-size: 20px; // .8125rem in styleguide for mobile but adjusted to match mockup
+  line-height: 26px; // 1.125rem in styleguide for mobile but adjusted to match mockup
   font-weight: $regular;
   background-color: $color-primary-bandsite-black;
   background-origin: content-box; //  make background image respect the padding of the box
   color: $color-primary-white;
 
+  display: flex;
+  flex-direction: column; // then use flex order to swap logo and agents on mobile
+
   @include tablet {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 20px;
+    line-height: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
   }
 
-  &__title {
+  &__contact {
+    order: 1;
+    @include tablet {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: baseline;
+
+      justify-content: flex-start;
+      gap: 90px;
+    }
   }
   &__social {
     display: flex;
     justify-content: space-between;
-    width: 11rem;
+    width: 176px;
   }
   &__social-icon {
-    width: 2.1875rem;
-    height: 2.1875rem;
+    width: 35px;
+    height: 35px;
   }
-  &__agents {
+  &__logo {
+    order: 3;
     @include tablet {
-      display: flex;
+      order: 2;
     }
-  }
-  &__agent {
-    flex-basis: 31%;
   }
   &__logo > div > div {
     @include insert-logo(left);
     @include spacing-logo; // add top/bottom padding, and side margins
+
+    @include tablet {
+      @include insert-logo(right);
+    }
   }
+  &__agents {
+    order: 2;
+    @include tablet {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      order: 3;
+    }
+  }
+  &__agent {
+    // flex-basis: 33%;
+  }
+
   &__copyright {
-    font-size: 1rem; //reducing font to match mockup
+    font-size: 16px; //reducing font to match mockup
+    order: 4;
+    @include tablet {
+      font-size: inherit;
+    }
   }
 }
 
 // per style guide, although not used in sprint 1
 .label,
 .button {
-  font-size: 0.625rem;
-  line-height: 1.25rem;
+  font-size: 10px;
+  line-height: 20px;
   font-weight: $bold;
 
   @include tablet {
-    font-size: 0.75rem;
+    font-size: 12px;
   }
 }
