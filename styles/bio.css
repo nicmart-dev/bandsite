@@ -603,4 +603,9 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 .gallery__image-item img {
   width: 100%;
   border-radius: 5px;
+  filter: grayscale(100%);
+  transition: 0.5s;
+}
+.gallery__image-item img:hover {
+  filter: grayscale(0%);
 }/*# sourceMappingURL=bio.css.map */
