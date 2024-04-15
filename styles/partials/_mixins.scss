@@ -24,16 +24,16 @@
 //use to insert padding for header logo
 @mixin spacing-logo {
   width: 100%;
-  height: 30px;
+  height: 1.875rem;
   @include spacing(margin, topbottom, var(--md));
   @include spacing(padding, right, var(--xl));
 
   @include tablet {
-    width: 180px;
-    height: 60px;
+    width: 11.25rem;
+    height: 3.75rem;
   }
   @include desktop {
-    height: 82px;
+    height: 5.125rem;
     @include spacing(margin, right, var(--xl));
   }
 }
