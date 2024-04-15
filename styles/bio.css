@@ -293,6 +293,11 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     padding-bottom: 1.25rem;
   }
 }
+@media screen and (min-width: 1280px) {
+  .footer {
+    padding-bottom: 2rem;
+  }
+}
 .footer__contact {
   order: 1;
 }
@@ -302,7 +307,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     flex-wrap: nowrap;
     align-items: baseline;
     justify-content: flex-start;
-    gap: 90px;
+    gap: 5.625rem;
   }
 }
 .footer__social {
@@ -364,6 +369,12 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     display: flex;
     justify-content: space-between;
     order: 3;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer__agents {
+    justify-content: flex-start;
+    gap: 7.25rem;
   }
 }
 .footer__copyright {

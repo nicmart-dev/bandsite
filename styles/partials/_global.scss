@@ -200,6 +200,9 @@ li {
     justify-content: space-between;
     padding-bottom: 1.25rem;
   }
+  @include desktop {
+    padding-bottom: 2rem;
+  }
 
   &__contact {
     order: 1;
@@ -209,7 +212,7 @@ li {
       align-items: baseline;
 
       justify-content: flex-start;
-      gap: 90px;
+      gap: 5.625rem;
     }
   }
   &__social {
@@ -242,6 +245,10 @@ li {
       display: flex;
       justify-content: space-between;
       order: 3;
+    }
+    @include desktop {
+      justify-content: flex-start;
+      gap: 7.25rem;
     }
   }
   &__agent {
