@@ -14,7 +14,7 @@
 
 //use to insert logo - used in header/footer
 @mixin insert-logo($direction: center) {
-  background-image: url("../../assets/logos/Logo-bandsite.svg");
+  background-image: url("../assets/logos/Logo-bandsite.svg");
   background-repeat: no-repeat;
   background-position: $direction;
   background-size: contain;
