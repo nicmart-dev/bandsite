@@ -124,9 +124,6 @@ li {
     @include spacing-logo; // add top/bottom padding, and side margins
   }
 
-  &__nav {
-  }
-
   &__link-container {
     height: 100%;
     display: flex;
@@ -250,9 +247,6 @@ li {
       justify-content: flex-start;
       gap: 7.25rem;
     }
-  }
-  &__agent {
-    // flex-basis: 33%;
   }
 
   &__copyright {
