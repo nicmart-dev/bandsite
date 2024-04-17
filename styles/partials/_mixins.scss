@@ -149,3 +149,21 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
     }
   }
 }
+
+//use to size comments images
+@mixin avatar {
+  height: $image-size-avatar-mobile;
+  width: $image-size-avatar-mobile;
+  border-radius: $border-radius-avatar;
+  background-color: $color-secondary-mercury;
+
+  @include tablet {
+    height: $image-size-avatar-tablet;
+    width: $image-size-avatar-tablet;
+  }
+}
+
+//use to set consistent image container width between new and past comments
+@mixin image-container-width {
+  width: calc($image-size-avatar-mobile * 1.5);
+}

@@ -608,4 +608,49 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 .gallery__image-item img:hover {
   filter: grayscale(0%);
+}
+
+.comments__new-comment-container {
+  display: flex;
+}
+.comments__image-container {
+  width: 3.375rem;
+}
+.comments__avatar {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  background-color: #e1e1e1;
+  background-position: 15%;
+}
+@media screen and (min-width: 768px) {
+  .comments__avatar {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+.comments__avatar--new {
+  background-image: url(../assets/images/Mohan-muruge.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 15%;
+}
+.comments__new-user-name, .comments__new-comment-txt {
+  border-radius: 4px;
+}
+.comments__past-list-container {
+  display: flex;
+  flex-direction: column;
+}
+.comments__past-comment-container {
+  display: flex;
+  justify-content: space-between;
+}
+.comments__past-comment-txt-container {
+  display: flex;
+  flex-direction: column;
+}
+.comments__past-user-name-date-container {
+  display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=bio.css.map */

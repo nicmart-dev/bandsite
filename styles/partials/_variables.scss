@@ -25,5 +25,11 @@ $color-secondary-alabaster: #fafafa; //Alternative light background color
 
 // $color-neutral-dark: rgba($color-neutral-darkest, 0.2);
 
-// cards borders
-$border-radius: 5px;
+// Borders
+$border-radius-card: 5px;
+$border-radius-comment-field: 4px;
+$border-radius-avatar: 50%;
+
+// Comments avatars in bio page
+$image-size-avatar-tablet: 3rem;
+$image-size-avatar-mobile: 2.25rem;
