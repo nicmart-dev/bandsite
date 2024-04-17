@@ -68,7 +68,7 @@ h3 {
   line-height: 1.375rem;
 }
 /* adding spacing between subheader and paragraph components per styleguide. 
-eg. article title, paragraphs and footer agents, agent details including emails. */
+eg. article title, paragraphs, and footer agents, agent details including emails. */
 *:is(main, footer) > section *:is(h3, p, a) {
   @include spacing-between-components;
 }
@@ -77,11 +77,6 @@ a {
   display: inline-block;
   text-decoration: none;
   color: $color-primary-white;
-}
-
-// Divider line
-hr {
-  color: $color-secondary-mercury;
 }
 
 li {

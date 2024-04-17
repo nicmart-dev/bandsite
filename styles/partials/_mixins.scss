@@ -165,5 +165,10 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 
 //use to set consistent image container width between new and past comments
 @mixin image-container-width {
-  width: calc($image-size-avatar-mobile * 1.5);
+  flex-basis: calc($image-size-avatar-mobile * 1.5);
+  flex-grow: 0;
+  flex-shrink: 0;
+  @include tablet {
+    flex-basis: calc($image-size-avatar-tablet * 1.5);
+  }
 }

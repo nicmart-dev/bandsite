@@ -194,6 +194,12 @@
   &__past-comment-container {
     display: flex;
     justify-content: space-between;
+
+    // style to look like a line divider
+    border-color: $color-secondary-mercury;
+    border-width: 0.0625rem;
+    border-style: solid none;
+    @include spacing-between-components;
   }
   &__past-comment-txt-container {
     display: flex;

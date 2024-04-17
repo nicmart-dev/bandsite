@@ -94,7 +94,7 @@ h3 {
 }
 
 /* adding spacing between subheader and paragraph components per styleguide. 
-eg. article title, paragraphs and footer agents, agent details including emails. */
+eg. article title, paragraphs, and footer agents, agent details including emails. */
 *:is(main, footer) > section *:is(h3, p, a) {
   padding-top: var(--sm);
   padding-bottom: var(--sm);
@@ -110,10 +110,6 @@ a {
   display: inline-block;
   text-decoration: none;
   color: #fff;
-}
-
-hr {
-  color: #e1e1e1;
 }
 
 li {
@@ -614,7 +610,14 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   display: flex;
 }
 .comments__image-container {
-  width: 3.375rem;
+  flex-basis: 3.375rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+@media screen and (min-width: 768px) {
+  .comments__image-container {
+    flex-basis: 4.5rem;
+  }
 }
 .comments__avatar {
   height: 2.25rem;
@@ -645,6 +648,17 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 .comments__past-comment-container {
   display: flex;
   justify-content: space-between;
+  border-color: #e1e1e1;
+  border-width: 0.0625rem;
+  border-style: solid none;
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  .comments__past-comment-container {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+  }
 }
 .comments__past-comment-txt-container {
   display: flex;

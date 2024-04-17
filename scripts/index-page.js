@@ -73,10 +73,6 @@ function addPastComment(grandparent, testimonial) {
     //add comment text
     addChildHTML(commentTxtContainer, 'p', 'comments__past-comment-txt', testimonial.comment)
 
-    //add line divider
-    addChildHTML(commentListContainer, 'hr');
-
-
 }
 
 // Add new comment to top using array sort() method to sort by date parameter
