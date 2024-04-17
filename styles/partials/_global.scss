@@ -73,6 +73,19 @@ eg. article title, paragraphs, and footer agents, agent details including emails
   @include spacing-between-components;
 }
 
+// used for comments dates and shows headings
+h4 {
+  font-weight: $regular;
+  color: $color-primary-silver;
+  text-transform: uppercase; // only useful for show headings
+  font-size: 1.1875rem;
+}
+
+p {
+  font-size: 1.25rem; // 13px in styleguide for mobile but adjusted to match mockup
+  line-height: 1.8125rem; // 18px in styleguide for mobile but adjusted to match mockup
+}
+
 a {
   display: inline-block;
   text-decoration: none;

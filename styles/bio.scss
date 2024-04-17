@@ -87,9 +87,6 @@
     }
   }
   &__para {
-    font-size: 1.25rem; // 13px in styleguide for mobile but adjusted to match mockup
-    line-height: 1.8125rem; // 18px in styleguide for mobile but adjusted to match mockup
-    color: $color-secondary-bandsite-black;
     @include tablet {
       display: flex;
       justify-content: space-between;
@@ -162,6 +159,7 @@
   }
   &__image-container {
     @include image-container-width;
+    @include spacing-between-components;
   }
   &__avatar {
     @include avatar;
@@ -199,7 +197,6 @@
     border-color: $color-secondary-mercury;
     border-width: 0.0625rem;
     border-style: solid none;
-    @include spacing-between-components;
   }
   &__past-comment-txt-container {
     display: flex;
@@ -208,6 +205,7 @@
   &__past-user-name-date-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   &__past-user-name {
   }

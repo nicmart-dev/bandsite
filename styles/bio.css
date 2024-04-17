@@ -106,6 +106,18 @@ eg. article title, paragraphs, and footer agents, agent details including emails
   }
 }
 
+h4 {
+  font-weight: 400;
+  color: #afafaf;
+  text-transform: uppercase;
+  font-size: 1.1875rem;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.8125rem;
+}
+
 a {
   display: inline-block;
   text-decoration: none;
@@ -536,11 +548,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     font-size: 2.375rem;
   }
 }
-.about__para {
-  font-size: 1.25rem;
-  line-height: 1.8125rem;
-  color: #000;
-}
 @media screen and (min-width: 768px) {
   .about__para {
     display: flex;
@@ -613,10 +620,18 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   flex-basis: 3.375rem;
   flex-grow: 0;
   flex-shrink: 0;
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
 }
 @media screen and (min-width: 768px) {
   .comments__image-container {
     flex-basis: 4.5rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comments__image-container {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
   }
 }
 .comments__avatar {
@@ -651,14 +666,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   border-color: #e1e1e1;
   border-width: 0.0625rem;
   border-style: solid none;
-  padding-top: var(--sm);
-  padding-bottom: var(--sm);
-}
-@media screen and (min-width: 768px) {
-  .comments__past-comment-container {
-    padding-top: var(--md);
-    padding-bottom: var(--md);
-  }
 }
 .comments__past-comment-txt-container {
   display: flex;
@@ -667,4 +674,5 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 .comments__past-user-name-date-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }/*# sourceMappingURL=bio.css.map */
