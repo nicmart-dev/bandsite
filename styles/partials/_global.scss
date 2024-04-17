@@ -73,12 +73,11 @@ eg. article title, paragraphs, and footer agents, agent details including emails
   @include spacing-between-components;
 }
 
-// used for comments dates and shows headings
+// used for comments dates, and comment form/shows headings
 h4 {
   font-weight: $regular;
   color: $color-primary-silver;
-  text-transform: uppercase; // only useful for show headings
-  font-size: 1.1875rem;
+  font-size: 1rem;
 }
 
 p {
@@ -94,6 +93,20 @@ a {
 
 li {
   list-style: none;
+}
+
+// per style guide
+label,
+button {
+  color: $color-primary-silver;
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  font-weight: $semi-bold;
+  text-transform: uppercase;
+
+  @include tablet {
+    font-size: 0.75rem;
+  }
 }
 
 /* add left and right padding to main and footer  */
@@ -263,17 +276,5 @@ li {
     @include tablet {
       font-size: inherit;
     }
-  }
-}
-
-// per style guide, although not used in sprint 1
-.label,
-.button {
-  font-size: 0.625rem;
-  line-height: 1.25rem;
-  font-weight: $bold;
-
-  @include tablet {
-    font-size: 0.75rem;
   }
 }

@@ -109,8 +109,7 @@ eg. article title, paragraphs, and footer agents, agent details including emails
 h4 {
   font-weight: 400;
   color: #afafaf;
-  text-transform: uppercase;
-  font-size: 1.1875rem;
+  font-size: 1rem;
 }
 
 p {
@@ -126,6 +125,21 @@ a {
 
 li {
   list-style: none;
+}
+
+label,
+button {
+  color: #afafaf;
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  label,
+  button {
+    font-size: 0.75rem;
+  }
 }
 
 /* add left and right padding to main and footer  */
@@ -395,19 +409,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 
-.label,
-.button {
-  font-size: 0.625rem;
-  line-height: 1.25rem;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  .label,
-  .button {
-    font-size: 0.75rem;
-  }
-}
-
 .hero {
   margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
   background-image: url("../assets/images/hero-bio.jpg");
@@ -652,6 +653,20 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 15%;
+}
+.comments__form > div {
+  display: flex;
+  flex-direction: column;
+}
+.comments__form > :nth-child(2) {
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  .comments__form > :nth-child(2) {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+  }
 }
 .comments__new-user-name, .comments__new-comment-txt {
   border-radius: 4px;

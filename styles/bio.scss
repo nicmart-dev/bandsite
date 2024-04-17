@@ -171,8 +171,16 @@
     background-size: cover;
     background-position: 15%;
   }
-  &__form {
+  &__form > div {
+    display: flex;
+    flex-direction: column;
   }
+
+  // add spacing around comment form field
+  &__form > :nth-child(2) {
+    @include spacing-between-components;
+  }
+
   &__new-user-name,
   &__new-comment-txt {
     border-radius: $border-radius-comment-field;
