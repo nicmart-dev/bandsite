@@ -98,12 +98,30 @@
   }
 }
 
-//use to insert padding between components, per style guide
-@mixin spacing-between-components {
+//use to insert spacing between components, per style guide
+@mixin spacing-between-components($type: "") {
   @include spacing(padding, topbottom, var(--sm));
 
   @include tablet {
     @include spacing(padding, topbottom, var(--md));
+  }
+
+  //to use consistent margin to fields like input, textarea, or button
+  @if $type == field {
+    @include spacing(margin, bottom, var(--sm));
+
+    @include tablet {
+      @include spacing(margin, bottom, var(--md));
+    }
+  }
+}
+
+//use to insert padding in form fields, per style guide
+@mixin spacing-inside-fields {
+  @include spacing(padding, all, calc(var(--xs) + 0.25rem));
+
+  @include tablet {
+    @include spacing(padding, all, var(--sm));
   }
 }
 
