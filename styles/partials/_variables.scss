@@ -30,6 +30,7 @@ $border-radius-card: 5px;
 $border-radius-comment-field: 4px;
 $border-radius-avatar: 50%;
 
-// Comments avatars in bio page
-$image-size-avatar-tablet: 3rem;
-$image-size-avatar-mobile: 2.25rem;
+/* Comments avatars in bio page.
+Applied consistent multiplier to style guide to match mockup */
+$image-size-avatar-tablet: calc(3rem * 1.5);
+$image-size-avatar-mobile: calc(2.25rem * 1.5);

@@ -112,11 +112,11 @@ textarea {
   width: 100%;
   @include spacing-inside-fields;
   border: 1px solid $color-secondary-mercury;
-
+  font-size: 1.2rem;
   // style placeholder text in fields
   &::placeholder {
     color: $color-primary-bandsite-black;
-    font-size: 1.2rem;
+    font-size: 1.2rem; // match typing font
   }
 
   &:active {
@@ -160,7 +160,7 @@ button {
 // set font size and color for labels per style guide
 label {
   color: $color-primary-silver;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
 
   @include tablet {
@@ -337,8 +337,10 @@ button {
   }
 
   &__copyright {
-    font-size: 1rem; //reducing font to match mockup
     order: 4;
+  }
+  &__copyright > p {
+    font-size: 1rem; //reducing font to match mockup
     @include tablet {
       font-size: inherit;
     }

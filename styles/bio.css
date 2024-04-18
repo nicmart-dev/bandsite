@@ -19,8 +19,13 @@ Using font weight per style guide
   font-weight: 400;
   font-style: normal;
 }
+/* Comments avatars in bio page.
+Applied consistent multiplier to style guide to match mockup */
 /* Generic mixin to to add margin or padding, on which side, and how big
 Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
+/* -------------------------------------------------------------------------- */
+/*                                  Comments                                  */
+/* -------------------------------------------------------------------------- */
 /* Set standard padding per styleguide,
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
 */
@@ -157,6 +162,7 @@ textarea {
   width: 100%;
   padding: calc(var(--xs) + 0.25rem);
   border: 1px solid #e1e1e1;
+  font-size: 1.2rem;
   /*   only show required field error state if empty on submit,
   and not browser load */
 }
@@ -214,7 +220,7 @@ button {
 
 label {
   color: #afafaf;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
 }
 @media screen and (min-width: 768px) {
@@ -488,11 +494,13 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 .footer__copyright {
-  font-size: 1rem;
   order: 4;
 }
+.footer__copyright > p {
+  font-size: 1rem;
+}
 @media screen and (min-width: 768px) {
-  .footer__copyright {
+  .footer__copyright > p {
     font-size: inherit;
   }
 }
@@ -706,7 +714,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   display: flex;
 }
 .comments__image-container {
-  flex-basis: 3.375rem;
+  flex-basis: 5.0625rem;
   flex-grow: 0;
   flex-shrink: 0;
   padding-top: var(--sm);
@@ -714,7 +722,7 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 }
 @media screen and (min-width: 768px) {
   .comments__image-container {
-    flex-basis: 4.5rem;
+    flex-basis: 6.75rem;
   }
 }
 @media screen and (min-width: 768px) {
@@ -724,16 +732,16 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 .comments__avatar {
-  height: 2.25rem;
-  width: 2.25rem;
+  height: 3.375rem;
+  width: 3.375rem;
   border-radius: 50%;
   background-color: #e1e1e1;
   background-position: 15%;
 }
 @media screen and (min-width: 768px) {
   .comments__avatar {
-    height: 3rem;
-    width: 3rem;
+    height: 4.5rem;
+    width: 4.5rem;
   }
 }
 .comments__avatar--new {
