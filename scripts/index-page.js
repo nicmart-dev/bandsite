@@ -1,7 +1,7 @@
 
-/* List of testimonial comments from users.
+/* List of comment comments from users.
 Note: Turned copy text to array using ChatGPT  */
-const testimonials = [
+const comments = [
     {
         name: "Victor Pinto",
         date: "11/02/2023",
@@ -23,18 +23,22 @@ const testimonials = [
 /*                          Add Comments to bio page                          */
 /* -------------------------------------------------------------------------- */
 
-
 // Get DOM element where to insert comments 
 const commentList = document.querySelector('.comments__list-container')
 
+function loopThroughComments() {
 
-// Loop through testimonials array and add HTML
-testimonials.forEach((testimonial) => {
-    addComment(commentList, testimonial);
-})
+    commentList.innerText = ""; // Clears all comments from the page
+    // Loop through comments array and add HTML
+    comments.forEach((comment) => {
+        addComment(commentList, comment);
+    })
+}
 
 
-function addChildHTML(parentEl, childEl, classAttr = '', text = '', top = false) {
+
+
+function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
     const newChildEl = document.createElement(childEl);
 
     // add text to new node if passed as argument
@@ -43,12 +47,9 @@ function addChildHTML(parentEl, childEl, classAttr = '', text = '', top = false)
         newChildEl.appendChild(newChildText);
     }
 
-    //add new element to DOM (at the top if new comment)
-    if (top === true) {
-        parentEl.insertBefore(newChildEl, parentEl.firstChild);
-    }
-    else
-        parentEl.appendChild(newChildEl);
+    //add new element to DOM
+
+    parentEl.appendChild(newChildEl);
 
     // add attribute if provided
     if (classAttr != '') {
@@ -59,10 +60,11 @@ function addChildHTML(parentEl, childEl, classAttr = '', text = '', top = false)
     return newChildEl;
 }
 
-function addComment(grandparent, testimonial, n = true) {
+// Generic function to add existing or new comment
+function addComment(grandparent, comment) {
 
     //add article container (and indicate if new comment or not)
-    const commentContainer = addChildHTML(grandparent, 'article', 'comments__comment-container', '', n);
+    const commentContainer = addChildHTML(grandparent, 'article', 'comments__comment-container');
 
     //add image container inside
     const imageContainer = addChildHTML(commentContainer, 'div', 'comments__image-container')
@@ -77,17 +79,15 @@ function addComment(grandparent, testimonial, n = true) {
     const userNameDateContainer = addChildHTML(commentTxtContainer, 'div', 'comments__user-name-date-container')
 
     //add name and date headings inside
-    addChildHTML(userNameDateContainer, 'h3', 'comments__user-name', testimonial.name)
-    addChildHTML(userNameDateContainer, 'h4', 'comments__date', testimonial.date)
+    addChildHTML(userNameDateContainer, 'h3', 'comments__user-name', comment.name)
+    addChildHTML(userNameDateContainer, 'h4', 'comments__date', comment.date)
 
     //add comment text
-    addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', testimonial.comment)
+    addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', comment.comment)
 
 }
 
-// Add new comment to top using array sort() method to sort by date parameter
-
-
+//Show new submitted comments 
 const commentForm = document.getElementById('new-comment-form')
 commentForm.addEventListener('submit', submitComment);
 
@@ -102,17 +102,33 @@ function submitComment(event) {
         month: 'numeric',
         day: 'numeric',
     };
-    const date = new Date(Date.now()).toLocaleDateString(undefined, dateFormat);
+    const today = new Date(Date.now()).toLocaleDateString(undefined, dateFormat);
 
 
     // Constructs a new comment object
     const newComment =
     {
         name: event.target.username.value,
-        date: date,
+        date: today,
         comment: event.target.comment.value,
     };
 
-    //add as new comment
-    addComment(commentList, newComment, true);
+    //add new comment object as new comment
+    comments.unshift(newComment); // adds to the start of the array
+
+    loopThroughComments(); // Re-renders to the page all comments from the comment array
+
+    //clear form after submission
+    event.target.reset();
+
+    // remove placeholder text
+    event.target.username.placeholder = "";
+    event.target.comment.placeholder = "";
+
+    //disable the fields and comment button
+    document.getElementById("submit").disabled = true;
+    event.target.username.disabled = true;
+    event.target.comment.disabled = true;
 }
+
+loopThroughComments() // runs when page loads
