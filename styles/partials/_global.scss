@@ -128,11 +128,6 @@ textarea {
   &:user-invalid {
     border-color: #d22d2d;
   }
-
-  // took some liberty here to enhance UX
-  &:valid {
-    border-color: rgb(6, 134, 6);
-  }
 }
 
 //set height for form input field per styleguide

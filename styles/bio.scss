@@ -173,6 +173,7 @@
   }
 
   &__form {
+    // use entire width
     flex: 1;
     flex-grow: 1;
     flex-basis: 0;
@@ -194,32 +195,36 @@
   &__new-comment-submit {
   }
 
-  &__past-list-container {
+  &__list-container {
     display: flex;
     flex-direction: column;
   }
-  &__past-comment-container {
+  &__comment-container {
     display: flex;
-    justify-content: space-between;
 
     // style to look like a line divider
     border-color: $color-secondary-mercury;
     border-width: 0.0625rem;
     border-style: solid none;
   }
-  &__past-comment-txt-container {
+  &__comment-txt-container {
     display: flex;
     flex-direction: column;
+
+    // use entire width
+    flex: 1;
+    flex-grow: 1;
+    flex-basis: 0;
   }
-  &__past-user-name-date-container {
+  &__user-name-date-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  &__past-user-name {
+  &__user-name {
   }
-  &__past-date {
+  &__date {
   }
-  &__past-comment-txt {
+  &__comment-txt {
   }
 }

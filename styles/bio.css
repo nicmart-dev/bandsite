@@ -189,10 +189,6 @@ input:user-invalid,
 textarea:user-invalid {
   border-color: #d22d2d;
 }
-input:valid,
-textarea:valid {
-  border-color: rgb(6, 134, 6);
-}
 
 input {
   min-height: var(--lg);
@@ -759,22 +755,24 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   display: flex;
   flex-direction: column;
 }
-.comments__past-list-container {
+.comments__list-container {
   display: flex;
   flex-direction: column;
 }
-.comments__past-comment-container {
+.comments__comment-container {
   display: flex;
-  justify-content: space-between;
   border-color: #e1e1e1;
   border-width: 0.0625rem;
   border-style: solid none;
 }
-.comments__past-comment-txt-container {
+.comments__comment-txt-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  flex-grow: 1;
+  flex-basis: 0;
 }
-.comments__past-user-name-date-container {
+.comments__user-name-date-container {
   display: flex;
   justify-content: space-between;
   align-items: center;

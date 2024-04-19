@@ -23,14 +23,18 @@ const testimonials = [
 /*                          Add Comments to bio page                          */
 /* -------------------------------------------------------------------------- */
 
+
+// Get DOM element where to insert comments 
+const commentList = document.querySelector('.comments__list-container')
+
+
 // Loop through testimonials array and add HTML
-const commentListContainer = document.querySelector('.comments__past-list-container')
 testimonials.forEach((testimonial) => {
-    addPastComment(commentListContainer, testimonial);
+    addComment(commentList, testimonial);
 })
 
 
-function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
+function addChildHTML(parentEl, childEl, classAttr = '', text = '', top = false) {
     const newChildEl = document.createElement(childEl);
 
     // add text to new node if passed as argument
@@ -39,7 +43,13 @@ function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
         newChildEl.appendChild(newChildText);
     }
 
-    parentEl.appendChild(newChildEl);
+    //add new element to DOM (at the top if new comment)
+    if (top === true) {
+        parentEl.insertBefore(newChildEl, parentEl.firstChild);
+    }
+    else
+        parentEl.appendChild(newChildEl);
+
     // add attribute if provided
     if (classAttr != '') {
         newChildEl.classList.add(classAttr);
@@ -49,10 +59,10 @@ function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
     return newChildEl;
 }
 
-function addPastComment(grandparent, testimonial) {
+function addComment(grandparent, testimonial, n = true) {
 
-    //add article container
-    const commentContainer = addChildHTML(grandparent, 'article', 'comments__past-comment-container');
+    //add article container (and indicate if new comment or not)
+    const commentContainer = addChildHTML(grandparent, 'article', 'comments__comment-container', '', n);
 
     //add image container inside
     const imageContainer = addChildHTML(commentContainer, 'div', 'comments__image-container')
@@ -61,21 +71,48 @@ function addPastComment(grandparent, testimonial) {
     addChildHTML(imageContainer, 'div', 'comments__avatar');
 
     //add container containing name, date, and comment text as sibbling  of image container
-    const commentTxtContainer = addChildHTML(commentContainer, 'div', 'comments__past-comment-txt-container')
+    const commentTxtContainer = addChildHTML(commentContainer, 'div', 'comments__comment-txt-container')
 
     //add container containing name and date inside
-    const userNameDateContainer = addChildHTML(commentTxtContainer, 'div', 'comments__past-user-name-date-container')
+    const userNameDateContainer = addChildHTML(commentTxtContainer, 'div', 'comments__user-name-date-container')
 
     //add name and date headings inside
-    addChildHTML(userNameDateContainer, 'h3', 'comments__past-user-name', testimonial.name)
-    addChildHTML(userNameDateContainer, 'h4', 'comments__past-date', testimonial.date)
+    addChildHTML(userNameDateContainer, 'h3', 'comments__user-name', testimonial.name)
+    addChildHTML(userNameDateContainer, 'h4', 'comments__date', testimonial.date)
 
     //add comment text
-    addChildHTML(commentTxtContainer, 'p', 'comments__past-comment-txt', testimonial.comment)
+    addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', testimonial.comment)
 
 }
 
 // Add new comment to top using array sort() method to sort by date parameter
 
-function addNewComment() {
+
+const commentForm = document.getElementById('new-comment-form')
+commentForm.addEventListener('submit', submitComment);
+
+function submitComment(event) {
+
+    event.preventDefault(); // keeps the page from reloading on submit
+
+
+    // Get today's date and format it to MM/DD/YYYY to match existing comments
+    const dateFormat = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+    };
+    const date = new Date(Date.now()).toLocaleDateString(undefined, dateFormat);
+
+
+    // Constructs a new comment object
+    const newComment =
+    {
+        name: event.target.username.value,
+        date: date,
+        comment: event.target.comment.value,
+    };
+
+    //add as new comment
+    addComment(commentList, newComment, true);
 }

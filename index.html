@@ -135,12 +135,13 @@
           <div class="comments__image-container">
             <div class="comments__avatar comments__avatar--new"></div>
           </div>
-          <form class="comments__form">
+          <form class="comments__form" id="new-comment-form">
             <div>
               <label for="new-comment-name">Name</label>
               <input
                 type="text"
                 id="new-comment-name"
+                name="username"
                 class="comments__new-user-name"
                 required
                 size="10"
@@ -151,6 +152,7 @@
               <label for="new-comment-txt">Comment</label>
               <textarea
                 id="new-comment-txt"
+                name="comment"
                 class="comments__new-comment-txt"
                 required
                 placeholder="Add a new comment"
@@ -161,7 +163,7 @@
             </button>
           </form>
         </div>
-        <article class="comments__past-list-container">
+        <article class="comments__list-container">
           <!-- We will insert each comment inside using JavaScript. -->
         </article>
       </section>
