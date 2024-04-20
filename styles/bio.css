@@ -505,12 +505,14 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 
 .hero {
   margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
-  background-image: url("../assets/images/hero-bio.jpg");
+  background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 35vh;
-  position: relative;
+  color: #fff;
+  display: flex;
+  align-items: center;
 }
 @media screen and (min-width: 768px) {
   .hero {
@@ -523,17 +525,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
     height: 84vh;
     background-position: top;
   }
-}
-.hero__overlay {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(50, 50, 50, 0.5);
-  color: #fff;
-  display: flex;
-  align-items: center;
 }
 .hero__title {
   padding-left: var(--sm);
