@@ -2,22 +2,13 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
-.hero {
-  margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
-  background: linear-gradient(
-      rgba($color-primary-bandsite-black, 0.5),
-      rgba($color-primary-bandsite-black, 0.5)
-    ),
-    url("../assets/images/hero-bio.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.hero--bio {
+  @include hero-img("../assets/images/hero-bio.jpg");
 
   height: 35vh;
 
-  color: $color-primary-white;
-  display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
   @include tablet {
     height: 78vh;
@@ -27,12 +18,8 @@
     height: 84vh;
     background-position: top;
   }
-
-  &__title {
-    @include spacing-main-footer-sides; // left align text to main section on mobile
-    @include spacing-header-left; // left align text to header logo on tablet/desktop
-  }
 }
+
 .about {
   @include tablet {
     padding-bottom: 1.25rem;

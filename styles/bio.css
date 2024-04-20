@@ -21,10 +21,19 @@ Using font weight per style guide
 }
 /* Comments avatars in bio page.
 Applied consistent multiplier to style guide to match mockup */
+/* -------------------------------------------------------------------------- */
+/*                                Media queries                               */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                   Padding                                  */
+/* -------------------------------------------------------------------------- */
 /* Generic mixin to to add margin or padding, on which side, and how big
 Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 /* -------------------------------------------------------------------------- */
 /*                                  Comments                                  */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                              Background images                             */
 /* -------------------------------------------------------------------------- */
 /* Set standard padding per styleguide,
 following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
@@ -67,10 +76,13 @@ h2 {
   font-weight: 600;
 }
 
+h1 {
+  line-height: 3rem;
+}
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 5.625rem;
-    line-height: 4.25rem;
+    line-height: 6rem;
   }
 }
 
@@ -386,6 +398,44 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   border-color: #323232;
 }
 
+.hero {
+  margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
+  color: #fff;
+  display: flex;
+  padding-left: var(--sm);
+  padding-right: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  .hero {
+    padding-left: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero {
+    padding-left: var(--xxxxl);
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero {
+    padding-right: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero {
+    padding-right: var(--xxxl);
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero {
+    padding-left: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero {
+    padding-left: var(--xxxxl);
+  }
+}
+
 .footer {
   font-size: 1.25rem;
   line-height: 1.625rem;
@@ -503,61 +553,25 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 
-.hero {
-  margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
+.hero--bio {
   background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 35vh;
-  color: #fff;
-  display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 @media screen and (min-width: 768px) {
-  .hero {
+  .hero--bio {
     height: 78vh;
     background-position: bottom;
   }
 }
 @media screen and (min-width: 1280px) {
-  .hero {
+  .hero--bio {
     height: 84vh;
     background-position: top;
-  }
-}
-.hero__title {
-  padding-left: var(--sm);
-  padding-right: var(--sm);
-}
-@media screen and (min-width: 768px) {
-  .hero__title {
-    padding-left: var(--xl);
-  }
-}
-@media screen and (min-width: 1280px) {
-  .hero__title {
-    padding-left: var(--xxxxl);
-  }
-}
-@media screen and (min-width: 768px) {
-  .hero__title {
-    padding-right: var(--xl);
-  }
-}
-@media screen and (min-width: 1280px) {
-  .hero__title {
-    padding-right: var(--xxxl);
-  }
-}
-@media screen and (min-width: 768px) {
-  .hero__title {
-    padding-left: var(--xl);
-  }
-}
-@media screen and (min-width: 1280px) {
-  .hero__title {
-    padding-left: var(--xxxxl);
   }
 }
 

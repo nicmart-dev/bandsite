@@ -1,5 +1,9 @@
 @use "variables" as *;
 
+/* -------------------------------------------------------------------------- */
+/*                                Media queries                               */
+/* -------------------------------------------------------------------------- */
+
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {
     @content;
@@ -12,14 +16,9 @@
   }
 }
 
-//use to insert logo - used in header/footer
-@mixin insert-logo($direction: center) {
-  background-image: url("../assets/logos/Logo-bandsite.svg");
-  background-repeat: no-repeat;
-  background-position: $direction;
-  background-size: contain;
-  background-color: $color-primary-bandsite-black;
-}
+/* -------------------------------------------------------------------------- */
+/*                                   Padding                                  */
+/* -------------------------------------------------------------------------- */
 
 //use to insert padding for header logo
 @mixin spacing-logo {
@@ -221,4 +220,29 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
   @include tablet {
     flex-basis: calc($image-size-avatar-tablet * 1.5);
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Background images                             */
+/* -------------------------------------------------------------------------- */
+
+//use to insert logo - used in header/footer
+@mixin insert-logo($direction: center) {
+  background-image: url("../assets/logos/Logo-bandsite.svg");
+  background-repeat: no-repeat;
+  background-position: $direction;
+  background-size: contain;
+  background-color: $color-primary-bandsite-black;
+}
+
+//use to insert hero image with 50% grayscale overlay, per style guide
+@mixin hero-img($url) {
+  background: linear-gradient(
+      rgba($color-primary-bandsite-black, 0.5),
+      rgba($color-primary-bandsite-black, 0.5)
+    ),
+    url($url);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

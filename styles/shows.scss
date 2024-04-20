@@ -2,9 +2,57 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
-.hero__iframe {
-  width: 50%;
+.hero--shows {
+  @include hero-img("../assets/images/hero-shows.jpg");
+
+  flex-direction: column;
+  height: 57vh;
+
+  justify-content: center;
+
+  @include tablet {
+    height: 79vh;
+    background-position: top 50% right 50%;
+    justify-content: space-around;
+  }
+  @include desktop {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 84vh;
+    gap: 15%;
+    background-position: top 25% right 50%;
+  }
+  &__iframe {
+    min-height: 11rem;
+    max-width: 100%;
+    @include tablet {
+      max-width: 55%;
+    }
+    @include desktop {
+      min-width: 40%;
+    }
+  }
+  &__text {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 80%;
+    @include desktop {
+      max-width: 45%;
+    }
+  }
+  &__subtitle {
+    line-height: 6rem;
+    font-size: 1.3rem; // changing heading size to match mockup
+
+    @include tablet {
+      font-size: 2.5rem; // changing heading size to match mockup
+    }
+  }
 }
+
 .main {
 }
 .shows {
