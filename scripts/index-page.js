@@ -99,8 +99,8 @@ function submitComment(event) {
     // Get today's date and format it to MM/DD/YYYY to match existing comments
     const dateFormat = {
         year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
     };
     const today = new Date(Date.now()).toLocaleDateString(undefined, dateFormat);
 
