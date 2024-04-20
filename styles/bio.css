@@ -163,6 +163,7 @@ textarea {
   padding: calc(var(--xs) + 0.25rem);
   border: 0.0625rem solid #e1e1e1;
   font-size: 1.2rem;
+  background-color: #fafafa;
   /*   only show required field error state if empty on submit,
   and not browser load */
 }

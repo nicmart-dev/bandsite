@@ -113,6 +113,8 @@ textarea {
   @include spacing-inside-fields;
   border: $border-style;
   font-size: 1.2rem;
+  background-color: $color-secondary-alabaster;
+
   // style placeholder text in fields
   &::placeholder {
     color: $color-primary-bandsite-black;
