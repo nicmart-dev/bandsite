@@ -1,4 +1,3 @@
-
 /* List of events
 Note: Turned copy text to array using ChatGPT  */
 const events = [
@@ -33,3 +32,4 @@ const events = [
         location: "San Francisco, CA"
     }
 ];
+

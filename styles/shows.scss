@@ -1,3 +1,17 @@
+@use "./partials/global" as *;
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+
 .hero__iframe {
   width: 50%;
+}
+.main {
+}
+.shows {
+  &__title {
+  }
+  &__subtitle {
+  }
+  &__list-container {
+  }
 }
