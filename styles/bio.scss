@@ -40,16 +40,16 @@
 
   &__image {
     width: 100%;
-    height: 30vh;
+    height: 15rem;
     object-fit: cover;
     object-position: left bottom;
 
     @include tablet {
-      height: 50vh;
+      height: 30rem;
       object-position: left 70%;
     }
     @include desktop {
-      height: 65vh;
+      height: 40rem;
       object-position: left 70%;
     }
   }
