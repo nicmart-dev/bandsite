@@ -111,7 +111,7 @@ input,
 textarea {
   width: 100%;
   @include spacing-inside-fields;
-  border: 1px solid $color-secondary-mercury;
+  border: $border-style;
   font-size: 1.2rem;
   // style placeholder text in fields
   &::placeholder {
@@ -126,7 +126,7 @@ textarea {
   /*   only show required field error state if empty on submit,
   and not browser load */
   &:user-invalid {
-    border-color: #d22d2d;
+    border-color: $color-error;
   }
 }
 
@@ -173,7 +173,8 @@ button {
 
   padding: 1rem 2rem;
   @include tablet {
-    width: 9.375rem;
+    min-width: 9.375rem; //per style guide no less than 9.375rem
+    width: 14rem;
   }
   &:hover {
     background-color: $color-secondary-bandsite-black;

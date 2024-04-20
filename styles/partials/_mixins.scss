@@ -89,7 +89,7 @@
   }
 }
 
-// use to insert padding for main article
+// use to insert side padding for main article
 @mixin spacing-article {
   @include tablet {
     @include spacing(padding, sides, 10%);
@@ -98,14 +98,18 @@
   }
 }
 
+// use to insert side padding for comments
+@mixin spacing-comments {
+  @include tablet {
+    @include spacing(padding, sides, 9%);
+  }
+  @include desktop {
+    @include spacing(padding, sides, 25%);
+  }
+}
+
 //use to insert spacing between components, per style guide
 @mixin spacing-between-components($type: "") {
-  @include spacing(padding, topbottom, var(--sm));
-
-  @include tablet {
-    @include spacing(padding, topbottom, var(--md));
-  }
-
   //to use consistent margin to fields like input, textarea, or button
   @if $type == field {
     @include spacing(margin, bottom, var(--sm));
@@ -113,6 +117,30 @@
     @include tablet {
       @include spacing(margin, bottom, var(--md));
     }
+  }
+
+  //to use add padding at top of comments
+  @if $type == comment {
+    @include spacing(padding, top, var(--sm));
+
+    @include tablet {
+      @include spacing(padding, top, var(--md));
+    }
+  } @else {
+    @include spacing(padding, topbottom, var(--sm));
+
+    @include tablet {
+      @include spacing(padding, topbottom, var(--md));
+    }
+  }
+}
+
+// use to insert style that looks like line divider in style guide
+
+@mixin line-divider($direction: "") {
+  border-bottom: $border-style;
+  @if $direction == topbottom {
+    border-top: $border-style;
   }
 }
 

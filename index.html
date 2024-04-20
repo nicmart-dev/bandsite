@@ -131,45 +131,47 @@
       </section>
       <section class="comments">
         <h2 class="comments__title">Join the Conversation</h2>
-        <div class="comments__new-comment-container">
-          <div class="comments__image-container">
-            <div class="comments__avatar comments__avatar--new"></div>
+        <div class="comments__comment-list-form-container">
+          <div class="comments__new-comment-container">
+            <div class="comments__image-container">
+              <div class="comments__avatar comments__avatar--new"></div>
+            </div>
+            <form class="comments__form" id="new-comment-form">
+              <div>
+                <label for="new-comment-name">Name</label>
+                <input
+                  type="text"
+                  id="new-comment-name"
+                  name="username"
+                  class="comments__new-user-name"
+                  required
+                  size="10"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div>
+                <label for="new-comment-txt">Comment</label>
+                <textarea
+                  id="new-comment-txt"
+                  name="comment"
+                  class="comments__new-comment-txt"
+                  required
+                  placeholder="Add a new comment"
+                ></textarea>
+              </div>
+              <button
+                id="submit"
+                class="comments__new-comment-submit"
+                type="submit"
+              >
+                COMMENT
+              </button>
+            </form>
           </div>
-          <form class="comments__form" id="new-comment-form">
-            <div>
-              <label for="new-comment-name">Name</label>
-              <input
-                type="text"
-                id="new-comment-name"
-                name="username"
-                class="comments__new-user-name"
-                required
-                size="10"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div>
-              <label for="new-comment-txt">Comment</label>
-              <textarea
-                id="new-comment-txt"
-                name="comment"
-                class="comments__new-comment-txt"
-                required
-                placeholder="Add a new comment"
-              ></textarea>
-            </div>
-            <button
-              id="submit"
-              class="comments__new-comment-submit"
-              type="submit"
-            >
-              COMMENT
-            </button>
-          </form>
+          <article class="comments__list-container">
+            <!-- We will insert each comment inside using JavaScript. -->
+          </article>
         </div>
-        <article class="comments__list-container">
-          <!-- We will insert each comment inside using JavaScript. -->
-        </article>
       </section>
     </main>
     <footer class="footer">

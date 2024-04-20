@@ -154,6 +154,9 @@
 .comments {
   &__title {
   }
+  &__comment-list-form-container {
+    @include spacing-comments;
+  }
   &__new-comment-container {
     display: flex;
   }
@@ -183,29 +186,37 @@
     flex-direction: column;
   }
 
-  // add spacing around comment form field
-  // &__form > :nth-child(2) {
-  //   @include spacing-between-components;
-  // }
-
   &__new-user-name {
   }
   &__new-comment-txt {
   }
   &__new-comment-submit {
+    @include tablet {
+      float: right;
+    }
   }
 
   &__list-container {
     display: flex;
     flex-direction: column;
+
+    @include spacing-between-components(
+      field
+    ); // add bottom margin to display last divider
   }
   &__comment-container {
     display: flex;
 
-    // style to look like a line divider
-    border-color: $color-secondary-mercury;
-    border-width: 0.0625rem;
-    border-style: solid none;
+    // add padding to top
+    @include spacing-between-components(comment);
+
+    // add divider after each comment
+    @include line-divider;
+
+    //also add line divider in first comment
+    &:first-child {
+      @include line-divider(topbottom);
+    }
   }
   &__comment-txt-container {
     display: flex;

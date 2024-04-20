@@ -22,6 +22,7 @@ $color-primary-white: #fff; //Primary text color for light on dark background. L
 $color-secondary-bandsite-black: #000; // CTA hover state.
 $color-secondary-mercury: #e1e1e1; //Divider line. Form field outline.
 $color-secondary-alabaster: #fafafa; //Alternative light background color
+$color-error: #d22d2d;
 
 // $color-neutral-dark: rgba($color-neutral-darkest, 0.2);
 
@@ -29,6 +30,7 @@ $color-secondary-alabaster: #fafafa; //Alternative light background color
 $border-radius-card: 5px;
 $border-radius-comment-field: 4px;
 $border-radius-avatar: 50%;
+$border-style: 0.0625rem solid $color-secondary-mercury;
 
 /* Comments avatars in bio page.
 Applied consistent multiplier to style guide to match mockup */
