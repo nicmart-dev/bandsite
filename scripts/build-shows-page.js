@@ -43,10 +43,16 @@ function createEventTableContent() {
         // Create a new table row
         const row = document.createElement("tr");
 
+        // Also add shared class for styling
+        row.classList.add('shows__show-row', 'shows__show-row--data');
+
         // Create cells for each property in the event
         Object.keys(event).forEach(function (key) {
-            // Create new td row with event data from events array, with class named after event key. eg. shows__show-location
-            const cell = addChildHTML(row, 'td', `shows__show-${key}`, event[key]);
+            // Create new td row with event data from events array, with shared class for styling. eg. shows__show-location
+            const cell = addChildHTML(row, 'td', 'shows__show-cell', event[key]);
+
+            // Also add class named after event key
+            cell.classList.add(`shows__show-cell--${key}`);
 
             // Make the table more accessible, by setting the headers attribute on td to the corresponding header id, so it can be used by screen readers
             const thElement = document.querySelector(`th#${key}`);
@@ -67,6 +73,11 @@ function createEventTableContent() {
 
         // Add a button cell as the last column 
         const buttonCell = addChildHTML(row, 'td', 'shows__show-cta-container');
+
+        // Also add class named after event key
+        buttonCell.classList.add('shows__show-cell');
+
+
         addChildHTML(buttonCell, 'button', 'shows__show-cta-btn', 'BUY TICKETS');
 
         // Append the row to the table body

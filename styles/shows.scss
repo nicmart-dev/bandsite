@@ -2,68 +2,6 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
-table {
-  border-collapse: collapse; /* so borders are displayed on table rows */
-  @include spacing-between-components(
-    table
-  ); // add margin at top and bottom of table
-}
-
-/* Add consistent padding per styleguide for table header and cell */
-th,
-td {
-  @include spacing-table-header-cell;
-}
-
-th {
-  /* Hide table headers by default */
-  display: none;
-
-  /* Show table headers on wider screens */
-  @include tablet {
-    display: table-cell;
-    @include form-table-header-style;
-  }
-}
-
-tr {
-  display: block;
-  text-align: left;
-  @include tablet {
-    display: table-row;
-  }
-  font-size: 1.25rem; /* Size font in each row, per mockup*/
-}
-
-tbody > tr {
-  @include line-divider; /* add bottom line divider, per mockup*/
-
-  @include spacing-between-components(show); /* add padding to top */
-}
-
-/* Show row header before each event, as a flat list */
-td::before {
-  content: attr(data-label); /* Display data-label attribute */
-  @include form-table-header-style;
-  display: block;
-  margin-bottom: 0.5rem; /* space between header and row */
-
-  /* Hide row headers on wider screens */
-  @include tablet {
-    display: none;
-  }
-}
-
-/* Show row data */
-td {
-  display: block;
-
-  /* Reset td display to table-cell on wider screens */
-  @include tablet {
-    display: table-cell;
-  }
-}
-
 /* add left and right padding to shows header and table cell  */
 *:is(main > section > h2, td, th) {
   @include mobile {
@@ -72,7 +10,7 @@ td {
 }
 
 /* add same padding to entire left and right sides */
-main {
+.main {
   @include tablet {
     @include spacing-main-footer-sides;
   }
@@ -129,8 +67,6 @@ main {
   }
 }
 
-.main {
-}
 .shows {
   /* display shows table next to section header */
   @include desktop {
@@ -141,15 +77,77 @@ main {
   &__title {
   }
   &__list-table {
+    border-collapse: collapse; /* so borders are displayed on table rows */
+
+    /* add margin at top and bottom of table */
+    @include spacing-between-components(table);
     width: 100%;
   }
 
-  &__show-date {
-    font-weight: $semi-bold;
+  /* Add consistent padding per styleguide for table header and cell */
+  &__show-header,
+  &__show-cell {
+    @include spacing-table-header-cell;
   }
-  &__show-venue {
+  &__show-header {
+    /* Hide table headers by default */
+    display: none;
+
+    /* Show table headers on wider screens */
+    @include tablet {
+      display: table-cell;
+      @include form-table-header-style;
+    }
   }
-  &__show-location {
+
+  &__show-row {
+    display: block;
+    text-align: left;
+    @include tablet {
+      display: table-row;
+    }
+    font-size: 1.25rem; /* Size font in each row, per mockup*/
+
+    &--data {
+      @include line-divider; /* add bottom line divider, per mockup*/
+
+      @include spacing-between-components(show); /* add padding to top */
+
+      /* Set table row on hover per style guide */
+      &:hover {
+        background-color: $color-secondary-alabaster;
+      }
+      /* Set table row on select per style guide */
+      &:active {
+        background-color: $color-secondary-mercury;
+      }
+    }
+  }
+
+  &__show-cell {
+    /* Show row data */
+    display: block;
+
+    /* Reset td display to table-cell on wider screens */
+    @include tablet {
+      display: table-cell;
+    }
+    /* Show row header before each event, as a flat list */
+    &::before {
+      content: attr(data-label); /* Display data-label attribute */
+      @include form-table-header-style;
+      display: block;
+      margin-bottom: 0.5rem; /* space between header and row */
+
+      /* Hide row headers on wider screens */
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--date {
+      font-weight: $semi-bold;
+    }
   }
 
   &__show-cta-container {

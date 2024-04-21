@@ -567,125 +567,6 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 
-table {
-  border-collapse: collapse; /* so borders are displayed on table rows */
-  /* use add padding at top of comments */
-  /* add padding at top of shows */
-  /* add margin at top and bottom of table */
-  margin-top: var(--sm);
-  margin-bottom: var(--sm);
-}
-@media screen and (min-width: 768px) {
-  table {
-    margin-top: var(--md);
-    margin-bottom: var(--md);
-  }
-}
-
-/* Add consistent padding per styleguide for table header and cell */
-th,
-td {
-  padding-bottom: 1rem;
-}
-@media screen and (min-width: 768px) {
-  th,
-  td {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 1.125rem;
-    padding-right: 1.125rem;
-  }
-}
-
-th {
-  /* Hide table headers by default */
-  display: none;
-  /* Show table headers on wider screens */
-}
-@media screen and (min-width: 768px) {
-  th {
-    display: table-cell;
-    color: #afafaf;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-}
-@media screen and (min-width: 768px) and (min-width: 768px) {
-  th {
-    font-size: 1.25rem;
-  }
-}
-
-tr {
-  display: block;
-  text-align: left;
-  font-size: 1.25rem; /* Size font in each row, per mockup*/
-}
-@media screen and (min-width: 768px) {
-  tr {
-    display: table-row;
-  }
-}
-
-tbody > tr {
-  border-bottom: 2px solid #e1e1e1;
-  /* add bottom line divider, per mockup*/
-  /* use add padding at top of comments */
-  /* add padding at top of shows */
-  padding-top: var(--md);
-  /* add margin at top and bottom of table */
-  padding-top: var(--sm);
-  padding-bottom: var(--sm);
-  /* add padding to top */
-}
-@media screen and (min-width: 768px) {
-  tbody > tr {
-    padding-top: 0;
-  }
-}
-@media screen and (min-width: 768px) {
-  tbody > tr {
-    padding-top: var(--md);
-    padding-bottom: var(--md);
-  }
-}
-
-/* Show row header before each event, as a flat list */
-td::before {
-  content: attr(data-label); /* Display data-label attribute */
-  color: #afafaf;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  display: block;
-  margin-bottom: 0.5rem; /* space between header and row */
-  /* Hide row headers on wider screens */
-}
-@media screen and (min-width: 768px) {
-  td::before {
-    font-size: 1.25rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  td::before {
-    display: none;
-  }
-}
-
-/* Show row data */
-td {
-  display: block;
-  /* Reset td display to table-cell on wider screens */
-}
-@media screen and (min-width: 768px) {
-  td {
-    display: table-cell;
-  }
-}
-
 /* add left and right padding to shows header and table cell  */
 @media screen and (max-width: 768px) {
   *:is(main > section > h2, td, th) {
@@ -716,28 +597,28 @@ td {
 
 /* add same padding to entire left and right sides */
 @media screen and (min-width: 768px) {
-  main {
+  .main {
     padding-left: var(--sm);
     padding-right: var(--sm);
   }
 }
 @media screen and (min-width: 768px) and (min-width: 768px) {
-  main {
+  .main {
     padding-left: var(--xl);
   }
 }
 @media screen and (min-width: 768px) and (min-width: 1280px) {
-  main {
+  .main {
     padding-left: var(--xxxxl);
   }
 }
 @media screen and (min-width: 768px) and (min-width: 768px) {
-  main {
+  .main {
     padding-right: var(--xl);
   }
 }
 @media screen and (min-width: 768px) and (min-width: 1280px) {
-  main {
+  .main {
     padding-right: var(--xxxl);
   }
 }
@@ -806,6 +687,7 @@ td {
 
 .shows {
   /* display shows table next to section header */
+  /* Add consistent padding per styleguide for table header and cell */
 }
 @media screen and (min-width: 1280px) {
   .shows {
@@ -814,9 +696,125 @@ td {
   }
 }
 .shows__list-table {
+  border-collapse: collapse; /* so borders are displayed on table rows */
+  /* add margin at top and bottom of table */
+  /* use add padding at top of comments */
+  /* add padding at top of shows */
+  /* add margin at top and bottom of table */
+  margin-top: var(--sm);
+  margin-bottom: var(--sm);
   width: 100%;
 }
-.shows__show-date {
+@media screen and (min-width: 768px) {
+  .shows__list-table {
+    margin-top: var(--md);
+    margin-bottom: var(--md);
+  }
+}
+.shows__show-header, .shows__show-cell {
+  padding-bottom: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__show-header, .shows__show-cell {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
+}
+.shows__show-header {
+  /* Hide table headers by default */
+  display: none;
+  /* Show table headers on wider screens */
+}
+@media screen and (min-width: 768px) {
+  .shows__show-header {
+    display: table-cell;
+    color: #afafaf;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  .shows__show-header {
+    font-size: 1.25rem;
+  }
+}
+.shows__show-row {
+  display: block;
+  text-align: left;
+  font-size: 1.25rem; /* Size font in each row, per mockup*/
+}
+@media screen and (min-width: 768px) {
+  .shows__show-row {
+    display: table-row;
+  }
+}
+.shows__show-row--data {
+  border-bottom: 2px solid #e1e1e1;
+  /* add bottom line divider, per mockup*/
+  /* use add padding at top of comments */
+  /* add padding at top of shows */
+  padding-top: var(--md);
+  /* add margin at top and bottom of table */
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+  /* add padding to top */
+  /* Set table row on hover per style guide */
+  /* Set table row on select per style guide */
+}
+@media screen and (min-width: 768px) {
+  .shows__show-row--data {
+    padding-top: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__show-row--data {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+  }
+}
+.shows__show-row--data:hover {
+  background-color: #fafafa;
+}
+.shows__show-row--data:active {
+  background-color: #e1e1e1;
+}
+.shows__show-cell {
+  /* Show row data */
+  display: block;
+  /* Reset td display to table-cell on wider screens */
+  /* Show row header before each event, as a flat list */
+}
+@media screen and (min-width: 768px) {
+  .shows__show-cell {
+    display: table-cell;
+  }
+}
+.shows__show-cell::before {
+  content: attr(data-label); /* Display data-label attribute */
+  color: #afafaf;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  display: block;
+  margin-bottom: 0.5rem; /* space between header and row */
+  /* Hide row headers on wider screens */
+}
+@media screen and (min-width: 768px) {
+  .shows__show-cell::before {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__show-cell::before {
+    display: none;
+  }
+}
+.shows__show-cell--date {
   font-weight: 600;
 }
 .shows__show-cta-container {
