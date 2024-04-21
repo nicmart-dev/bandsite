@@ -109,7 +109,7 @@
   &__image-item {
     flex-basis: 31%;
   }
-  // reordered images to match mockup so image 9 and 6 are swapped.
+  /* reordered images to match mockup so image 9 and 6 are swapped. */
   &__image-item:nth-child(6) {
     order: 4;
   }
@@ -158,7 +158,7 @@
   }
 
   &__form {
-    // use entire width
+    /* use entire width */
     flex: 1;
     flex-grow: 1;
     flex-basis: 0;
@@ -182,20 +182,19 @@
     display: flex;
     flex-direction: column;
 
-    @include spacing-between-components(
-      field
-    ); // add bottom margin to display last divider
+    /* add bottom margin to display last divider */
+    @include spacing-between-components(field);
   }
   &__comment-container {
     display: flex;
 
-    // add padding to top
+    /* add padding to top */
     @include spacing-between-components(comment);
 
-    // add divider after each comment
+    /* add divider after each comment */
     @include line-divider;
 
-    //also add line divider in first comment
+    /* also add line divider in first comment */
     &:first-child {
       @include line-divider(topbottom);
     }
@@ -204,7 +203,7 @@
     display: flex;
     flex-direction: column;
 
-    // use entire width
+    /* use entire width */
     flex: 1;
     flex-grow: 1;
     flex-basis: 0;

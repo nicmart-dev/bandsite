@@ -2,8 +2,7 @@
 @use "mixins" as *;
 
 /* Set standard padding per styleguide,
-following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0 
-*/
+following this guide https://sterlingcobb.medium.com/using-css-variables-with-margin-padding-4fec2ceb24d0  */
 :root {
   --spacing-unit: 0.5rem;
 
@@ -24,7 +23,7 @@ following this guide https://sterlingcobb.medium.com/using-css-variables-with-ma
 }
 
 body {
-  //Set font defaults per style guide
+  /* Set font defaults per style guide */
   font-family: $font;
   font-weight: $regular;
   font-size: 0.8125rem;
@@ -41,7 +40,7 @@ h2 {
   line-height: 2rem;
   font-weight: $semi-bold; // changed to match mockup even though should be $bold
 }
-//using as page header per style guide
+/* using as page header per style guide */
 h1 {
   line-height: 3rem;
   @include tablet {
@@ -50,19 +49,19 @@ h1 {
   }
 }
 
-//using as section header per styleguide
+/* using as section header per styleguide*/
 h2 {
   @include tablet {
     font-size: 3.4375rem; // 2.25rem in styleguide for mobile but adjusted to match mockup
     line-height: 2.75rem;
   }
 }
-// styling section headers per styleguide. eg. "About the Musicians", "Photo Gallery", "Get In Touch"
+/* styling section headers per styleguide. eg. "About the Musicians", "Photo Gallery", "Get In Touch" */
 *:is(main, footer) > section h2 {
   @include spacing-section-header;
 }
 
-//using as subheader per styleguide eg. article title and footer agents.
+/* using as subheader per styleguide eg. article title and footer agents. */
 h3 {
   font-weight: $semi-bold;
   font-size: 1.3125rem; // .875rem in styleguide for mobile but adjusted to match mockup
@@ -74,7 +73,7 @@ eg. article title, paragraphs, and footer agents, agent details including emails
   @include spacing-between-components;
 }
 
-// used for comments dates, and comment form/shows headings
+/* used for comments dates, and comment form/shows headings */
 h4 {
   font-weight: $regular;
   color: $color-primary-silver;
@@ -96,8 +95,7 @@ li {
   list-style: none;
 }
 
-// apply style for form fields and CTA per style guide
-
+/* apply style for form fields and CTA per style guide */
 input,
 textarea,
 button {
@@ -107,7 +105,7 @@ button {
   @include spacing-between-components(field); // add margin after field
 }
 
-// use full width, set spacing and border for form fields per style guide
+/* use full width, set spacing and border for form fields per style guide */
 input,
 textarea {
   width: 100%;
@@ -116,7 +114,7 @@ textarea {
   font-size: 1.2rem;
   background-color: $color-secondary-alabaster;
 
-  // style placeholder text in fields
+  /*  style placeholder text in fields */
   &::placeholder {
     color: $color-primary-bandsite-black;
     font-size: 1.2rem; // match typing font
@@ -133,14 +131,14 @@ textarea {
   }
 }
 
-//set height for form input field per styleguide
+/* set height for form input field per styleguide */
 input {
   min-height: var(--lg);
   @include tablet {
     height: var(--xl);
   }
 }
-// set textarea height relative to input field
+/*  set textarea height relative to input field */
 textarea {
   min-height: calc(var(--lg) * 3);
   @include tablet {
@@ -148,14 +146,14 @@ textarea {
   }
 }
 
-// upper case and set font weight for label and button text
+/* upper case and set font weight for label and button text */
 label,
 button {
   text-transform: uppercase;
   font-weight: $semi-bold;
 }
 
-// set font size and color for labels per style guide
+/* set font size and color for labels per style guide */
 label {
   color: $color-primary-silver;
   font-size: 0.875rem;
@@ -166,7 +164,7 @@ label {
   }
 }
 
-// used for CTA throughout site
+/* used for CTA throughout site */
 button {
   font-size: 1.375rem;
   width: 100%;
@@ -189,7 +187,7 @@ button {
   @include spacing-main-footer-sides;
 }
 
-//set font color per style guide for dark on light background
+/* set font color per style guide for dark on light background */
 .main {
   color: $color-primary-bandsite-black;
 }
@@ -203,7 +201,7 @@ button {
   background-origin: content-box; //  make background image respect the padding of the box in mobile view
   color: $color-primary-white;
 
-  //The Navigation Bar must be fixed to the top of the page
+  /* The Navigation Bar must be fixed to the top of the page */
   position: fixed;
   top: 0;
   width: 100%;
@@ -256,7 +254,8 @@ button {
     &:hover {
       border-bottom: 0.25rem solid $color-primary-white;
     }
-    // hide active link underline if hover another link.
+    /* hide active link underline if hover another link.
+ */
     ul:has(&:not(&--active):hover) &--active {
       border-color: $color-primary-bandsite-black;
     }
@@ -264,7 +263,7 @@ button {
 }
 
 .hero {
-  margin-top: 6.75rem; /* Add a top margin to avoid content overlay */
+  margin-top: 6.75rem; // Add a top margin to avoid content overlay
 
   color: $color-primary-white;
   display: flex;
