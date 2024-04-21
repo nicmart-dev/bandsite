@@ -2,6 +2,42 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
+th {
+  /* Hide table headers by default */
+  display: none;
+
+  /* Show table headers on wider screens */
+  @include tablet {
+    display: table-cell;
+    text-transform: uppercase;
+  }
+}
+
+/* Show row header before each event, as a flat list */
+td::before {
+  content: attr(data-label); /* Display data-label attribute */
+  font-weight: $bold;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px; /* space between header and row */
+
+  /* Hide row headers on wider screens */
+  @include tablet {
+    display: none;
+  }
+}
+
+/* Show row data */
+td {
+  display: block;
+  margin-bottom: 10px; /* space between rows */
+
+  /* Reset td display to table-cell on wider screens */
+  @include tablet {
+    display: table-cell;
+  }
+}
+
 .hero--shows {
   @include hero-img("../assets/images/hero-shows.jpg");
 
@@ -58,8 +94,16 @@
 .shows {
   &__title {
   }
-  &__subtitle {
+  &__list-table {
+    width: 100%;
   }
-  &__list-container {
+
+  &__show-date {
+  }
+  &__show-venue {
+  }
+  &__show-location {
+  }
+  &__show-cta-btn {
   }
 }

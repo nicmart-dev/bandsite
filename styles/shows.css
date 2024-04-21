@@ -570,6 +570,45 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 
+th {
+  /* Hide table headers by default */
+  display: none;
+  /* Show table headers on wider screens */
+}
+@media screen and (min-width: 768px) {
+  th {
+    display: table-cell;
+    text-transform: uppercase;
+  }
+}
+
+/* Show row header before each event, as a flat list */
+td::before {
+  content: attr(data-label); /* Display data-label attribute */
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px; /* space between header and row */
+  /* Hide row headers on wider screens */
+}
+@media screen and (min-width: 768px) {
+  td::before {
+    display: none;
+  }
+}
+
+/* Show row data */
+td {
+  display: block;
+  margin-bottom: 10px; /* space between rows */
+  /* Reset td display to table-cell on wider screens */
+}
+@media screen and (min-width: 768px) {
+  td {
+    display: table-cell;
+  }
+}
+
 .hero--shows {
   background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-shows.jpg");
   background-position: center;
@@ -630,4 +669,8 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   .hero--shows__subtitle {
     font-size: 2.5rem;
   }
+}
+
+.shows__list-table {
+  width: 100%;
 }/*# sourceMappingURL=shows.css.map */
