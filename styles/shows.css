@@ -804,6 +804,15 @@ td {
   }
 }
 
+.shows {
+  /* display shows table next to section header */
+}
+@media screen and (min-width: 1280px) {
+  .shows {
+    display: flex;
+    gap: 12.5rem;
+  }
+}
 .shows__list-table {
   width: 100%;
 }
@@ -816,5 +825,12 @@ td {
 @media screen and (min-width: 768px) {
   .shows__show-cta-btn {
     max-width: 85%;
+  }
+}
+
+/* Size table Date column per mockup*/
+@media screen and (min-width: 1280px) {
+  #date {
+    width: 22.5rem;
   }
 }/*# sourceMappingURL=shows.css.map */

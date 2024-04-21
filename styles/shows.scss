@@ -132,6 +132,12 @@ main {
 .main {
 }
 .shows {
+  /* display shows table next to section header */
+  @include desktop {
+    display: flex;
+    gap: 12.5rem;
+  }
+
   &__title {
   }
   &__list-table {
@@ -153,5 +159,12 @@ main {
     @include tablet {
       max-width: 85%;
     }
+  }
+}
+
+/* Size table Date column per mockup*/
+#date {
+  @include desktop {
+    width: 22.5rem;
   }
 }
