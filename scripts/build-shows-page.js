@@ -91,16 +91,17 @@ function selectRow() {
 
     rows.forEach(function (row) {
         row.addEventListener("click", function (event) {
-
-            event.preventDefault() // prevent page reload on click
+            event.preventDefault(); // prevent page reload on click
 
             // Remove the 'selected' class from all rows
-            rows.forEach(function (row) {
-                row.classList.remove("shows__show-row--selected");
+            rows.forEach(function (otherRow) {
+                if (otherRow !== row && otherRow.classList.contains("shows__show-row--selected")) {
+                    otherRow.classList.remove("shows__show-row--selected");
+                }
             });
 
-            // Add the 'selected' class to the clicked row
-            this.classList.add("shows__show-row--selected");
+            // Toggle the 'selected' class for the clicked row
+            row.classList.toggle("shows__show-row--selected");
         });
     });
 }
