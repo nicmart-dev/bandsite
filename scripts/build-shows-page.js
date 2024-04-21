@@ -32,4 +32,3 @@ const events = [
         location: "San Francisco, CA"
     }
 ];
-
