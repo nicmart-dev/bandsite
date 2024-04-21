@@ -782,6 +782,9 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
 .shows__show-row--data:active {
   background-color: #e1e1e1;
 }
+.shows__show-row--selected {
+  background-color: #e1e1e1;
+}
 .shows__show-cell {
   /* Show row data */
   display: block;

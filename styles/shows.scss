@@ -122,6 +122,9 @@
         background-color: $color-secondary-mercury;
       }
     }
+    &--selected {
+      background-color: $color-secondary-mercury;
+    }
   }
 
   &__show-cell {

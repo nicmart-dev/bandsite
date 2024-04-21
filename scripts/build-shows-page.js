@@ -85,5 +85,29 @@ function createEventTableContent() {
     });
 }
 
-// Create and insert the table content dynamically at page load
+// mark row as selected by adding class if user clicks on row
+function selectRow() {
+    const rows = document.querySelectorAll('.shows__show-row--data')
+
+    rows.forEach(function (row) {
+        row.addEventListener("click", function (event) {
+
+            event.preventDefault() // prevent page reload on click
+
+            // Remove the 'selected' class from all rows
+            rows.forEach(function (row) {
+                row.classList.remove("shows__show-row--selected");
+            });
+
+            // Add the 'selected' class to the clicked row
+            this.classList.add("shows__show-row--selected");
+        });
+    });
+}
+
+
+// add shows events table at page load
 createEventTableContent();
+
+// support shows event selection at page load
+selectRow();
