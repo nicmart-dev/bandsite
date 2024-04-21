@@ -78,7 +78,7 @@ function createEventTableContent() {
         buttonCell.classList.add('shows__show-cell');
 
 
-        addChildHTML(buttonCell, 'button', 'shows__show-cta-btn', 'BUY TICKETS');
+        addChildHTML(buttonCell, 'button', 'shows__show-cta-btn', 'Buy Tickets');
 
         // Append the row to the table body
         tbody.appendChild(row);
