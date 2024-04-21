@@ -8,6 +8,13 @@ table {
     table
   ); // add margin at top and bottom of table
 }
+
+/* Add consistent padding per styleguide for table header and cell */
+th,
+td {
+  @include spacing-table-header-cell;
+}
+
 th {
   /* Hide table headers by default */
   display: none;
@@ -50,12 +57,10 @@ td::before {
 /* Show row data */
 td {
   display: block;
-  padding-bottom: 1rem; /* row padding per style guide */
 
   /* Reset td display to table-cell on wider screens */
   @include tablet {
     display: table-cell;
-    padding: 1.5rem 1.125rem; /* row padding per style guide */
   }
 }
 
@@ -66,6 +71,7 @@ td {
   }
 }
 
+/* add same padding to entire left and right sides */
 main {
   @include tablet {
     @include spacing-main-footer-sides;
@@ -139,6 +145,13 @@ main {
   }
   &__show-location {
   }
+
+  &__show-cta-container {
+    text-align: right;
+  }
   &__show-cta-btn {
+    @include tablet {
+      max-width: 85%;
+    }
   }
 }

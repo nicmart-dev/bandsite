@@ -99,18 +99,6 @@
   @include tablet {
     @include spacing(padding, sides, 10%);
   }
-  @include desktop {
-  }
-}
-
-// use to insert side padding for comments
-@mixin spacing-comments {
-  @include tablet {
-    @include spacing(padding, sides, 9%);
-  }
-  @include desktop {
-    @include spacing(padding, sides, 25%);
-  }
 }
 
 //use to insert spacing between components, per style guide
@@ -222,6 +210,16 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
   }
 }
 
+// use to insert side padding for comments
+@mixin spacing-comments {
+  @include tablet {
+    @include spacing(padding, sides, 9%);
+  }
+  @include desktop {
+    @include spacing(padding, sides, 25%);
+  }
+}
+
 //use to size comments images
 @mixin avatar {
   height: $image-size-avatar-mobile;
@@ -256,6 +254,15 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 
   @include tablet {
     font-size: 1.25rem;
+  }
+}
+
+// use to insert side padding for table headings and rows
+@mixin spacing-table-header-cell {
+  @include spacing(padding, bottom, 1rem);
+  @include tablet {
+    @include spacing(padding, topbottom, 1.5rem);
+    @include spacing(padding, sides, 1.125rem);
   }
 }
 

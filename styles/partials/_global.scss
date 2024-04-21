@@ -165,7 +165,6 @@ button {
   padding: 1rem 2rem;
   @include tablet {
     min-width: 9.375rem; //per style guide no less than 9.375rem
-    width: 14rem;
   }
   &:hover {
     background-color: $color-secondary-bandsite-black;

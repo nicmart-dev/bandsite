@@ -263,7 +263,6 @@ button {
 @media screen and (min-width: 768px) {
   button {
     min-width: 9.375rem;
-    width: 14rem;
   }
 }
 button:hover {
@@ -583,6 +582,21 @@ table {
   }
 }
 
+/* Add consistent padding per styleguide for table header and cell */
+th,
+td {
+  padding-bottom: 1rem;
+}
+@media screen and (min-width: 768px) {
+  th,
+  td {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
+}
+
 th {
   /* Hide table headers by default */
   display: none;
@@ -664,13 +678,11 @@ td::before {
 /* Show row data */
 td {
   display: block;
-  padding-bottom: 1rem; /* row padding per style guide */
   /* Reset td display to table-cell on wider screens */
 }
 @media screen and (min-width: 768px) {
   td {
     display: table-cell;
-    padding: 1.5rem 1.125rem; /* row padding per style guide */
   }
 }
 
@@ -702,6 +714,7 @@ td {
   }
 }
 
+/* add same padding to entire left and right sides */
 @media screen and (min-width: 768px) {
   main {
     padding-left: var(--sm);
@@ -796,4 +809,12 @@ td {
 }
 .shows__show-date {
   font-weight: 600;
+}
+.shows__show-cta-container {
+  text-align: right;
+}
+@media screen and (min-width: 768px) {
+  .shows__show-cta-btn {
+    max-width: 85%;
+  }
 }/*# sourceMappingURL=shows.css.map */

@@ -66,7 +66,7 @@ function createEventTableContent() {
         });
 
         // Add a button cell as the last column 
-        const buttonCell = addChildHTML(row, 'td',);
+        const buttonCell = addChildHTML(row, 'td', 'shows__show-cta-container');
         addChildHTML(buttonCell, 'button', 'shows__show-cta-btn', 'BUY TICKETS');
 
         // Append the row to the table body

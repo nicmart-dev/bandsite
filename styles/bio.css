@@ -263,7 +263,6 @@ button {
 @media screen and (min-width: 768px) {
   button {
     min-width: 9.375rem;
-    width: 14rem;
   }
 }
 button:hover {
@@ -834,6 +833,7 @@ main > section {
 @media screen and (min-width: 768px) {
   .comments__new-comment-submit {
     float: right;
+    width: 14rem;
   }
 }
 .comments__list-container {

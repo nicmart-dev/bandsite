@@ -186,6 +186,7 @@ main > section {
   &__new-comment-submit {
     @include tablet {
       float: right;
+      width: 14rem;
     }
   }
 
