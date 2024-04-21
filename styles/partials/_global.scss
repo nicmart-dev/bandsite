@@ -238,8 +238,7 @@ button {
     &:hover {
       border-bottom: 0.25rem solid $color-primary-white;
     }
-    /* hide active link underline if hover another link.
- */
+    /* hide active link underline if hover another link. */
     ul:has(&:not(&--active):hover) &--active {
       border-color: $color-primary-bandsite-black;
     }

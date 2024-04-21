@@ -139,8 +139,6 @@ main > section {
 }
 
 .comments {
-  &__title {
-  }
   &__comment-list-form-container {
     @include spacing-comments;
   }
@@ -179,10 +177,6 @@ main > section {
     }
   }
 
-  &__new-user-name {
-  }
-  &__new-comment-txt {
-  }
   &__new-comment-submit {
     @include tablet {
       float: right;
@@ -224,11 +218,5 @@ main > section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  &__user-name {
-  }
-  &__date {
-  }
-  &__comment-txt {
   }
 }

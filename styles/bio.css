@@ -354,8 +354,7 @@ button:hover {
   border-bottom: 0.25rem solid #323232;
   padding-bottom: var(--sm);
   width: 100%;
-  /* hide active link underline if hover another link.
-  */
+  /* hide active link underline if hover another link. */
 }
 @media screen and (min-width: 768px) {
   .header__link {
