@@ -2,6 +2,11 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
+/* add left and right padding to each section in main  */
+main > section {
+  @include spacing-main-footer-sides;
+}
+
 .hero--bio {
   @include hero-img("../assets/images/hero-bio.jpg");
 
@@ -166,6 +171,12 @@
   &__form > div {
     display: flex;
     flex-direction: column;
+  }
+
+  &__form > div > label {
+    @include tablet {
+      padding-bottom: 0.3125rem;
+    }
   }
 
   &__new-user-name {

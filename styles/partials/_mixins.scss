@@ -16,8 +16,14 @@
   }
 }
 
+@mixin mobile {
+  @media screen and (max-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
-/*                                   Padding                                  */
+/*                                   General padding                          */
 /* -------------------------------------------------------------------------- */
 
 //use to insert padding for header logo
@@ -118,12 +124,29 @@
     }
   }
 
-  //to use add padding at top of comments
+  /* use add padding at top of comments */
   @if $type == comment {
     @include spacing(padding, top, var(--sm));
 
     @include tablet {
       @include spacing(padding, top, var(--md));
+    }
+  }
+  /* add padding at top of shows */
+  @if $type == show {
+    @include spacing(padding, top, var(--md));
+
+    @include tablet {
+      @include spacing(padding, top, 0);
+    }
+  }
+
+  /* add margin at top and bottom of table */
+  @if $type == table {
+    @include spacing(margin, topbottom, var(--sm));
+
+    @include tablet {
+      @include spacing(margin, topbottom, var(--md));
     }
   } @else {
     @include spacing(padding, topbottom, var(--sm));
@@ -131,24 +154,6 @@
     @include tablet {
       @include spacing(padding, topbottom, var(--md));
     }
-  }
-}
-
-// use to insert style that looks like line divider in style guide
-
-@mixin line-divider($direction: "") {
-  border-bottom: $border-style;
-  @if $direction == topbottom {
-    border-top: $border-style;
-  }
-}
-
-//use to insert padding in form fields, per style guide
-@mixin spacing-inside-fields {
-  @include spacing(padding, all, calc(var(--xs) + 0.25rem));
-
-  @include tablet {
-    @include spacing(padding, all, var(--sm));
   }
 }
 
@@ -196,8 +201,26 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                  Comments                                  */
+/*                                  Form and table                            */
 /* -------------------------------------------------------------------------- */
+
+// use to insert style that looks like line divider in style guide
+
+@mixin line-divider($direction: "") {
+  border-bottom: $border-style;
+  @if $direction == topbottom {
+    border-top: $border-style;
+  }
+}
+
+//use to insert padding in form fields, per style guide
+@mixin spacing-inside-fields {
+  @include spacing(padding, all, calc(var(--xs) + 0.25rem));
+
+  @include tablet {
+    @include spacing(padding, all, var(--sm));
+  }
+}
 
 //use to size comments images
 @mixin avatar {
@@ -222,10 +245,23 @@ Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
   }
 }
 
+//use to style comment form labels and  shows table headers
+
+@mixin form-table-header-style {
+  color: $color-primary-silver;
+  text-transform: uppercase;
+  font-weight: $semi-bold;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  @include tablet {
+    font-size: 1.25rem;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /*                              Background images                             */
 /* -------------------------------------------------------------------------- */
-
 //use to insert logo - used in header/footer
 @mixin insert-logo($direction: center) {
   background-image: url("../assets/logos/Logo-bandsite.svg");

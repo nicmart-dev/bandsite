@@ -2,6 +2,12 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
+table {
+  border-collapse: collapse; /* so borders are displayed on table rows */
+  @include spacing-between-components(
+    table
+  ); // add margin at top and bottom of table
+}
 th {
   /* Hide table headers by default */
   display: none;
@@ -9,17 +15,31 @@ th {
   /* Show table headers on wider screens */
   @include tablet {
     display: table-cell;
-    text-transform: uppercase;
+    @include form-table-header-style;
   }
+}
+
+tr {
+  display: block;
+  text-align: left;
+  @include tablet {
+    display: table-row;
+  }
+  font-size: 1.25rem; /* Size font in each row, per mockup*/
+}
+
+tbody > tr {
+  @include line-divider; /* add bottom line divider, per mockup*/
+
+  @include spacing-between-components(show); /* add padding to top */
 }
 
 /* Show row header before each event, as a flat list */
 td::before {
   content: attr(data-label); /* Display data-label attribute */
-  font-weight: $bold;
-  text-transform: uppercase;
+  @include form-table-header-style;
   display: block;
-  margin-bottom: 5px; /* space between header and row */
+  margin-bottom: 0.5rem; /* space between header and row */
 
   /* Hide row headers on wider screens */
   @include tablet {
@@ -30,11 +50,25 @@ td::before {
 /* Show row data */
 td {
   display: block;
-  margin-bottom: 10px; /* space between rows */
+  padding-bottom: 1rem; /* row padding per style guide */
 
   /* Reset td display to table-cell on wider screens */
   @include tablet {
     display: table-cell;
+    padding: 1.5rem 1.125rem; /* row padding per style guide */
+  }
+}
+
+/* add left and right padding to shows header and table cell  */
+*:is(main > section > h2, td, th) {
+  @include mobile {
+    @include spacing-main-footer-sides;
+  }
+}
+
+main {
+  @include tablet {
+    @include spacing-main-footer-sides;
   }
 }
 
@@ -99,6 +133,7 @@ td {
   }
 
   &__show-date {
+    font-weight: $semi-bold;
   }
   &__show-venue {
   }

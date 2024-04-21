@@ -25,12 +25,12 @@ Applied consistent multiplier to style guide to match mockup */
 /*                                Media queries                               */
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
-/*                                   Padding                                  */
+/*                                   General padding                          */
 /* -------------------------------------------------------------------------- */
 /* Generic mixin to to add margin or padding, on which side, and how big
 Expanded mixin created by https://codepen.io/ezos86/pen/QwQmZb */
 /* -------------------------------------------------------------------------- */
-/*                                  Comments                                  */
+/*                                  Form and table                            */
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 /*                              Background images                             */
@@ -117,6 +117,9 @@ h3 {
 /* adding spacing between subheader and paragraph components per styleguide. 
 eg. article title, paragraphs, and footer agents, agent details including emails. */
 *:is(main, footer) > section *:is(h3, p, a) {
+  /* use add padding at top of comments */
+  /* add padding at top of shows */
+  /* add margin at top and bottom of table */
   padding-top: var(--sm);
   padding-bottom: var(--sm);
 }
@@ -155,37 +158,38 @@ textarea,
 button {
   border-radius: 4px;
   font-family: inherit;
-  margin-bottom: var(--sm);
-  padding-top: var(--sm);
-  padding-bottom: var(--sm);
-}
-@media screen and (min-width: 768px) {
-  input,
-  textarea,
-  button {
-    margin-bottom: var(--md);
-  }
-}
-@media screen and (min-width: 768px) {
-  input,
-  textarea,
-  button {
-    padding-top: var(--md);
-    padding-bottom: var(--md);
-  }
 }
 
 /* use full width, set spacing and border for form fields per style guide */
 input,
 textarea {
   width: 100%;
+  margin-bottom: var(--sm);
+  /* use add padding at top of comments */
+  /* add padding at top of shows */
+  /* add margin at top and bottom of table */
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
   padding: calc(var(--xs) + 0.25rem);
-  border: 0.0625rem solid #e1e1e1;
+  border: 2px solid #e1e1e1;
   font-size: 1.2rem;
   background-color: #fafafa;
   /*  style placeholder text in fields */
   /*   only show required field error state if empty on submit,
   and not browser load */
+}
+@media screen and (min-width: 768px) {
+  input,
+  textarea {
+    margin-bottom: var(--md);
+  }
+}
+@media screen and (min-width: 768px) {
+  input,
+  textarea {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
+  }
 }
 @media screen and (min-width: 768px) {
   input,
@@ -231,27 +235,24 @@ textarea {
   }
 }
 
-/* upper case and set font weight for label and button text */
-label,
-button {
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 /* set font size and color for labels per style guide */
 label {
   color: #afafaf;
+  text-transform: uppercase;
+  font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 @media screen and (min-width: 768px) {
   label {
-    font-size: 0.75rem;
+    font-size: 1.25rem;
   }
 }
 
 /* used for CTA throughout site */
 button {
+  text-transform: uppercase;
+  font-weight: 600;
   font-size: 1.375rem;
   width: 100%;
   min-height: 2.5rem;
@@ -267,32 +268,6 @@ button {
 }
 button:hover {
   background-color: #000;
-}
-
-/* add left and right padding to main and footer  */
-*:is(main > section, footer) {
-  padding-left: var(--sm);
-  padding-right: var(--sm);
-}
-@media screen and (min-width: 768px) {
-  *:is(main > section, footer) {
-    padding-left: var(--xl);
-  }
-}
-@media screen and (min-width: 1280px) {
-  *:is(main > section, footer) {
-    padding-left: var(--xxxxl);
-  }
-}
-@media screen and (min-width: 768px) {
-  *:is(main > section, footer) {
-    padding-right: var(--xl);
-  }
-}
-@media screen and (min-width: 1280px) {
-  *:is(main > section, footer) {
-    padding-right: var(--xxxl);
-  }
 }
 
 /* set font color per style guide for dark on light background */
@@ -462,6 +437,29 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   color: #fff;
   display: flex;
   flex-direction: column;
+  padding-left: var(--sm);
+  padding-right: var(--sm);
+  /* add left and right padding to footer  */
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-left: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer {
+    padding-left: var(--xxxxl);
+  }
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-right: var(--xl);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer {
+    padding-right: var(--xxxl);
+  }
 }
 @media screen and (min-width: 768px) {
   .footer {
@@ -570,6 +568,21 @@ ul:has(.header__link:not(.header__link--active):hover) .header__link--active {
   }
 }
 
+table {
+  border-collapse: collapse; /* so borders are displayed on table rows */
+  /* use add padding at top of comments */
+  /* add padding at top of shows */
+  /* add margin at top and bottom of table */
+  margin-top: var(--sm);
+  margin-bottom: var(--sm);
+}
+@media screen and (min-width: 768px) {
+  table {
+    margin-top: var(--md);
+    margin-bottom: var(--md);
+  }
+}
+
 th {
   /* Hide table headers by default */
   display: none;
@@ -578,18 +591,69 @@ th {
 @media screen and (min-width: 768px) {
   th {
     display: table-cell;
+    color: #afafaf;
     text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  th {
+    font-size: 1.25rem;
+  }
+}
+
+tr {
+  display: block;
+  text-align: left;
+  font-size: 1.25rem; /* Size font in each row, per mockup*/
+}
+@media screen and (min-width: 768px) {
+  tr {
+    display: table-row;
+  }
+}
+
+tbody > tr {
+  border-bottom: 2px solid #e1e1e1;
+  /* add bottom line divider, per mockup*/
+  /* use add padding at top of comments */
+  /* add padding at top of shows */
+  padding-top: var(--md);
+  /* add margin at top and bottom of table */
+  padding-top: var(--sm);
+  padding-bottom: var(--sm);
+  /* add padding to top */
+}
+@media screen and (min-width: 768px) {
+  tbody > tr {
+    padding-top: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  tbody > tr {
+    padding-top: var(--md);
+    padding-bottom: var(--md);
   }
 }
 
 /* Show row header before each event, as a flat list */
 td::before {
   content: attr(data-label); /* Display data-label attribute */
-  font-weight: 700;
+  color: #afafaf;
   text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   display: block;
-  margin-bottom: 5px; /* space between header and row */
+  margin-bottom: 0.5rem; /* space between header and row */
   /* Hide row headers on wider screens */
+}
+@media screen and (min-width: 768px) {
+  td::before {
+    font-size: 1.25rem;
+  }
 }
 @media screen and (min-width: 768px) {
   td::before {
@@ -600,12 +664,68 @@ td::before {
 /* Show row data */
 td {
   display: block;
-  margin-bottom: 10px; /* space between rows */
+  padding-bottom: 1rem; /* row padding per style guide */
   /* Reset td display to table-cell on wider screens */
 }
 @media screen and (min-width: 768px) {
   td {
     display: table-cell;
+    padding: 1.5rem 1.125rem; /* row padding per style guide */
+  }
+}
+
+/* add left and right padding to shows header and table cell  */
+@media screen and (max-width: 768px) {
+  *:is(main > section > h2, td, th) {
+    padding-left: var(--sm);
+    padding-right: var(--sm);
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 768px) {
+  *:is(main > section > h2, td, th) {
+    padding-left: var(--xl);
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 1280px) {
+  *:is(main > section > h2, td, th) {
+    padding-left: var(--xxxxl);
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 768px) {
+  *:is(main > section > h2, td, th) {
+    padding-right: var(--xl);
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 1280px) {
+  *:is(main > section > h2, td, th) {
+    padding-right: var(--xxxl);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    padding-left: var(--sm);
+    padding-right: var(--sm);
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  main {
+    padding-left: var(--xl);
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1280px) {
+  main {
+    padding-left: var(--xxxxl);
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  main {
+    padding-right: var(--xl);
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1280px) {
+  main {
+    padding-right: var(--xxxl);
   }
 }
 
@@ -673,4 +793,7 @@ td {
 
 .shows__list-table {
   width: 100%;
+}
+.shows__show-date {
+  font-weight: 600;
 }/*# sourceMappingURL=shows.css.map */
