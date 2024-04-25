@@ -1,3 +1,6 @@
+import addChildHTML from './global'
+import bandApiInstance from './band-site-api'
+
 /* List of events
 Note: Turned copy text to array using ChatGPT  */
 const events = [
@@ -112,3 +115,21 @@ createEventTableContent();
 
 // support shows event selection at page load
 selectRow();
+
+
+/* -------------------------------------------------------------------------- */
+/*                      Getting content from BandSite API                     */
+/* -------------------------------------------------------------------------- */
+
+
+// Display shows invoking the BandSite API object in imported module
+async function displayShows() {
+
+    const shows = await bandApiInstance.getShows();
+    console.log(shows)
+
+    /* Deconstruct array of objects */
+
+    const [{ place: showPlace, location: showLocation }, ...restOfShows] = shows;
+    console.log(showLocation);
+}

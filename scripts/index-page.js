@@ -1,3 +1,5 @@
+import addChildHTML from './global'
+import bandApiInstance from './band-site-api'
 
 /* List of comment comments from users.
 Note: Turned copy text to array using ChatGPT  */
@@ -109,3 +111,15 @@ function submitComment(event) {
 }
 
 loopThroughComments() // runs when page loads
+
+
+/* -------------------------------------------------------------------------- */
+/*                      Getting content from BandSite API                     */
+/* -------------------------------------------------------------------------- */
+
+
+// Display comments invoking the BandSite API object in imported module
+async function displayComments() {
+    const comments = await bandApiInstance.getComments();
+    console.log(comments)
+}

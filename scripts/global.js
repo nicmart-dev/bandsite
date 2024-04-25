@@ -21,3 +21,5 @@ function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
     // return new child element so we can add grandchildren
     return newChildEl;
 }
+
+export default addChildHTML;
