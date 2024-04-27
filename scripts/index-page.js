@@ -4,7 +4,7 @@ import bandApiInstance from './band-site-api.js'
 /* List of comments to display on page.
 Existing values from copy text to display in case of API failure to retrieve comments */
 
-const comments = [
+let comments = [
     {
         name: "Victor Pinto",
         date: "11/02/2023",
@@ -15,11 +15,11 @@ const comments = [
         date: "10/28/2023",
         comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
     },
-    {
-        name: "Isaac Tadesse",
-        date: "10/20/2023",
-        comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
+    // {
+    //     name: "Isaac Tadesse",
+    //     date: "10/20/2023",
+    //     comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
+    // }
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -28,6 +28,12 @@ const comments = [
 
 // Get DOM element where to insert comments 
 const commentList = document.querySelector('.comments__list-container')
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                      Display existing comments on page                     */
+/* -------------------------------------------------------------------------- */
 
 function loopThroughComments() {
 
@@ -40,7 +46,9 @@ function loopThroughComments() {
 
 
 
-// Generic function to add existing or new comment
+/* -------------------------------------------------------------------------- */
+/*               Generic function to add existing or new comment              */
+/* -------------------------------------------------------------------------- */
 function addComment(grandparent, comment) {
 
     //add article container (and indicate if new comment or not)
@@ -67,7 +75,10 @@ function addComment(grandparent, comment) {
 
 }
 
-//Show new submitted comments 
+/* -------------------------------------------------------------------------- */
+/*                         Show new submitted comments                        */
+/* -------------------------------------------------------------------------- */
+
 const commentForm = document.getElementById('new-comment-form')
 commentForm.addEventListener('submit', submitComment);
 
@@ -111,16 +122,59 @@ function submitComment(event) {
     event.target.comment.disabled = true;
 }
 
-loopThroughComments() // runs when page loads
+
 
 
 /* -------------------------------------------------------------------------- */
-/*                      Getting content from BandSite API                     */
+/*                      Get existing comments from BandSite API                      */
 /* -------------------------------------------------------------------------- */
 
+/* Sample comments structure existing vs original api:
+{
+    name: "Victor Pinto",
+    date: "11/02/2023",
+    comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
+},
+{
+    "name": "Victor Pinto",
+    "comment": "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
+    "id": "1e3354e1-f268-4e58-b161-dd46b2656cba",
+    "likes": 0,
+    "timestamp": 1613538000000
+}, */
 
-// Display comments invoking the BandSite API object in imported module
-async function displayComments() {
-    const comments = await bandApiInstance.getComments();
-    console.log(comments)
+// Replace events array by one obtained from BandSite API
+async function getApiComments() {
+    const commentsList = await bandApiInstance.getComments();
+
+    // Restructure to match existing comments array, removing id and likes properties
+    let apiComments = commentsList.map(({ name, comment, id, likes, timestamp }) => ({
+        name,
+        date: formatDate(timestamp, 'bio'), //format timestamp to date
+        comment
+    }));
+
+
+    // Update the events array with the updated objects
+    comments = apiComments;
+    console.log(comments);
 }
+
+/* ----------------------------------------------------------------- */
+/*                    Main function to list events                   */
+/* ----------------------------------------------------------------- */
+
+async function buildCommentsPage() {
+    try {
+        // wait until we get results from API to update comments variable with
+        await getApiComments()
+    } catch (error) {
+        console.log(error);
+
+    }
+
+    // show list of existing comments at page load
+    loopThroughComments()
+}
+
+buildCommentsPage()

@@ -21,9 +21,11 @@ class BandSiteApi {
     async getComments() {
         try {
             const response = await axios.get(`${this.baseUrl}/comments?api_key=${this.apiKey}`)
-            return response.data;
+            return response.data.sort((a, b) => b.timestamp - a.timestamp);
 
             /* The getComments method must sort the array of comments from the API, returning them in order from newest to oldest. */
+
+
 
         } catch (error) {
             console.log(error);

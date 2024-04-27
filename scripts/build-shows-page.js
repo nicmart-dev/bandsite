@@ -43,10 +43,10 @@ let events = [
 
 // Replace events array by one obtained from BandSite API
 async function getApiEvents() {
-    const shows = await bandApiInstance.getShows();
+    const showsList = await bandApiInstance.getShows();
 
     // Rename 'place' to 'venue' in each event and remove 'id' to match existing events array
-    let apiEvents = shows.map(({ id, place, ...rest }) => ({
+    let apiEvents = showsList.map(({ id, place, ...rest }) => ({
         venue: place,
         ...rest
     }));
@@ -145,9 +145,9 @@ function selectRow() {
 }
 
 
-/* -------------------------------------------------------------------------- */
-/*                    Main function to put it all together                    */
-/* -------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------- */
+/*                    Main function to list events                   */
+/* ----------------------------------------------------------------- */
 
 async function buildShowsPage() {
     try {
