@@ -27,8 +27,29 @@ export function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
 /* -------------------------------------------------------------------------- */
 /*                  Utility function to display date from API                 */
 /* -------------------------------------------------------------------------- */
-export function formatDate(timestamp) {
+export function formatDate(timestamp, page) {
     const date = new Date(timestamp);
-    const formattedDate = date.toLocaleDateString('en-us', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
-    return formattedDate.split(",").join(""); // Remove the comma from the day
+    let formattedDate = '';
+
+    switch (page) {
+        case 'shows':
+            formattedDate = date.toLocaleDateString('en-us', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
+            formattedDate.split(",").join(""); // Remove the comma before year
+            break;
+
+        case 'bio':
+            const month = date.getMonth() + 1; // Months are zero-based, so we add 1
+            const day = date.getDate();
+            const year = date.getFullYear();
+            formattedDate = `${month}/${day}/${year}`;
+            break;
+
+        default:
+            break;
+    }
+
+    return formattedDate;
 }
+
+
+export default addChildHTML;

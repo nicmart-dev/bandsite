@@ -54,7 +54,7 @@ async function getApiEvents() {
 
     // Replace timestamp by same date as in copy text eg. 1725854400000 to Mon Sept 09 2024
     let apiEventsWithDate = apiEvents.map(({ date, ...rest }) => ({
-        date: formatDate(date),
+        date: formatDate(date, 'shows'),
         ...rest
     }));
 

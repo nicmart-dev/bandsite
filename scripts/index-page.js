@@ -1,8 +1,9 @@
-import addChildHTML from './utilities.js'
+import { addChildHTML, formatDate } from './utilities.js'
 import bandApiInstance from './band-site-api.js'
 
-/* List of comment comments from users.
-Note: Turned copy text to array using ChatGPT  */
+/* List of comments to display on page.
+Existing values from copy text to display in case of API failure to retrieve comments */
+
 const comments = [
     {
         name: "Victor Pinto",
