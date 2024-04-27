@@ -158,11 +158,11 @@ async function buildShowsPage() {
 
     }
 
-    // add shows events table at page load
+    // add shows events table
     createEventTableContent();
 
-    // support shows event selection at page load
+    // support shows event selection
     selectRow();
 }
 
-buildShowsPage()
+buildShowsPage() // run at page load

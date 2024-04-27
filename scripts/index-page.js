@@ -27,21 +27,6 @@ let comments = [
 /*                      Get existing comments from BandSite API                      */
 /* -------------------------------------------------------------------------- */
 
-/* Sample comments structure existing vs original api:
-{
-    name: "Victor Pinto",
-    date: "11/02/2023",
-    comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-},
-{
-    "name": "Victor Pinto",
-    "comment": "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-    "id": "1e3354e1-f268-4e58-b161-dd46b2656cba",
-    "likes": 0,
-    "timestamp": 1613538000000
-}, */
-
-// Replace events array by one obtained from BandSite API
 async function getApiComments() {
     const commentsList = await bandApiInstance.getComments();
 
@@ -55,7 +40,6 @@ async function getApiComments() {
     // Update the events array with the updated objects
     comments = apiComments;
 }
-
 
 
 /* ------------------------------------------------------------------------- */
@@ -98,38 +82,55 @@ function displayComments() {
 
 
 /* -------------------------------------------------------------------------- */
+/*                       Post comment using BandSite API                      */
+/* -------------------------------------------------------------------------- */
+
+async function submitCommentByApi(comment) {
+    await bandApiInstance.postComment(comment);
+}
+
+/* -------------------------------------------------------------------------- */
 /*                         Show new submitted comments                        */
 /* -------------------------------------------------------------------------- */
 
+// add event listener at page load
 const commentForm = document.getElementById('new-comment-form')
 commentForm.addEventListener('submit', submitComment);
 
-function submitComment(event) {
+async function submitComment(event) {
 
     event.preventDefault(); // keeps the page from reloading on submit
-
-
-    // Get today's date and format it to MM/DD/YYYY to match existing comments
-    const dateFormat = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-    };
-    const today = new Date(Date.now()).toLocaleDateString(undefined, dateFormat);
-
 
     // Constructs a new comment object
     const newComment =
     {
         name: event.target.username.value,
-        date: today,
         comment: event.target.comment.value,
     };
 
-    //add new comment object as new comment
-    comments.unshift(newComment); // adds to the start of the array
+    // try to post comment through API, otherwise revert to old way
+    try {
+        await submitCommentByApi(newComment);
 
-    displayComments(); // Re-renders to the page all comments from the comment array
+    } catch (error) {
+        console.log("submitCommentByApi error");
+        console.log("adding comment manually")
+        // Get today's date and format it to MM/DD/YYYY to match existing comments
+        const dateFormat = {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        };
+        const today = new Date(Date.now()).toLocaleDateString(undefined, dateFormat);
+
+        // Add new date property to new comment object, set to today
+        newComment.date = today;
+
+        //add new comment object as new comment
+        comments.unshift(newComment); // adds to the start of the array
+    }
+
+    buildCommentsPage(); // Re-renders to the page all comments from the comment array
 
     //clear form after submission
     event.target.reset();
@@ -147,7 +148,7 @@ function submitComment(event) {
 
 
 /* ----------------------------------------------------------------- */
-/*                    Main function to list comments                 */
+/*                   Get comments from API and display               */
 /* ----------------------------------------------------------------- */
 
 async function buildCommentsPage() {
@@ -155,6 +156,7 @@ async function buildCommentsPage() {
         // wait until we get results from API to update comments variable with
         await getApiComments()
     } catch (error) {
+        console.log("getApiComments error");
         console.log(error);
 
     }

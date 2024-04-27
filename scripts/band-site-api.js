@@ -25,30 +25,14 @@ class BandSiteApi {
 
             /* The getComments method must sort the array of comments from the API, returning them in order from newest to oldest. */
 
-
-
         } catch (error) {
             console.log(error);
         }
     }
 
-    async postComments(comment) {
-
-        /* comment object parameter expected format is:
-        {
-            "name": "Nigel",
-            "comment": "What a great band."
-        } */
-
-        // Turn comment oject into JSON string to API
-        let raw = JSON.stringify(comment);
-
-        // Define the data you want to send in the POST request
-        const postData = {
-            body: 'raw'
-        };
+    async postComment(comment) {
         try {
-            const response = await axios.post(`${this.baseUrl}/comments?api_key=${this.apiKey}`, postData)
+            const response = await axios.post(`${this.baseUrl}/comments?api_key=${this.apiKey}`, comment);
             return response.data;
 
         } catch (error) {
