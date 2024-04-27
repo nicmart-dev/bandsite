@@ -1,4 +1,4 @@
-import addChildHTML from './utilities.js'
+import { addChildHTML, formatDate } from './utilities.js'
 import bandApiInstance from './band-site-api.js'
 
 /* List of events to display on page.
@@ -43,12 +43,7 @@ let events = [
 
 // Replace events array by one obtained from BandSite API
 async function getApiEvents() {
-    console.log("Old Events", events)
     const shows = await bandApiInstance.getShows();
-
-    /* Destructured array of objects */
-
-    console.log("APi shows before change", shows)
 
     // Rename 'place' to 'venue' in each event and remove 'id' to match existing events array
     let apiEvents = shows.map(({ id, place, ...rest }) => ({
@@ -56,9 +51,22 @@ async function getApiEvents() {
         ...rest
     }));
 
+
+
+    // format date
+    const timestamp = 1725854400000; // Example timestamp
+    const formattedDate = formatDate(timestamp);
+    console.log("Formatted date", formattedDate); // Output: "Mon Sept 09 2024"
+
+    // Replace timestamp by date
+    let eventsWithDate = apiEvents.map(({ date, ...rest }) => ({
+        date: formattedDate,
+        ...rest
+    }));
+    console.log("Date converted", eventsWithDate)
+
     // Update the events array with the updated objects
-    events = apiEvents;
-    console.log("New API Events", events)
+    events = eventsWithDate;
 }
 
 
@@ -142,6 +150,11 @@ function selectRow() {
         });
     });
 }
+
+
+/* -------------------------------------------------------------------------- */
+/*                    Main function to put it all together                    */
+/* -------------------------------------------------------------------------- */
 
 async function buildShowsPage() {
     // wait until we get results from API to update events variable with

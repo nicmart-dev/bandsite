@@ -1,6 +1,7 @@
-// Create element, set text to it, append it somewhere, and add class to it
-
-function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
+/* -------------------------------------------------------------------------- */
+/*                  Utility function to create element in DOM                 */
+/* -------------------------------------------------------------------------- */
+export function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
     const newChildEl = document.createElement(childEl);
 
     // add text to new node if passed as argument
@@ -22,4 +23,12 @@ function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
     return newChildEl;
 }
 
-export default addChildHTML;
+
+/* -------------------------------------------------------------------------- */
+/*                  Utility function to display date from API                 */
+/* -------------------------------------------------------------------------- */
+export function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const formattedDate = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' });
+    return formattedDate.replace(',', ''); // Remove the comma from the day
+}
