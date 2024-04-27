@@ -29,6 +29,6 @@ export function addChildHTML(parentEl, childEl, classAttr = '', text = '') {
 /* -------------------------------------------------------------------------- */
 export function formatDate(timestamp) {
     const date = new Date(timestamp);
-    const formattedDate = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' });
-    return formattedDate.replace(',', ''); // Remove the comma from the day
+    const formattedDate = date.toLocaleDateString('en-us', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
+    return formattedDate.split(",").join(""); // Remove the comma from the day
 }

@@ -52,19 +52,14 @@ async function getApiEvents() {
     }));
 
 
-
-    // format date
-    const timestamp = 1725854400000; // Example timestamp
-    const formattedDate = formatDate(timestamp);
-
-    // Replace timestamp by date
-    let eventsWithDate = apiEvents.map(({ date, ...rest }) => ({
-        date: formattedDate,
+    // Replace timestamp by same date as in copy text eg. 1725854400000 to Mon Sept 09 2024
+    let apiEventsWithDate = apiEvents.map(({ date, ...rest }) => ({
+        date: formatDate(date),
         ...rest
     }));
 
     // Update the events array with the updated objects
-    events = eventsWithDate;
+    events = apiEventsWithDate;
 }
 
 
