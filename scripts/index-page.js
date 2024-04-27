@@ -1,5 +1,5 @@
-import addChildHTML from './global'
-import bandApiInstance from './band-site-api'
+import addChildHTML from './utilities.js'
+import bandApiInstance from './band-site-api.js'
 
 /* List of comment comments from users.
 Note: Turned copy text to array using ChatGPT  */
