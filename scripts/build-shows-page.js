@@ -2,23 +2,23 @@ import { addChildHTML, formatDate } from './utilities.js'
 import bandApiInstance from './band-site-api.js'
 
 /* List of events to display on page.
-Existing values from copy text to use as fallback in case API fails to retrieve events */
+Existing values from copy text to display in case of API failure to retrieve events */
 let events = [
     {
         date: "Mon Sept 09 2024",
         venue: "Ronald Lane",
         location: "San Francisco, CA"
     },
-    // {
-    //     date: "Tue Sept 17 2024",
-    //     venue: "Pier 3 East",
-    //     location: "San Francisco, CA"
-    // },
-    // {
-    //     date: "Sat Oct 12 2024",
-    //     venue: "View Lounge",
-    //     location: "San Francisco, CA"
-    // },
+    {
+        date: "Tue Sept 17 2024",
+        venue: "Pier 3 East",
+        location: "San Francisco, CA"
+    },
+    {
+        date: "Sat Oct 12 2024",
+        venue: "View Lounge",
+        location: "San Francisco, CA"
+    },
     // {
     //     date: "Sat Nov 16 2024",
     //     venue: "Hyatt Agency",
@@ -56,14 +56,12 @@ async function getApiEvents() {
     // format date
     const timestamp = 1725854400000; // Example timestamp
     const formattedDate = formatDate(timestamp);
-    console.log("Formatted date", formattedDate); // Output: "Mon Sept 09 2024"
 
     // Replace timestamp by date
     let eventsWithDate = apiEvents.map(({ date, ...rest }) => ({
         date: formattedDate,
         ...rest
     }));
-    console.log("Date converted", eventsWithDate)
 
     // Update the events array with the updated objects
     events = eventsWithDate;
@@ -157,8 +155,13 @@ function selectRow() {
 /* -------------------------------------------------------------------------- */
 
 async function buildShowsPage() {
-    // wait until we get results from API to update events variable with
-    await getApiEvents()
+    try {
+        // wait until we get results from API to update events variable with
+        await getApiEvents()
+    } catch (error) {
+        console.log(error);
+
+    }
 
     // add shows events table at page load
     createEventTableContent();
