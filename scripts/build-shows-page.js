@@ -1,42 +1,73 @@
 import addChildHTML from './utilities.js'
 import bandApiInstance from './band-site-api.js'
 
-/* List of events
-Note: Turned copy text to array using ChatGPT  */
-const events = [
+/* List of events to display on page.
+Existing values from copy text to use as fallback in case API fails to retrieve events */
+let events = [
     {
         date: "Mon Sept 09 2024",
         venue: "Ronald Lane",
         location: "San Francisco, CA"
     },
-    {
-        date: "Tue Sept 17 2024",
-        venue: "Pier 3 East",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Oct 12 2024",
-        venue: "View Lounge",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Nov 16 2024",
-        venue: "Hyatt Agency",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Nov 29 2024",
-        venue: "Moscow Center",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Wed Dec 18 2024",
-        venue: "Press Club",
-        location: "San Francisco, CA"
-    }
+    // {
+    //     date: "Tue Sept 17 2024",
+    //     venue: "Pier 3 East",
+    //     location: "San Francisco, CA"
+    // },
+    // {
+    //     date: "Sat Oct 12 2024",
+    //     venue: "View Lounge",
+    //     location: "San Francisco, CA"
+    // },
+    // {
+    //     date: "Sat Nov 16 2024",
+    //     venue: "Hyatt Agency",
+    //     location: "San Francisco, CA"
+    // },
+    // {
+    //     date: "Fri Nov 29 2024",
+    //     venue: "Moscow Center",
+    //     location: "San Francisco, CA"
+    // },
+    // {
+    //     date: "Wed Dec 18 2024",
+    //     venue: "Press Club",
+    //     location: "San Francisco, CA"
+    // }
 ];
 
-// Create and insert the table content dynamically
+/* -------------------------------------------------------------------------- */
+/*                      Get shows list from BandSite API                      */
+/* -------------------------------------------------------------------------- */
+
+
+// Replace events array by one obtained from BandSite API
+async function getApiEvents() {
+    console.log("Old Events", events)
+    const shows = await bandApiInstance.getShows();
+
+    /* Destructured array of objects */
+
+    console.log("APi shows before change", shows)
+
+    // Rename 'place' to 'venue' in each event and remove 'id' to match existing events array
+    let apiEvents = shows.map(({ id, place, ...rest }) => ({
+        venue: place,
+        ...rest
+    }));
+
+    // Update the events array with the updated objects
+    events = apiEvents;
+    console.log("New API Events", events)
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/*               Create and insert the table content dynamically              */
+/* -------------------------------------------------------------------------- */
+
+
 function createEventTableContent() {
     const tbody = document.querySelector("table tbody");
     tbody.innerText = "";
@@ -88,7 +119,10 @@ function createEventTableContent() {
     });
 }
 
-// mark row as selected by adding class if user clicks on row
+/* -------------------------------------------------------------------------- */
+/*         Mark row as selected by adding class if user clicks on row         */
+/* -------------------------------------------------------------------------- */
+
 function selectRow() {
     const rows = document.querySelectorAll('.shows__show-row--data')
 
@@ -109,27 +143,15 @@ function selectRow() {
     });
 }
 
+async function buildShowsPage() {
+    // wait until we get results from API to update events variable with
+    await getApiEvents()
 
-// add shows events table at page load
-createEventTableContent();
+    // add shows events table at page load
+    createEventTableContent();
 
-// support shows event selection at page load
-selectRow();
-
-
-/* -------------------------------------------------------------------------- */
-/*                      Getting content from BandSite API                     */
-/* -------------------------------------------------------------------------- */
-
-
-// Display shows invoking the BandSite API object in imported module
-async function displayShows() {
-
-    const shows = await bandApiInstance.getShows();
-    console.log(shows)
-
-    /* Deconstruct array of objects */
-
-    const [{ place: showPlace, location: showLocation }, ...restOfShows] = shows;
-    console.log(showLocation);
+    // support shows event selection at page load
+    selectRow();
 }
+
+buildShowsPage()
