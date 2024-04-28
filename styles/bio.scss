@@ -177,9 +177,10 @@ main > section {
     }
   }
 
-  &__new-comment-submit {
+  &__button {
     @include tablet {
-      float: right;
+      display: block;
+      margin-left: auto;
       width: 14rem;
     }
   }

@@ -830,8 +830,9 @@ main > section {
   }
 }
 @media screen and (min-width: 768px) {
-  .comments__new-comment-submit {
-    float: right;
+  .comments__button {
+    display: block;
+    margin-left: auto;
     width: 14rem;
   }
 }

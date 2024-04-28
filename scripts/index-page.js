@@ -80,6 +80,9 @@ function displayComments() {
         //add comment text
         addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', comment.comment)
 
+        //add Delete button
+        addChildHTML(commentTxtContainer, 'button', 'comments__button', "Delete")
+
     })
 }
 
@@ -125,7 +128,7 @@ async function submitComment(event) {
         comments.unshift(newComment); // adds to the start of the array
     }
 
-    buildCommentsPage(); // Re-renders to the page all comments from the comment array
+    refreshComments(); // Re-renders to the page all comments from the comment array
 
     //clear form after submission
     event.target.reset();
@@ -142,11 +145,11 @@ async function submitComment(event) {
 
 
 
-/* ----------------------------------------------------------------- */
-/*                   Get comments from API and display               */
-/* ----------------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/*                   Get comments and display               */
+/* -------------------------------------------------------- */
 
-async function buildCommentsPage() {
+async function refreshComments() {
     // wait until we get results from API to update comments variable with
     await getCommentsList()
 
@@ -154,4 +157,4 @@ async function buildCommentsPage() {
     displayComments()
 }
 
-buildCommentsPage()
+refreshComments()
