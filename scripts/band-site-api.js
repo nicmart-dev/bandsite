@@ -23,6 +23,11 @@ class BandSiteApi {
         const response = await axios.post(`${this.baseUrl}/comments?api_key=${this.apiKey}`, comment);
         return response.data;
     }
+    async deleteComment(id) {
+        const response = await axios.delete(`${this.baseUrl}/comments/${id}?api_key=${this.apiKey}`);
+        return response.data;
+    }
+
 }
 
 //Create API object 

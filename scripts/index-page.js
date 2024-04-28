@@ -12,10 +12,9 @@ async function getCommentsList() {
     try {
         const commentsList = await bandApiInstance.getComments();
         // Restructure to match existing comments array, removing id and likes properties
-        let apiComments = commentsList.map(({ name, comment, id, likes, timestamp }) => ({
-            name,
+        let apiComments = commentsList.map(({ timestamp, ...rest }) => ({
             date: formatDate(timestamp, 'bio'), //format timestamp to date
-            comment
+            ...rest
         }));
 
         // Update the events array with the updated objects
@@ -80,8 +79,12 @@ function displayComments() {
         //add comment text
         addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', comment.comment)
 
-        //add Delete button
-        addChildHTML(commentTxtContainer, 'button', 'comments__button', "Delete")
+
+        //add Delete button and event listener
+        const deleteBtn = addChildHTML(commentTxtContainer, 'button', 'comments__button', "Delete")
+        deleteBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
+        deleteBtn.addEventListener('click', deleteComment);
+
 
     })
 }
@@ -143,6 +146,20 @@ async function submitComment(event) {
     event.target.comment.disabled = true;
 }
 
+
+/* -------------------------------------------------------------------------- */
+/*                               Delete comment                               */
+/* -------------------------------------------------------------------------- */
+
+async function deleteComment(event) {
+    try {
+        await bandApiInstance.deleteComment(event.target.id)
+        refreshComments(); // Re-renders to the page all comments from the comment array
+
+    } catch (error) {
+        console.log("Could not delete comment", error)
+    }
+}
 
 
 /* -------------------------------------------------------- */
