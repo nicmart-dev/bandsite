@@ -4,11 +4,15 @@ import bandApiInstance from './band-site-api.js'
 let comments = []; // List of comments to display on bio page
 
 
-/* -------------------------------------------------------------------------- */
-/*                      Get existing comments from BandSite API                      */
-/* -------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------ */
+/*                      Display Comments on page                      */
+/* ------------------------------------------------------------------ */
 
-async function getCommentsList() {
+async function displayComments() {
+
+    let apiSuccess = ''; // use to conditionally display Delete button
+
+    //Try to get existing comments from BandSite API, and if not, display static comments from copy deck.
     try {
         const commentsList = await bandApiInstance.getComments();
         // Restructure to match existing comments array, removing id and likes properties
@@ -19,7 +23,9 @@ async function getCommentsList() {
 
         // Update the events array with the updated objects
         comments = apiComments;
+        apiSuccess = true;
     } catch (error) {
+        apiSuccess = false;
         console.log("Could not get comments from API, using hardcoded list from copy deck for test purposes instead.")
         if (comments.length === 0) {
             comments = [
@@ -41,15 +47,8 @@ async function getCommentsList() {
             ];
         }
     }
-}
 
-
-/* ------------------------------------------------------------------------- */
-/*                          Display comments on page                         */
-/* ------------------------------------------------------------------------- */
-
-function displayComments() {
-
+    // Display comments on page 
     // Get DOM element where to insert comments 
     const commentList = document.querySelector('.comments__list-container')
 
@@ -79,15 +78,17 @@ function displayComments() {
         //add comment text
         addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', comment.comment)
 
+        //if comments retrieved from api, add Delete button and event listener
+        if (apiSuccess) {
 
-        //add Delete button and event listener
-        const deleteBtn = addChildHTML(commentTxtContainer, 'button', 'comments__button', "Delete")
-        deleteBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
-        deleteBtn.addEventListener('click', deleteComment);
-
-
+            const deleteBtn = addChildHTML(commentTxtContainer, 'button', 'comments__button', "Delete")
+            deleteBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
+            deleteBtn.addEventListener('click', deleteComment);
+        }
     })
+
 }
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -167,11 +168,8 @@ async function deleteComment(event) {
 /* -------------------------------------------------------- */
 
 async function refreshComments() {
-    // wait until we get results from API to update comments variable with
-    await getCommentsList()
-
     // show list of existing comments at page load
-    displayComments()
+    await displayComments()
 }
 
 refreshComments()
