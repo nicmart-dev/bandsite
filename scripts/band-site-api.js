@@ -4,7 +4,7 @@ class BandSiteApi {
     This API key will be used when making POST and GET requests to the API (such as in the postComment and getComments methods). */
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.baseUrl = "ddhttps://unit-2-project-api-25c1595833b2.herokuapp.com";
+        this.baseUrl = "https://unit-2-project-api-25c1595833b2.herokuapp.com";
 
     }
     async getShows() {
