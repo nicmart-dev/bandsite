@@ -33,8 +33,7 @@ export function formatDate(timestamp, page) {
 
     switch (page) {
         case 'shows':
-            formattedDate = date.toLocaleDateString('en-us', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
-            formattedDate.split(",").join(""); // Remove the comma before year
+            formattedDate = date.toLocaleDateString('en-us', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' }).split(",").join("");
             break;
 
         case 'bio':
