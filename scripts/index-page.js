@@ -1,44 +1,47 @@
 import { addChildHTML, formatDate } from './utilities.js'
 import bandApiInstance from './band-site-api.js'
 
-/* List of comments to display on page.
-Existing values from copy text to display in case of API failure to retrieve comments */
-
-let comments = [
-    {
-        name: "Victor Pinto",
-        date: "11/02/2023",
-        comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-    },
-    {
-        name: "Christina Cabrera",
-        date: "10/28/2023",
-        comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
-    },
-    // {
-    //     name: "Isaac Tadesse",
-    //     date: "10/20/2023",
-    //     comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    // }
-];
+let comments = []; // List of comments to display on bio page
 
 
 /* -------------------------------------------------------------------------- */
 /*                      Get existing comments from BandSite API                      */
 /* -------------------------------------------------------------------------- */
 
-async function getApiComments() {
-    const commentsList = await bandApiInstance.getComments();
+async function getCommentsList() {
+    try {
+        const commentsList = await bandApiInstance.getComments();
+        // Restructure to match existing comments array, removing id and likes properties
+        let apiComments = commentsList.map(({ name, comment, id, likes, timestamp }) => ({
+            name,
+            date: formatDate(timestamp, 'bio'), //format timestamp to date
+            comment
+        }));
 
-    // Restructure to match existing comments array, removing id and likes properties
-    let apiComments = commentsList.map(({ name, comment, id, likes, timestamp }) => ({
-        name,
-        date: formatDate(timestamp, 'bio'), //format timestamp to date
-        comment
-    }));
-
-    // Update the events array with the updated objects
-    comments = apiComments;
+        // Update the events array with the updated objects
+        comments = apiComments;
+    } catch (error) {
+        console.log("Could not get comments from API, using hardcoded list from copy deck for test purposes instead.")
+        if (comments.length === 0) {
+            comments = [
+                {
+                    name: "Victor Pinto",
+                    date: "11/02/2023",
+                    comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
+                },
+                {
+                    name: "Christina Cabrera",
+                    date: "10/28/2023",
+                    comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
+                },
+                {
+                    name: "Isaac Tadesse",
+                    date: "10/20/2023",
+                    comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
+                }
+            ];
+        }
+    }
 }
 
 
@@ -82,15 +85,7 @@ function displayComments() {
 
 
 /* -------------------------------------------------------------------------- */
-/*                       Post comment using BandSite API                      */
-/* -------------------------------------------------------------------------- */
-
-async function submitCommentByApi(comment) {
-    await bandApiInstance.postComment(comment);
-}
-
-/* -------------------------------------------------------------------------- */
-/*                         Show new submitted comments                        */
+/*                        Post and display new comments                       */
 /* -------------------------------------------------------------------------- */
 
 // add event listener at page load
@@ -110,11 +105,11 @@ async function submitComment(event) {
 
     // try to post comment through API, otherwise revert to old way
     try {
-        await submitCommentByApi(newComment);
+        await bandApiInstance.postComment(newComment);
 
     } catch (error) {
-        console.log("submitCommentByApi error");
-        console.log("adding comment manually")
+        console.log("Could not submit comments to API, adding directly to the page instead.",
+            "\nNote the submitted comment will disappear on page refresh. Use for test purposes only.");
         // Get today's date and format it to MM/DD/YYYY to match existing comments
         const dateFormat = {
             year: 'numeric',
@@ -152,14 +147,8 @@ async function submitComment(event) {
 /* ----------------------------------------------------------------- */
 
 async function buildCommentsPage() {
-    try {
-        // wait until we get results from API to update comments variable with
-        await getApiComments()
-    } catch (error) {
-        console.log("getApiComments error");
-        console.log(error);
-
-    }
+    // wait until we get results from API to update comments variable with
+    await getCommentsList()
 
     // show list of existing comments at page load
     displayComments()

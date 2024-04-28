@@ -1,40 +1,7 @@
 import { addChildHTML, formatDate } from './utilities.js'
 import bandApiInstance from './band-site-api.js'
 
-/* List of events to display on page.
-Existing values from copy text to display in case of API failure to retrieve events */
-let events = [
-    {
-        date: "Mon Sept 09 2024",
-        venue: "Ronald Lane",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Tue Sept 17 2024",
-        venue: "Pier 3 East",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Oct 12 2024",
-        venue: "View Lounge",
-        location: "San Francisco, CA"
-    },
-    // {
-    //     date: "Sat Nov 16 2024",
-    //     venue: "Hyatt Agency",
-    //     location: "San Francisco, CA"
-    // },
-    // {
-    //     date: "Fri Nov 29 2024",
-    //     venue: "Moscow Center",
-    //     location: "San Francisco, CA"
-    // },
-    // {
-    //     date: "Wed Dec 18 2024",
-    //     venue: "Press Club",
-    //     location: "San Francisco, CA"
-    // }
-];
+let events = []; // List of events to display on shows page.
 
 /* -------------------------------------------------------------------------- */
 /*                      Get shows list from BandSite API                      */
@@ -42,24 +9,62 @@ let events = [
 
 
 // Replace events array by one obtained from BandSite API
-async function getApiEvents() {
-    const showsList = await bandApiInstance.getShows();
+async function getShowsList() {
+    try {
+        const showsList = await bandApiInstance.getShows();
 
-    // Rename 'place' to 'venue' in each event and remove 'id' to match existing events array
-    let apiEvents = showsList.map(({ id, place, ...rest }) => ({
-        venue: place,
-        ...rest
-    }));
+        // Rename 'place' to 'venue' in each event and remove 'id' to match existing events array
+        let apiEvents = showsList.map(({ id, place, ...rest }) => ({
+            venue: place,
+            ...rest
+        }));
 
 
-    // Replace timestamp by same date as in copy text eg. 1725854400000 to Mon Sept 09 2024
-    let apiEventsWithDate = apiEvents.map(({ date, ...rest }) => ({
-        date: formatDate(date, 'shows'),
-        ...rest
-    }));
+        // Replace timestamp by same date as in copy text eg. 1725854400000 to Mon Sept 09 2024
+        let apiEventsWithDate = apiEvents.map(({ date, ...rest }) => ({
+            date: formatDate(date, 'shows'),
+            ...rest
+        }));
 
-    // Update the events array with the updated objects
-    events = apiEventsWithDate;
+        // Update the events array with the updated objects
+        events = apiEventsWithDate;
+    } catch (error) {
+
+        console.log("Could not get events from API, using hardcoded list from copy deck for test purposes instead.")
+
+        events = [
+            {
+                date: "Mon Sept 09 2024",
+                venue: "Ronald Lane",
+                location: "San Francisco, CA"
+            },
+            {
+                date: "Tue Sept 17 2024",
+                venue: "Pier 3 East",
+                location: "San Francisco, CA"
+            },
+            {
+                date: "Sat Oct 12 2024",
+                venue: "View Lounge",
+                location: "San Francisco, CA"
+            },
+            {
+                date: "Sat Nov 16 2024",
+                venue: "Hyatt Agency",
+                location: "San Francisco, CA"
+            },
+            {
+                date: "Fri Nov 29 2024",
+                venue: "Moscow Center",
+                location: "San Francisco, CA"
+            },
+            {
+                date: "Wed Dec 18 2024",
+                venue: "Press Club",
+                location: "San Francisco, CA"
+            }
+        ];
+    }
 }
 
 
@@ -150,15 +155,9 @@ function selectRow() {
 /* ----------------------------------------------------------------- */
 
 async function buildShowsPage() {
-    try {
-        // wait until we get results from API to update events variable with
-        await getApiEvents()
-    } catch (error) {
-        console.log(error);
+    await getShowsList() // first get shows list
 
-    }
-
-    // add shows events table
+    // then add shows to table in page
     createEventTableContent();
 
     // support shows event selection
