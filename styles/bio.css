@@ -830,11 +830,27 @@ main > section {
   }
 }
 @media screen and (min-width: 768px) {
-  .comments__button {
+  .comments__button-submit {
     display: block;
     margin-left: auto;
     width: 14rem;
   }
+}
+.comments__button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+  .comments__button-container {
+    flex-direction: row;
+  }
+}
+.comments__button-delete {
+  width: unset;
+}
+.comments__button-like {
+  width: unset;
 }
 .comments__list-container {
   display: flex;

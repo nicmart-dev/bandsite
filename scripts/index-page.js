@@ -80,8 +80,13 @@ async function displayComments() {
 
         //if comments retrieved from api, add Delete button and event listener
         if (apiSuccess) {
+            const btnContainer = addChildHTML(commentTxtContainer, 'div', 'comments__button-container')
 
-            const deleteBtn = addChildHTML(commentTxtContainer, 'button', 'comments__button', "Delete")
+            const likeBtn = addChildHTML(btnContainer, 'button', 'comments__button-like', "Like")
+            likeBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
+            // likeBtn.addEventListener('click', likeComment);
+
+            const deleteBtn = addChildHTML(btnContainer, 'button', 'comments__button-delete', "Delete")
             deleteBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
             deleteBtn.addEventListener('click', deleteComment);
         }

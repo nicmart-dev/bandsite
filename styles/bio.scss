@@ -176,13 +176,27 @@ main > section {
       padding-bottom: 0.3125rem;
     }
   }
-
-  &__button {
+  &__button-submit {
     @include tablet {
       display: block;
       margin-left: auto;
       width: 14rem;
     }
+  }
+  &__button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__button-delete {
+    width: unset;
+  }
+  &__button-like {
+    width: unset;
   }
 
   &__list-container {
