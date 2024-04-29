@@ -172,22 +172,24 @@ async function deleteComment(event) {
 /*                               Like comment                              */
 /* ----------------------------------------------------------------------- */
 
+
+/* Add one like using comment API and then reflect it
+eg. changing button name from "Like (0)" to "Like (1)" */
+
 async function likeComment(event) {
     try {
         let commentId = '';
 
-        // get right id if click on span element instead of button directly
+        // get id from parent or grandparent depending if click on span element instead of button directly
         if (event.target.localName == "span") {
             commentId = event.target.parentElement.parentElement.id;
         } else commentId = event.target.parentElement.id;
-        await bandApiInstance.likeComment(commentId)
 
-        // refreshComments(); // Re-renders to the page all comments from the comment array
-
-        //disable the like button
+        // add like using comment API
+        await bandApiInstance.likeComment(commentId);
 
         // Get the span element inside the button with id 'likeButton'
-        let likeCount = document.querySelector(`[id='${commentId}'] .comments__button-like span`); // use id= instead of # as id starting with number is valid html5 but not valid css
+        let likeCount = document.querySelector(`[id='${commentId}'] .comments__button-like span`); // we use id=[] instead of # as id starting with number is valid html5 but not valid css
         // Extract the current count from the text content, remove parentheses and convert to integer
         let currentCount = parseInt(likeCount.textContent.slice(1, -1));
 
@@ -196,8 +198,6 @@ async function likeComment(event) {
 
         // Update the text content of the like count element with the new count
         likeCount.textContent = '(' + newCount + ')';
-        // document.getElementById(event.target.id).innerText = `Like (${likes++})`;
-        // console.log(document.getElementById(event.target.id));
 
     } catch (error) {
         console.log("Could not like comment", error)
