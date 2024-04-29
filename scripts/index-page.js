@@ -82,9 +82,9 @@ async function displayComments() {
         if (apiSuccess) {
             const btnContainer = addChildHTML(commentTxtContainer, 'div', 'comments__button-container')
 
-            const likeBtn = addChildHTML(btnContainer, 'button', 'comments__button-like', "Like")
-            likeBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
-            // likeBtn.addEventListener('click', likeComment);
+            const likeBtn = addChildHTML(btnContainer, 'button', 'comments__button-like', `Like (${comment.likes})`)
+            likeBtn.setAttribute("id", `${comment.id}/like`);
+            likeBtn.addEventListener('click', likeComment, { once: true }); // allow to like comment but only once
 
             const deleteBtn = addChildHTML(btnContainer, 'button', 'comments__button-delete', "Delete")
             deleteBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
@@ -167,6 +167,21 @@ async function deleteComment(event) {
     }
 }
 
+
+/* ----------------------------------------------------------------------- */
+/*                               Like comment                              */
+/* ----------------------------------------------------------------------- */
+
+async function likeComment(event) {
+    try {
+        await bandApiInstance.likeComment(event.target.id)
+
+        refreshComments(); // Re-renders to the page all comments from the comment array
+
+    } catch (error) {
+        console.log("Could not like comment", error)
+    }
+}
 
 /* -------------------------------------------------------- */
 /*                   Get comments and display               */

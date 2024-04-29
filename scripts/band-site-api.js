@@ -28,6 +28,11 @@ class BandSiteApi {
         return response.data;
     }
 
+    async likeComment(id) {
+        const response = await axios.put(`${this.baseUrl}/comments/${id}?api_key=${this.apiKey}`);
+        return response.data;
+    }
+
 }
 
 //Create API object 
