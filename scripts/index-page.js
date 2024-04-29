@@ -78,16 +78,16 @@ async function displayComments() {
         //add comment text
         addChildHTML(commentTxtContainer, 'p', 'comments__comment-txt', comment.comment)
 
-        //if comments retrieved from api, add Delete button and event listener
+        //if comments retrieved from api, add Like and Delete buttons
         if (apiSuccess) {
             const btnContainer = addChildHTML(commentTxtContainer, 'div', 'comments__button-container')
+            btnContainer.setAttribute("id", comment.id); // set comment id as button id to be able to use it to use like/delete API
 
-            const likeBtn = addChildHTML(btnContainer, 'button', 'comments__button-like', `Like (${comment.likes})`)
-            likeBtn.setAttribute("id", `${comment.id}/like`);
+            const likeBtn = addChildHTML(btnContainer, 'button', 'comments__button-like', `Like `)
             likeBtn.addEventListener('click', likeComment, { once: true }); // allow to like comment but only once
+            addChildHTML(likeBtn, 'span', '', `(${comment.likes})`)
 
             const deleteBtn = addChildHTML(btnContainer, 'button', 'comments__button-delete', "Delete")
-            deleteBtn.setAttribute("id", comment.id); // set comment id as button id to be able to delete it through event
             deleteBtn.addEventListener('click', deleteComment);
         }
     })
@@ -159,7 +159,7 @@ async function submitComment(event) {
 
 async function deleteComment(event) {
     try {
-        await bandApiInstance.deleteComment(event.target.id)
+        await bandApiInstance.deleteComment(event.target.parentElement.id)
         refreshComments(); // Re-renders to the page all comments from the comment array
 
     } catch (error) {
@@ -174,9 +174,30 @@ async function deleteComment(event) {
 
 async function likeComment(event) {
     try {
-        await bandApiInstance.likeComment(event.target.id)
+        let commentId = '';
 
-        refreshComments(); // Re-renders to the page all comments from the comment array
+        // get right id if click on span element instead of button directly
+        if (event.target.localName == "span") {
+            commentId = event.target.parentElement.parentElement.id;
+        } else commentId = event.target.parentElement.id;
+        await bandApiInstance.likeComment(commentId)
+
+        // refreshComments(); // Re-renders to the page all comments from the comment array
+
+        //disable the like button
+
+        // Get the span element inside the button with id 'likeButton'
+        let likeCount = document.querySelector(`[id='${commentId}'] .comments__button-like span`); // use id= instead of # as id starting with number is valid html5 but not valid css
+        // Extract the current count from the text content, remove parentheses and convert to integer
+        let currentCount = parseInt(likeCount.textContent.slice(1, -1));
+
+        // Increment the count by one
+        let newCount = currentCount + 1;
+
+        // Update the text content of the like count element with the new count
+        likeCount.textContent = '(' + newCount + ')';
+        // document.getElementById(event.target.id).innerText = `Like (${likes++})`;
+        // console.log(document.getElementById(event.target.id));
 
     } catch (error) {
         console.log("Could not like comment", error)
